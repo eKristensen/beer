@@ -4,6 +4,8 @@
 
 <h1>Siden er hentet: {{ \Carbon\Carbon::now() }}</h1>
 
+<a href=/rooms role="button" class="btn btn-primary">Tilbage</a>
+
 <p>Betalinger for de sidste 30 minutter kan fortrydes</p>
 
 <table class="table table-striped table-sm">

@@ -27,6 +27,7 @@ Route::get('/buy/{room}/{type}/{quantity}', function (Room $room, $type, $quanti
 	$beer->room = $room->id;
 	$beer->quantity = $quantity;
 	$beer->type = $type;
+	$beer->ipAddress = request()->ip();
 	if ($type == "beer") $beer->amount = -4 * $quantity;
 	if ($type == "cider") $beer->amount = -5 * $quantity;
 	$beer->save();
@@ -35,7 +36,7 @@ Route::get('/buy/{room}/{type}/{quantity}', function (Room $room, $type, $quanti
 });
 
 Route::get('/refund/{beer}', function (Beer $beer) {
-	if (!$room->active) return null;
+	if (!Room::find($beer->room)->active) return null;
 	$beer->refund;
 
     return new BeerResource($beer);

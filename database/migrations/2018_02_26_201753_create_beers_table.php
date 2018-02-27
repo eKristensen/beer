@@ -20,6 +20,7 @@ class CreateBeersTable extends Migration
             $table->integer('quantity');
             $table->integer('amount');
             $table->boolean('refunded')->default(false);
+            $table->ipAddress('ipAddress');
             $table->timestamps();
         });
     }
