@@ -1,9 +1,19 @@
-@extends ('layouts.master')
+@extends('layouts.app')
+
 
 @section ('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Rediger</div>
 
-
-<h1>Rediger</h1>
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
 <table class="table table-striped table-sm">
   <thead>
@@ -42,27 +52,35 @@
   </tbody>
 </table>
 
-<hr>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">Ny</div>
 
+                <div class="card-body">
 
+                  <form method="POST" action="/rooms">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                      <label for="id">Number:</label>
+                      <input type="text" class="form-control" id="id" placeholder="Room number" name="id">
+                    </div>
 
-<h2>Ny</h2>
+                    <div class="form-group">
+                      <label for="name">Name</label>
+                      <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+                    </div>
 
-  <form method="POST" action="/rooms">
-    {{ csrf_field() }}
-    <div class="form-group">
-      <label for="id">Number:</label>
-      <input type="text" class="form-control" id="id" placeholder="Room number" name="id">
+                    <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Add</button>
+                    </div>
+                  </form>
+
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="form-group">
-      <label for="name">Name</label>
-      <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-    </div>
-
-    <div class="form-group">
-    <button type="submit" class="btn btn-primary">Add</button>
-    </div>
-  </form>
+</div>
 
 @endsection ('content')
