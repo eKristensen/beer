@@ -22,6 +22,7 @@ Route::get('/sum/{room}', function (Room $room) {
 });
 
 Route::get('/buy/{room}/{type}/{quantity}', function (Room $room, $type, $quantity) {
+	if (!$room->active) return null;
 	$beer = new Beer();
 	$beer->room = $room->id;
 	$beer->quantity = $quantity;
@@ -34,6 +35,7 @@ Route::get('/buy/{room}/{type}/{quantity}', function (Room $room, $type, $quanti
 });
 
 Route::get('/refund/{beer}', function (Beer $beer) {
+	if (!$room->active) return null;
 	$beer->refund;
 
     return new BeerResource($beer);

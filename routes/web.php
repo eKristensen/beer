@@ -15,13 +15,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/rooms/create','RoomController@create');
+Route::get('/rooms/create','RoomController@create')->middleware('auth');
 Route::get('/rooms','RoomController@index');
-Route::post('/rooms','RoomController@store');
+Route::get('/rooms/edit','RoomController@edit')->middleware('auth');
+Route::post('/rooms','RoomController@store')->middleware('auth');
+Route::patch('/rooms','RoomController@patch')->middleware('auth');
+
+Route::get('/deposit','RoomController@depositShow')->middleware('auth');
+Route::post('/deposit','RoomController@depositStore')->middleware('auth');
 
 Route::get('/refund',function () {
 	$beer = new \App\Beer();
-	$beers = $beer->where('created_at','>',\Carbon\Carbon::now()->subMinutes(30)->toDateTimeString())->orderBy('created_at', 'desc')->get();
+	$beers = $beer->where('type','NOT LIKE','deposit')->where('created_at','>',\Carbon\Carbon::now()->subMinutes(30)->toDateTimeString())->orderBy('created_at', 'desc')->get();
 
     return view('beer.refund', compact('beers'));
 });

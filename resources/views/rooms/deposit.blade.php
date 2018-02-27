@@ -1,0 +1,31 @@
+@extends ('layouts.master')
+
+@section ('content')
+
+
+<h1>Indsæt penge</h1>
+
+  <form method="POST" action="/deposit">
+    {{ csrf_field() }}
+    <div class="form-group">
+      <label for="room">Værelse</label>
+      <select name="room" class="form-control">
+
+@foreach ($rooms as $room)
+        <option value="{{ $room->id }}">{{$room->id}} {{$room->name}}</option>
+@endforeach
+
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="amount">Beløb</label>
+      <input type="text" class="form-control" id="amount" name="amount" placeholder="Name">
+    </div>
+
+    <div class="form-group">
+    <button type="submit" class="btn btn-primary">Indsæt</button>
+    </div>
+  </form>
+
+@endsection ('content')

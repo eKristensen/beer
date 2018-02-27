@@ -7,6 +7,8 @@ use \Carbon\Carbon;
 
 class Beer extends Model
 {
+    protected $fillable = ['room', 'amount', 'quantity', 'type'];
+
     public function room()
     {
     	return $this->belongsTo(Room::class);
