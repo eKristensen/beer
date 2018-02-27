@@ -23,11 +23,11 @@ class Room extends Model
 
     public function getBeerAttribute(){
     	$beer = new \App\Beer();
-    	return $beer->where('room','=',$this->id)->where('refunded','=',0)->where('type','=','beer')->count();
+    	return $beer->where('room','=',$this->id)->where('refunded','=',0)->where('type','=','beer')->sum('quantity');
 	}
 
     public function getCiderAttribute(){
     	$beer = new \App\Beer();
-    	return $beer->where('room','=',$this->id)->where('refunded','=',0)->where('type','=','cider')->count();
+    	return $beer->where('room','=',$this->id)->where('refunded','=',0)->where('type','=','cider')->sum('quantity');
 	}
 }
