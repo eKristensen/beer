@@ -30,12 +30,30 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
+      jQuery.ajaxSetup({
+        "error":function() { swal("Det skete en fejl.","","error");  }
+      });
+
       function buy(room,type,quantity) {
         jQuery.getJSON('{{env('APP_URL')}}api/buy/'+room+'/'+type+'/'+quantity, 
             function(data){
               if (type == "cider") what = "Cider";
-              if (type == "beer") what = "Øl / Sodavnad";
+              if (type == "beer") what = "Øl / Sodavand";
               swal('Køb: '+quantity+' '+what, 'Værelse '+data.data.id+' \n Ny saldo: '+data.data.sum+' kr.', 'success');
+            })
+      }
+
+      function sum(room,type,quantity) {
+        jQuery.getJSON('{{env('APP_URL')}}api/sum/'+room, 
+            function(data){
+              swal('Saldo: '+data.data.sum + ' kr.', 'Øl /Sodavand: '+data.data.beer+'\nCider: '+data.data.cider+'\nVærelse '+data.data.id);
+            })
+      }
+
+      function refund(id) {
+        jQuery.getJSON('{{env('APP_URL')}}api/refund/'+id, 
+            function(data){
+              swal('Refunderet', 'Beløb: '+data.data.amount,'success').then((value) => location.reload());
             })
       }
     </script>

@@ -19,6 +19,13 @@ Route::get('/rooms/create','RoomController@create');
 Route::get('/rooms','RoomController@index');
 Route::post('/rooms','RoomController@store');
 
+Route::get('/refund',function () {
+	$beer = new \App\Beer();
+	$beers = $beer->where('created_at','>',\Carbon\Carbon::now()->subMinutes(30)->toDateTimeString())->orderBy('created_at', 'desc')->get();
+
+    return view('beer.refund', compact('beers'));
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
