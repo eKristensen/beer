@@ -50,6 +50,7 @@ class RoomController extends Controller
 
         $validated['type'] = 'deposit';
         $validated['quantity'] = 1;
+        $validate['ipAddress'] = request()->ip();
 
 
         Beer::create($validated);
