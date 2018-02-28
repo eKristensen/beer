@@ -7,7 +7,7 @@ use \Carbon\Carbon;
 
 class Beer extends Model
 {
-    protected $fillable = ['room', 'amount', 'quantity', 'type'];
+    protected $fillable = ['room', 'amount', 'quantity', 'type', 'ipAddress'];
 
     public function room()
     {
