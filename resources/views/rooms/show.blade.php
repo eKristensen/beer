@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Rediger</div>
+                <div class="card-header">Transtrationer for konto id: {{ $room->id }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -30,18 +30,18 @@
   </thead>
 
   <tbody>
-@foreach ($rooms as $room)
+@foreach ($beers as $beer)
     
         <tr>
-      <th scope="row">{{$room->id}}</th>
+      <th scope="row">{{$beer->id}}</th>
 
-    <td>{{$room->type}}</td>
-    <td>{{$room->quantity}}</td>
-    <td>{{$room->amount}}</td>
-    <td>{{$room->ip}}</td>
-    <td>{{$room->created_at}}</td>
-    <td>{{$room->updated_at}}</td>
-    <td>{{$room->refunded}}</td>
+    <td>{{$beer->type}}</td>
+    <td>{{$beer->quantity}}</td>
+    <td>{{$beer->amount}}</td>
+    <td>{{$beer->ip}}</td>
+    <td>{{$beer->created_at}}</td>
+    <td>{{$beer->updated_at}}</td>
+    <td>{{$beer->refunded}}</td>
 
      </tr>
 @endforeach
