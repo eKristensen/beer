@@ -75,7 +75,7 @@ class RoomController extends Controller
     }
 
     public function show(Room $room) {
-        dd($room->beers);
+       $beers = $room->beers;
         return view('rooms.show',compact('room','beers'));
     }
 }
