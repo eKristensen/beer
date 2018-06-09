@@ -13,7 +13,7 @@ class Room extends Model
 
     public function beers()
     {
-        return $this->hasMany(Beer::class);
+        return $this->hasMany(Beer::class, 'room');
     }
 
     public function getSumAttribute(){
