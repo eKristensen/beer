@@ -37,7 +37,7 @@ class RoomController extends Controller
     }
 
     public function depositShow() {
-        $rooms = Room::where('active','=','1')->get();
+        $rooms = Room::all();
 
         return view('rooms.deposit', compact('rooms'));
     }

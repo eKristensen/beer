@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Room extends Model
 {
-	protected $fillable = ['id', 'name'];
+	protected $fillable = ['id', 'name', 'active'];
 	//protected $guarded = [];
 
 	public $incrementing = false;

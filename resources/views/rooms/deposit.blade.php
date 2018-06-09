@@ -16,7 +16,7 @@
                       <select name="room" class="form-control">
 
                       @foreach ($rooms as $room)
-                              <option value="{{ $room->id }}">{{$room->id}} {{$room->name}}</option>
+                              <option value="{{ $room->id }}">{{$room->id}} {{$room->name}} {{$room->sum}}</option>
                       @endforeach
 
                       </select>
