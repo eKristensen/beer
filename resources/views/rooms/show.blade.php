@@ -38,7 +38,7 @@
     <td>{{$beer->type}}</td>
     <td>{{$beer->quantity}}</td>
     <td>{{$beer->amount}}</td>
-    <td>{{$beer->ip}}</td>
+    <td>{{$beer->ipAddress}}</td>
     <td>{{$beer->created_at}}</td>
     <td>{{$beer->updated_at}}</td>
     <td>{{$beer->refunded}}</td>
