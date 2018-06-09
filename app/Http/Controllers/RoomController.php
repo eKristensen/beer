@@ -73,4 +73,8 @@ class RoomController extends Controller
 
         return back();
     }
+
+    public function show($room) {
+        return view('rooms.show',compact('room'));
+    }
 }

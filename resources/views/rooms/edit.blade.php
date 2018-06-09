@@ -30,7 +30,7 @@
 
     {{ csrf_field() }}
     {{ method_field('PATCH') }}
-    
+
 <table class="table table-striped table-sm">
   <tbody>
         <tr>
@@ -48,13 +48,12 @@
     <td>
     <button type="submit" class="btn btn-primary">Rediger</button>
     </td>
+  </tr>
       </tbody>
 </table>
   </form>
 @endforeach
 
-  </tbody>
-</table>
 
                 </div>
             </div>
