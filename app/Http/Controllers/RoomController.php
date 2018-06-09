@@ -74,10 +74,8 @@ class RoomController extends Controller
         return back();
     }
 
-    public function show($room) {
-        $beers = new \App\Beer();
-        $beers->where('room','=',$room);
-        dd($beers);
+    public function show($rooms) {
+        dd($rooms->beers);
         return view('rooms.show',compact('room','beers'));
     }
 }

@@ -19,7 +19,7 @@ Route::get('/rooms','RoomController@index');
 Route::get('/rooms/edit','RoomController@edit')->middleware('auth');
 Route::post('/rooms','RoomController@store')->middleware('auth');
 Route::patch('/rooms','RoomController@patch')->middleware('auth');
-Route::get('/rooms/{room}','RoomController@show')->middleware('auth');
+Route::get('/rooms/{rooms}','RoomController@show')->middleware('auth');
 
 Route::get('/deposit','RoomController@depositShow')->middleware('auth');
 Route::post('/deposit','RoomController@depositStore')->middleware('auth');
