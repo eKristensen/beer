@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Transtrationer for konto id: {{ $room }}</div>
+                <div class="card-header">Transtrationer for konto id: {{ $room->id }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
