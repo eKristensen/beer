@@ -24,14 +24,16 @@
       <th scope="col">Gem</th>
     </tr>
   </thead>
-  <tbody>
-
+</table>
 @foreach ($rooms as $room)
-        <tr>
   <form method="POST" action="/rooms">
 
     {{ csrf_field() }}
     {{ method_field('PATCH') }}
+    
+<table class="table table-striped table-sm">
+  <tbody>
+        <tr>
       <th scope="row">{{$room->id}}</th>
       <input type="hidden" name="id" value="{{$room->id}}">
 
@@ -46,8 +48,9 @@
     <td>
     <button type="submit" class="btn btn-primary">Rediger</button>
     </td>
+      </tbody>
+</table>
   </form>
-</tr>
 @endforeach
 
   </tbody>
