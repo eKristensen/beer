@@ -27,11 +27,11 @@
   <tbody>
 
 @foreach ($rooms as $room)
+        <tr>
   <form method="POST" action="/rooms">
 
     {{ csrf_field() }}
     {{ method_field('PATCH') }}
-        <tr>
       <th scope="row">{{$room->id}}</th>
       <input type="hidden" name="id" value="{{$room->id}}">
 
@@ -47,6 +47,7 @@
     <button type="submit" class="btn btn-primary">Rediger</button>
     </td>
   </form>
+</tr>
 @endforeach
 
   </tbody>
