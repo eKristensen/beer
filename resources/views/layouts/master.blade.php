@@ -39,6 +39,7 @@
             function(data){
               if (type == "cider") what = "Cider";
               if (type == "beer") what = "Øl / Sodavand";
+              if (type == "somersby") what = "Somersby tilbud";
               swal('Køb: '+quantity+' '+what, 'Værelse '+data.data.id+' \n Ny saldo: '+data.data.sum+' kr.', 'success');
             })
       }
