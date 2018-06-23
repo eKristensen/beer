@@ -31,7 +31,7 @@ Route::get('/buy/{room}/{type}/{quantity}', function (Room $room, $type, $quanti
 	if ($type == "beer") $beer->amount = -4 * $quantity;
 	if ($type == "cider") $beer->amount = -5 * $quantity;
 	if ($type == "somersby") {
-		$beer->type == "cider";
+		$beer->type = "cider";
 		$beer->amount = -3 * $quantity;
 	}
 	$beer->save();
