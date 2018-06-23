@@ -7,9 +7,9 @@
   <thead>
     <tr>
       <th scope="col">Værelse</th>
-      <th scope="col" colspan="3">Køb Øl / Sodavand (4 kr)</th>
-      <th scope="col" colspan="3">Køb Cider (5 kr)</th>
-      <th scope="col" colspan="3" style="color:red;">TILBUD: Somersby  (3 kr)</th>
+      <th scope="col" colspan="2">Køb Øl / Sodavand (4 kr)</th>
+      <th scope="col" colspan="2">Køb Cider (5 kr)</th>
+      <th scope="col" colspan="2" style="color:red;">TILBUD: Somersby  (3 kr)</th>
       <th scope="col">Tjek saldo</th>
     </tr>
   </thead>
