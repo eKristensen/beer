@@ -32,7 +32,7 @@ Route::get('/buy/{room}/{type}/{quantity}', function (Room $room, $type, $quanti
 	if ($type == "cider") $beer->amount = -5 * $quantity;
 	if ($type == "somersby") {
 		$beer->type = "cider";
-		$beer->amount = -3 * $quantity;
+		$beer->amount = -2 * $quantity;
 	}
 	$beer->save();
 
