@@ -38,8 +38,10 @@ class RoomController extends Controller
 
     public function depositShow() {
         $rooms = Room::all();
+        $total = new Beer();
+        $diff = $total->where('refunded','=',0)->sum('amount');
 
-        return view('rooms.deposit', compact('rooms'));
+        return view('rooms.deposit', compact('rooms','diff'));
     }
 
     public function depositStore() {

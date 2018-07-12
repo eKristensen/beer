@@ -12,6 +12,8 @@
                   <form method="POST" action="/deposit">
                     {{ csrf_field() }}
                     <div class="form-group">
+                      <p>Total differeance {{ $diff }}</p>
+
                       <label for="room">Værelse</label>
                       <select name="room" class="form-control">
 
