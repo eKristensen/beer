@@ -30,10 +30,11 @@ Route::get('/buy/{room}/{type}/{quantity}', function (Room $room, $type, $quanti
 	$beer->ipAddress = request()->ip();
 	if ($type == "beer") $beer->amount = -4 * $quantity;
 	if ($type == "cider") $beer->amount = -5 * $quantity;
+	/*
 	if ($type == "somersby") {
 		$beer->type = "cider";
 		$beer->amount = -2 * $quantity;
-	}
+	}*/
 	$beer->save();
 
     return new RoomResource($room);
