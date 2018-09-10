@@ -30,7 +30,7 @@ Route::get('/buy/{room}/{product}/{quantity}', function (Room $room, Product $pr
 	$beer->quantity = $quantity;
 	$beer->product = $product->id;
 	$beer->ipAddress = request()->ip();
-	$beer->amount = $product->price * $quantity;
+	$beer->amount = -($product->price * $quantity);
 	$beer->save();
 
     return [
