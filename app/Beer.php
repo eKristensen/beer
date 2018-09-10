@@ -14,6 +14,11 @@ class Beer extends Model
     	return $this->belongsTo(Room::class);
     }
 
+    public function products()
+    {
+        return $this->belongsTo(Product::class, 'product', 'id');
+    }
+
     public function getRefundAttribute() {
     	if ($this->created_at->addMinutes(30)->gt(Carbon::now())) 
     		{

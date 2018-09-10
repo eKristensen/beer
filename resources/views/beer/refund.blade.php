@@ -26,7 +26,7 @@
       <th scope="row">{{ $beer->id }}</th>
       <td>{{ $beer->created_at }}</td>
       <td>{{ $beer->room }}</td>
-      <td>{{ $beer->type }}</td>
+      <td>{{ $beer->products->name }}</td>
       <td>
         @if ($beer->refunded)
         <del>
