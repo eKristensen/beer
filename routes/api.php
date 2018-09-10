@@ -1,10 +1,11 @@
 <?php
 
-use Illuminate\Http\Request;
-use App\Http\Resources\RoomResource;
 use App\Http\Resources\BeerResource;
-use \App\Room;
+use App\Http\Resources\RoomResource;
+use App\Product;
+use Illuminate\Http\Request;
 use \App\Beer;
+use \App\Room;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,23 +22,22 @@ Route::get('/sum/{room}', function (Room $room) {
     return new RoomResource($room);
 });
 
-Route::get('/buy/{room}/{type}/{quantity}', function (Room $room, $type, $quantity) {
+Route::get('/buy/{room}/{product}/{quantity}', function (Room $room, Product $product, $quantity) {
 	if (!$room->active) return null;
+	if (!$product->active) return null;
 	$beer = new Beer();
 	$beer->room = $room->id;
 	$beer->quantity = $quantity;
-	$beer->type = $type;
+	$beer->product = $product->id;
 	$beer->ipAddress = request()->ip();
-	if ($type == "beer") $beer->amount = -4 * $quantity;
-	if ($type == "cider") $beer->amount = -5 * $quantity;
-	/*
-	if ($type == "somersby") {
-		$beer->type = "cider";
-		$beer->amount = -2 * $quantity;
-	}*/
+	$beer->amount = $product->price * $quantity;
 	$beer->save();
 
-    return new RoomResource($room);
+    return [
+            'name' => $room->name,
+            'product' => $product->name,
+            'sum' => $room->sum,
+        ];;
 });
 
 Route::get('/refund/{beer}', function (Beer $beer) {

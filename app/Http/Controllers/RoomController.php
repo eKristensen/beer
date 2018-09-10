@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
-use \App\Room;
 use \App\Beer;
+use \App\Room;
 
 class RoomController extends Controller
 {
-    public function create() {
-    	return view('rooms.create');
-    }
-
     public function store() {
     	$validated = request()->validate([
     		'id' => 'required',
@@ -24,14 +21,15 @@ class RoomController extends Controller
     	return back();
     }
 
-    public function index(Room $room) {
-	$rooms = $room->where('active','=','1')->get();
+    public function index() {
+	$rooms = Room::where('active','=','1')->get();
+    $products = Product::where('active','=','1')->get();
 
-    	return view('rooms.index', compact('rooms'));
+    	return view('rooms.index', compact('rooms','products'));
     }
 
-    public function edit(Room $room) {
-    $rooms = $room->all();
+    public function edit() {
+    $rooms = Room::all();
 
         return view('rooms.edit', compact('rooms'));
     }

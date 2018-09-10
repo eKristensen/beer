@@ -20,6 +20,7 @@
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Type</th>
+      <th scope="col">Produkt</th>
       <th scope="col">Antal</th>
       <th scope="col">Total</th>
       <th scope="col">IP</th>
@@ -36,6 +37,7 @@
       <th scope="row">{{$beer->id}}</th>
 
     <td>{{$beer->type}}</td>
+    <td>{{$beer->product}}</td>
     <td>{{$beer->quantity}}</td>
     <td>{{$beer->amount}}</td>
     <td>{{$beer->ipAddress}}</td>

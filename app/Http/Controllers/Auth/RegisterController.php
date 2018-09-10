@@ -41,7 +41,7 @@ class RegisterController extends Controller
         if (User::first()) {
             $this->middleware('auth');
         } else {
-            $this->middleware('auth');
+            //$this->middleware('auth');
         }
     }
 

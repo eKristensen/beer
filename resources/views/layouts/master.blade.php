@@ -37,17 +37,14 @@
       function buy(room,type,quantity) {
         jQuery.getJSON('{{env('APP_URL')}}api/buy/'+room+'/'+type+'/'+quantity,
             function(data){
-              if (type == "cider") what = "Cider";
-              if (type == "beer") what = "Øl / Sodavand";
-              if (type == "somersby") what = "Somersby tilbud";
-              swal('Køb: '+quantity+' '+what, 'Værelse '+data.data.id+' \n Ny saldo: '+data.data.sum+' kr.', 'success');
+              swal('Køb: '+quantity+' '+data.product, data.name+' \n Ny saldo: '+data.sum+' kr.', 'success');
             })
       }
 
       function sum(room,type,quantity) {
         jQuery.getJSON('{{env('APP_URL')}}api/sum/'+room,
             function(data){
-              swal('Saldo: '+data.data.sum + ' kr.', 'Øl /Sodavand: '+data.data.beer+'\nCider: '+data.data.cider+'\nVærelse '+data.data.id);
+              swal('Saldo: '+data.data.sum + ' kr.', data.data.name);
             })
       }
 

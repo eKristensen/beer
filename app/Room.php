@@ -20,14 +20,4 @@ class Room extends Model
     	$beer = new \App\Beer();
     	return $beer->where('room','=',$this->id)->where('refunded','=',0)->sum('amount');
 	}
-
-    public function getBeerAttribute(){
-    	$beer = new \App\Beer();
-    	return $beer->where('room','=',$this->id)->where('refunded','=',0)->where('type','=','beer')->sum('quantity');
-	}
-
-    public function getCiderAttribute(){
-    	$beer = new \App\Beer();
-    	return $beer->where('room','=',$this->id)->where('refunded','=',0)->where('type','=','cider')->sum('quantity');
-	}
 }

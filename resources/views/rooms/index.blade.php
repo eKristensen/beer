@@ -6,9 +6,10 @@
 <table class="table table-striped table-sm">
   <thead>
     <tr>
-      <th scope="col">Værelse</th>
-      <th scope="col" colspan="3">Køb Øl / Sodavand (4 kr)</th>
-      <th scope="col" colspan="3">Køb Cider (5 kr)</th>
+      <th scope="col">Navn</th>
+@foreach ($products as $product)
+      <th scope="col" colspan="3">{{ $product->name }} ({{ $product->price }} kr)</th>
+@endforeach
       <th scope="col">Tjek saldo</th>
     </tr>
   </thead>
@@ -17,14 +18,11 @@
 @foreach ($rooms as $room)
     <tr>
       <th scope="row">{{ $room->name }}</th>
-
+@foreach ($products as $product)
       @foreach ([1,2,5] as $amount)
-      <td><button type="button" class="btn btn-success" onclick="buy({{ $room->id }},'beer',{{$amount}})">+{{$amount}}</button></td>
+      <td><button type="button" class="btn btn-success" onclick="buy({{ $room->id }},'{{ $product->id }}',{{$amount}})">+{{$amount}}</button></td>
       @endforeach
-
-      @foreach ([1,2,5] as $amount)
-      <td><button type="button" class="btn btn-primary" onclick="buy({{ $room->id }},'cider',{{$amount}})">+{{$amount}}</button></td>
-      @endforeach
+@endforeach
 
       <td><button type="button" class="btn btn-info" onclick="sum({{ $room->id }})">Tjek</button></td>
     </tr>
