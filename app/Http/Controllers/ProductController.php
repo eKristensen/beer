@@ -15,6 +15,7 @@ class ProductController extends Controller
     public function store() {
     	$validated = request()->validate([
     		'name' => 'required',
+            'color' => 'nullable',
     		'price' => 'required'
     	]);
 
@@ -29,6 +30,7 @@ class ProductController extends Controller
         $validated = request()->validate([
             'id' => 'required',
             'name' => 'nullable',
+            'color' => 'nullable',
             'price' => 'nullable',
             'active' => 'nullable'
         ]);
@@ -36,6 +38,7 @@ class ProductController extends Controller
         $product = Product::find($validated['id']);
         if ($validated['name'] != "") $product->name = $validated['name'];
         if ($validated['price'] != "") $product->price = $validated['price'];
+        if ($validated['color'] != "") $product->color = $validated['color'];
         if (isset($validated['active'])) $product->active = true;
         else $product->active = false;
         $product->save();

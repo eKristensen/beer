@@ -20,7 +20,7 @@
       <th scope="row">{{ $room->name }}</th>
 @foreach ($products as $product)
       @foreach ([1,2,5] as $amount)
-      <td><button type="button" class="btn btn-success" onclick="buy({{ $room->id }},'{{ $product->id }}',{{$amount}})">+{{$amount}}</button></td>
+      <td><button type="button" class="btn btn-success" @if ($product->color != '') style="background-color: #{{ $product->color }};border-color: #{{ $product->color }};" @endif onclick="buy({{ $room->id }},'{{ $product->id }}',{{$amount}})">+{{$amount}}</button></td>
       @endforeach
 @endforeach
 
