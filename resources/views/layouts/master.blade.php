@@ -31,27 +31,27 @@
     <script src="/js/sweetalert.min.js"></script>
     <script>
       jQuery.ajaxSetup({
-        "error":function() { swal("Det skete en fejl.","","error");  }
+        "error":function() { swal("Det skete en fejl.","","error",{timer: 3000});  }
       });
 
       function buy(room,type,quantity) {
         jQuery.getJSON('{{env('APP_URL')}}api/buy/'+room+'/'+type+'/'+quantity,
             function(data){
-              swal('Køb: '+quantity+' '+data.product, data.name+' \n Ny saldo: '+data.sum+' kr.', 'success');
+              swal('Køb: '+quantity+' '+data.product, data.name+' \n Ny saldo: '+data.sum+' kr.', 'success',{timer: 3000});
             })
       }
 
       function sum(room,type,quantity) {
         jQuery.getJSON('{{env('APP_URL')}}api/sum/'+room,
             function(data){
-              swal('Saldo: '+data.data.sum + ' kr.', data.data.name);
+              swal('Saldo: '+data.data.sum + ' kr.', data.data.name,{timer: 3000});
             })
       }
 
       function refund(id) {
         jQuery.getJSON('{{env('APP_URL')}}api/refund/'+id,
             function(data){
-              swal('Refunderet', 'Beløb: '+data.data.amount,'success').then((value) => location.reload());
+              swal('Refunderet', 'Beløb: '+data.data.amount,'success',{timer: 3000}).then((value) => location.reload());
             })
       }
     </script>
