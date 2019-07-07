@@ -31,7 +31,7 @@
         @if ($beer->refunded)
         <del>
         @endif
-        {{ $beer->amount }} kr
+        {{ $beer->amount }} kr.
         @if ($beer->refunded)
         </del>
         @endif

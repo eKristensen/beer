@@ -32,7 +32,7 @@ class ShowRoomsTest extends TestCase
             'name' => 'Test product',
             'color' => 'fff',
             'quantity' => '1,2,5',
-            'price' => '1232.00'
+            'price' => '1232.00',
         ]);
 
         $response = $this->get('/rooms');
@@ -50,7 +50,7 @@ class ShowRoomsTest extends TestCase
             'color' => 'fff',
             'quantity' => '1,2,5',
             'price' => '1232',
-            'active' => false
+            'active' => false,
         ]);
 
         $response = $this->get('/rooms');
@@ -64,7 +64,7 @@ class ShowRoomsTest extends TestCase
     {
         $room = Room::create([
             'id' => 1,
-            'name' => 'Test room'
+            'name' => 'Test room',
         ]);
 
         $response = $this->get('/rooms');
@@ -79,7 +79,7 @@ class ShowRoomsTest extends TestCase
         $room = Room::create([
             'id' => 1,
             'name' => 'Test room',
-            'active' => false
+            'active' => false,
         ]);
 
         $response = $this->get('/rooms');
