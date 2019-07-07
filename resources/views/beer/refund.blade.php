@@ -13,7 +13,7 @@
     <tr>
       <th scope="col">#</th>
       <th scope="col">Tidspunkt</th>
-      <th scope="col">Værelse</th>
+      <th scope="col">Navn</th>
       <th scope="col">Hvad</th>
       <th scope="col">Beløb</th>
       <th scope="col">Refunder</th>
@@ -25,7 +25,7 @@
     <tr>
       <th scope="row">{{ $beer->id }}</th>
       <td>{{ $beer->created_at }}</td>
-      <td>{{ $beer->room }}</td>
+      <td>{{ $beer->getRoom->name }}</td>
       <td>{{ $beer->products->name }}</td>
       <td>
         @if ($beer->refunded)

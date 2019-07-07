@@ -13,7 +13,7 @@ class AddProduct extends Migration
      */
     public function up()
     {
-        Schema::table('beers', function($table) {
+        Schema::table('beers', function ($table) {
             $table->string('product')->nullable()->after('type');
             $table->dropColumn('type');
         });
@@ -27,9 +27,9 @@ class AddProduct extends Migration
      */
     public function down()
     {
-        Schema::table('beers', function($table) {
+        Schema::table('beers', function ($table) {
             $table->dropColumn('product');
-            $table->enum('type',['beer','cider','deposit']);
+            $table->enum('type', ['beer','cider','deposit']);
         });
         DB::statement("ALTER TABLE `beers` MODIFY COLUMN `amount` int;");
     }

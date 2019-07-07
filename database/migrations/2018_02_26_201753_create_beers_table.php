@@ -15,7 +15,7 @@ class CreateBeersTable extends Migration
     {
         Schema::create('beers', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('type',['beer','cider','deposit']);
+            $table->enum('type', ['beer','cider','deposit']);
             $table->integer('room');
             $table->integer('quantity');
             $table->integer('amount');

@@ -20,6 +20,7 @@
     <tr>
       <th scope="col" style="width:180px;"  >Produktnavn</th>
       <th scope="col" style="width:80px;"  >Farve (hex)</th>
+      <th scope="col" style="width:80px;"  >Quantity (digits seperated by commas)</th>
       <th scope="col" style="width:80px;"  >Pris</th>
       <th scope="col">Aktiv</th>
       <th scope="col">Gem</th>
@@ -44,6 +45,10 @@
     </td>
 
     <td style="width:80px;"  >
+      <input type="text" class="form-control" style="width:80px;" id="quantity" name="quantity" placeholder="Quantity" value="{{$product->quantity}}">
+    </td>
+
+    <td style="width:80px;"  >
       <input type="number" step="0.01" class="form-control" style="width:80px;" id="price" name="price" placeholder="Pris" value="{{$product->price}}">
     </td>
 
@@ -63,7 +68,7 @@
 
                 </div>
             </div>
-            
+
             <div class="card">
                 <div class="card-header">Ny</div>
 
@@ -79,6 +84,11 @@
                     <div class="form-group">
                       <label for="name">Farve (hex)</label>
                       <input type="text" class="form-control" id="color" name="color" placeholder="Farve">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="name">Quantity (digits seperated by commas)</label>
+                      <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Farve">
                     </div>
 
                     <div class="form-group">

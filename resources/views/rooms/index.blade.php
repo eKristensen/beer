@@ -8,7 +8,7 @@
     <tr>
       <th scope="col">Navn</th>
 @foreach ($products as $product)
-      <th scope="col" colspan="3">{{ $product->name }} ({{ $product->price }} kr)</th>
+      <th scope="col" colspan="{{ count($product->quantities()) }}">{{ $product->name }} ({{ $product->price }} kr)</th>
 @endforeach
       <th scope="col">Tjek saldo</th>
     </tr>
@@ -19,7 +19,7 @@
     <tr>
       <th scope="row">{{ $room->name }}</th>
 @foreach ($products as $product)
-      @foreach ([1,2,5] as $amount)
+      @foreach ($product->quantities() as $amount)
       <td><button type="button" class="btn btn-success" @if ($product->color != '') style="background-color: #{{ $product->color }};border-color: #{{ $product->color }};" @endif onclick="buy({{ $room->id }},'{{ $product->id }}',{{$amount}})">+{{$amount}}</button></td>
       @endforeach
 @endforeach

@@ -9,9 +9,9 @@ class Beer extends Model
 {
     protected $fillable = ['room', 'amount', 'quantity', 'product', 'ipAddress'];
 
-    public function room()
+    public function getRoom()
     {
-    	return $this->belongsTo(Room::class);
+        return $this->belongsTo(Room::class, 'room', 'id');
     }
 
     public function products()
@@ -19,12 +19,12 @@ class Beer extends Model
         return $this->belongsTo(Product::class, 'product', 'id');
     }
 
-    public function getRefundAttribute() {
-    	if ($this->created_at->addMinutes(30)->gt(Carbon::now())) 
-    		{
-    			$this->refunded = true;
-    			$this->save();
-    		}
-    	return true;
-	}
+    public function getRefundAttribute()
+    {
+        if ($this->created_at->addMinutes(30)->gt(Carbon::now())) {
+            $this->refunded = true;
+            $this->save();
+        }
+        return true;
+    }
 }

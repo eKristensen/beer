@@ -9,40 +9,45 @@ use \App\Room;
 
 class RoomController extends Controller
 {
-    public function store() {
-    	$validated = request()->validate([
-    		'id' => 'required',
-    		'name' => 'required'
-    	]);
+    public function store()
+    {
+        $validated = request()->validate([
+            'id' => 'required',
+            'name' => 'required'
+        ]);
 
-    	// Create and save user
-    	Room::create($validated);
+        // Create and save user
+        Room::create($validated);
 
-    	return back();
+        return back();
     }
 
-    public function index() {
-	$rooms = Room::where('active','=','1')->get();
-    $products = Product::where('active','=','1')->get();
+    public function index()
+    {
+        $rooms = Room::where('active', '=', '1')->get();
+        $products = Product::where('active', '=', '1')->get();
 
-    	return view('rooms.index', compact('rooms','products'));
+        return view('rooms.index', compact('rooms', 'products'));
     }
 
-    public function edit() {
-    $rooms = Room::all();
+    public function edit()
+    {
+        $rooms = Room::all();
 
         return view('rooms.edit', compact('rooms'));
     }
 
-    public function depositShow() {
+    public function depositShow()
+    {
         $rooms = Room::all();
         $total = new Beer();
-        $diff = $total->where('refunded','=',0)->sum('amount');
+        $diff = $total->where('refunded', '=', 0)->sum('amount');
 
-        return view('rooms.deposit', compact('rooms','diff'));
+        return view('rooms.deposit', compact('rooms', 'diff'));
     }
 
-    public function depositStore() {
+    public function depositStore()
+    {
         $validated = request()->validate([
             'room' => 'required',
             'amount' => 'required|numeric'
@@ -58,7 +63,8 @@ class RoomController extends Controller
         return back();
     }
 
-    public function patch() {
+    public function patch()
+    {
         $validated = request()->validate([
             'id' => 'required',
             'name' => 'nullable',
@@ -66,16 +72,22 @@ class RoomController extends Controller
         ]);
 
         $room = Room::find($validated['id']);
-        if ($validated['name'] != "") $room->name = $validated['name'];
-        if (isset($validated['active'])) $room->active = true;
-        else $room->active = false;
+        if ($validated['name'] != "") {
+            $room->name = $validated['name'];
+        }
+        if (isset($validated['active'])) {
+            $room->active = true;
+        } else {
+            $room->active = false;
+        }
         $room->save();
 
         return back();
     }
 
-    public function show(Room $room) {
-       $beers = $room->beers;
-        return view('rooms.show',compact('room','beers'));
+    public function show(Room $room)
+    {
+        $beers = $room->beers;
+        return view('rooms.show', compact('room', 'beers'));
     }
 }
