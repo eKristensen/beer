@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/eKristensen/beer.svg?branch=master)](https://travis-ci.com/eKristensen/beer)
+
 # Beer and other stuff accounting - Kitchen O, P. O. Pedersen Kollegiet
 
 System used to keep track of how drunk we get.
