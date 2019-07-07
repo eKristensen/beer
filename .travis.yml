@@ -11,6 +11,7 @@ before_script:
   - composer self-update
   - composer install --no-interaction
   - mysql -e 'CREATE DATABASE beer_test;'
+  - cp .env.travis .env.testing
 
 script:
   - vendor/bin/phpunit --coverage-clover=coverage.xml
