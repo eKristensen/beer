@@ -4,10 +4,13 @@ language: php
 php:
   - '7.2'
 
+services:
+  - mysql
 
 before_script:
   - composer self-update
   - composer install --no-interaction
+  - mysql -e 'CREATE DATABASE beer_test;'
 
 script:
   - vendor/bin/phpunit --coverage-text
