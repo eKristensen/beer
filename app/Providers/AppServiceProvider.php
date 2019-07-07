@@ -18,6 +18,7 @@ class AppServiceProvider extends ServiceProvider
             \URL::forceScheme('https');
         }
 
+        // Added to make travis mysql database work
         if (env('APP_ENV') == "testing") {
             Schema::defaultStringLength(191);
         }
