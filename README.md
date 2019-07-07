@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.com/eKristensen/beer.svg?branch=master)](https://travis-ci.com/eKristensen/beer)
 [![codecov](https://codecov.io/gh/eKristensen/beer/branch/master/graph/badge.svg)](https://codecov.io/gh/eKristensen/beer)
+[![Known Vulnerabilities](https://snyk.io/test/github/eKristensen/beer/badge.svg)](https://snyk.io/test/github/eKristensen/beer)
 
 # Beer and other stuff accounting - Kitchen O, P. O. Pedersen Kollegiet
 
