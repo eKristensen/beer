@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.com/eKristensen/beer.svg?branch=master)](https://travis-ci.com/eKristensen/beer)
 [![codecov](https://codecov.io/gh/eKristensen/beer/branch/master/graph/badge.svg)](https://codecov.io/gh/eKristensen/beer)
-[![Known NPM Vulnerabilities](https://snyk.io//test/github/eKristensen/beer/badge.svg?targetFile=package.json)](https://snyk.io//test/github/eKristensen/beer?targetFile=package.json)
-[![Known PHP Vulnerabilities](https://snyk.io//test/github/eKristensen/beer/badge.svg?targetFile=composer.lock)](https://snyk.io//test/github/eKristensen/beer?targetFile=composer.lock)
+[![Known Vulnerabilities](https://snyk.io//test/github/eKristensen/beer/badge.svg?targetFile=composer.lock)](https://snyk.io//test/github/eKristensen/beer?targetFile=composer.lock)
+[![Known Vulnerabilities](https://snyk.io//test/github/eKristensen/beer/badge.svg?targetFile=package.json)](https://snyk.io//test/github/eKristensen/beer?targetFile=package.json)
 
 
 # Beer and other stuff accounting - Kitchen O, P. O. Pedersen Kollegiet
