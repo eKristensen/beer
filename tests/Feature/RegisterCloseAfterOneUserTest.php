@@ -11,7 +11,7 @@ use Tests\TestCase;
 
 class RegisterCloseAfterOneUserTest extends TestCase
 {
-    // https://laravel.com/docs/5.4/database-testing#using-migrations
+    // https://laravel.com/docs/5.8/database-testing#using-migrations
     use DatabaseMigrations;
 
     /**
