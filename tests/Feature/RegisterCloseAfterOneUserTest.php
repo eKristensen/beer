@@ -3,7 +3,6 @@
 namespace Tests\Feature;
 
 use App\User;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Hash;
@@ -11,9 +10,6 @@ use Tests\TestCase;
 
 class RegisterCloseAfterOneUserTest extends TestCase
 {
-    // https://laravel.com/docs/5.8/database-testing#using-migrations
-    use DatabaseMigrations;
-
     /**
      * A basic feature test example.
      *

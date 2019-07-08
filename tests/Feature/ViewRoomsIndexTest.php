@@ -4,16 +4,12 @@ namespace Tests\Feature;
 
 use App\Product;
 use App\Room;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ShowRoomsTest extends TestCase
 {
-    // https://laravel.com/docs/5.8/database-testing#using-migrations
-    use DatabaseMigrations;
-
     /**
      * A basic feature test example.
      *

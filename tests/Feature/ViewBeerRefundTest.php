@@ -5,16 +5,12 @@ namespace Tests\Feature;
 use App\Beer;
 use App\Product;
 use App\Room;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ViewBeerRefundTest extends TestCase
 {
-    // https://laravel.com/docs/5.8/database-testing#using-migrations
-    use DatabaseMigrations;
-
     /**
      * A basic feature test example.
      *
@@ -31,7 +27,7 @@ class ViewBeerRefundTest extends TestCase
     {
         $room = Room::create([
             'id' => 1,
-            'name' => 'Test room'
+            'name' => 'Test room',
         ]);
 
         $product = Product::create([
