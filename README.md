@@ -2,6 +2,23 @@
 [![codecov](https://codecov.io/gh/eKristensen/beer/branch/master/graph/badge.svg)](https://codecov.io/gh/eKristensen/beer)
 [![Known Vulnerabilities](https://snyk.io//test/github/eKristensen/beer/badge.svg?targetFile=composer.lock)](https://snyk.io//test/github/eKristensen/beer?targetFile=composer.lock)
 
+# Install instructions
+
+This is a laravel project. Some steps from https://laravel.com/docs/5.8/installation do still apply here. Webserver must have PHP 7.2 or newer and point to the public folder.
+
+On the webserver install dependencies with this command:
+
+<code>composer install --no-dev</code> 
+
+After installation copy the .env.example file and configure access to the mysql database you've setup:
+
+<code>cp .env.example .env</code>
+
+To use the application you must set a application key, do that with:
+
+<code>php artisan key:generate</code>
+
+When in the project root.
 
 # Beer and other stuff accounting - Kitchen O, P. O. Pedersen Kollegiet
 
