@@ -12,6 +12,7 @@ before_script:
   - composer install --no-interaction
   - mysql -e 'CREATE DATABASE beer_test;'
   - cp .env.travis .env.testing
+  - php artisan key:generate --env=testing
 
 script:
   - vendor/bin/phpunit --coverage-clover=coverage.xml
