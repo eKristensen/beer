@@ -49,7 +49,8 @@ class ViewProductsIndexTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function testProductShows() {
+    public function testProductShows()
+    {
         // create sample product
         $product = Product::create([
             'name' => 'Test product',
