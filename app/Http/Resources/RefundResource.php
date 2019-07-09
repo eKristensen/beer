@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class BeerResource extends JsonResource
+class RefundResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,6 +14,10 @@ class BeerResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        $beer = parent::toArray($request);
+        return [
+            'refunded' => $beer['refunded'],
+            'amount' => $beer['amount'],
+        ];
     }
 }

@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Resources\BeerResource;
 use App\Http\Resources\RefundResource;
 use App\Http\Resources\RoomResource;
 use App\Product;
