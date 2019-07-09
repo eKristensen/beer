@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Resources\BeerResource;
+use App\Http\Resources\RefundResource;
 use App\Http\Resources\RoomResource;
 use App\Product;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use \App\Beer;
 use \App\Room;
@@ -49,9 +51,13 @@ Route::get('/refund/{beer}', function (Beer $beer) {
     if (!Room::find($beer->room)->active) {
         return null;
     }
-    $beer->refund;
 
-    return new BeerResource($beer);
+    // If refund is not possible then return 403
+    if (!$beer->refund) {
+        return new JsonResponse(['error' => 'Refund is not possible'], 403);
+    }
+
+    return new RefundResource($beer);
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {

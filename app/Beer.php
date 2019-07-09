@@ -21,10 +21,14 @@ class Beer extends Model
 
     public function getRefundAttribute()
     {
-        if ($this->created_at->addMinutes(30)->gt(Carbon::now())) {
-            $this->refunded = true;
-            $this->save();
+        // Don't allow refund for purchaes older than 30 minutes
+        if ($this->created_at->addMinutes(30)->lt(Carbon::now())) {
+            // If so, then return the current status
+            return $this->refunded;
         }
+
+        $this->refunded = true;
+        $this->save();
         return true;
     }
 }
