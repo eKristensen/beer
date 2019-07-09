@@ -1,7 +1,5 @@
 <?php
 
-use App\Http\Resources\RefundResource;
-use App\Http\Resources\RoomResource;
 use App\Product;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -20,16 +18,31 @@ use \App\Room;
 */
 
 Route::get('/sum/{room}', function (Room $room) {
-    return new RoomResource($room);
+    return [
+        'data'=>[
+            'name' => $room->name,
+            'sum' => $room->sum,
+        ]
+    ];
 });
 
 Route::get('/buy/{room}/{product}/{quantity}', function (Room $room, Product $product, $quantity) {
+    // Check integer type
+    if (gettype($quantity) != "integer") {
+        return new JsonResponse(['error' => 'Quantity must be an integer'], 422);
+    }
+
+    // Check if room is active or not
     if (!$room->active) {
-        return null;
+        return new JsonResponse(['error' => 'Room inactive'], 403);
     }
+
+    // Check if product is active or not
     if (!$product->active) {
-        return null;
+        return new JsonResponse(['error' => 'Product inactive'], 403);
     }
+
+    // Create purchase
     $beer = new Beer();
     $beer->room = $room->id;
     $beer->quantity = $quantity;
@@ -39,11 +52,12 @@ Route::get('/buy/{room}/{product}/{quantity}', function (Room $room, Product $pr
     $beer->save();
 
     return [
+        'data'=>[
             'name' => $room->name,
             'product' => $product->name,
             'sum' => $room->sum,
-        ];
-    ;
+        ]
+    ];
 });
 
 Route::get('/refund/{beer}', function (Beer $beer) {
@@ -56,7 +70,12 @@ Route::get('/refund/{beer}', function (Beer $beer) {
         return new JsonResponse(['error' => 'Refund is not possible'], 403);
     }
 
-    return new RefundResource($beer);
+    return [
+        'data'=>[
+            'refunded' => $beer->refunded,
+            'amount' => $beer->amount,
+        ]
+    ];
 });
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
