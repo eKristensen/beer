@@ -61,7 +61,7 @@ class ApiRefundPurchaseTest extends TestCase
     {
         $room = Room::create([
             'id' => 1,
-            'name' => 'Test room'
+            'name' => 'Test room',
         ]);
 
         $product = Product::create([
@@ -114,7 +114,7 @@ class ApiRefundPurchaseTest extends TestCase
     {
         $room = Room::create([
             'id' => 1,
-            'name' => 'Test room'
+            'name' => 'Test room',
         ]);
 
         $product = Product::create([
@@ -171,7 +171,7 @@ class ApiRefundPurchaseTest extends TestCase
     {
         $room = Room::create([
             'id' => 1,
-            'name' => 'Test room'
+            'name' => 'Test room',
         ]);
 
         $product = Product::create([

@@ -27,12 +27,8 @@ Route::get('/sum/{room}', function (Room $room) {
 });
 
 Route::get('/buy/{room}/{product}/{quantity}', function (Room $room, Product $product, $quantity) {
-    // Check integer type
-    if (gettype($quantity) != "integer") {
-        return new JsonResponse(['error' => 'Quantity must be an integer'], 422);
-    }
 
-    // Check if room is active or not
+    // Check if room is cative or not
     if (!$room->active) {
         return new JsonResponse(['error' => 'Room inactive'], 403);
     }
@@ -52,13 +48,13 @@ Route::get('/buy/{room}/{product}/{quantity}', function (Room $room, Product $pr
     $beer->save();
 
     return [
-        'data'=>[
             'name' => $room->name,
             'product' => $product->name,
             'sum' => $room->sum,
-        ]
-    ];
-});
+        ];
+
+    // Check integer type
+})->where('quantity', '[0-9]+');
 
 Route::get('/refund/{beer}', function (Beer $beer) {
     if (!Room::find($beer->room)->active) {
