@@ -5,6 +5,9 @@ build:
                 override:
                     - 'true'
             tests:
+                environment:
+                    php:
+                        version: 7.2
                 override:
                     - php-scrutinizer-run
                     -
@@ -14,6 +17,9 @@ build:
         tests: true
         coverage:
           tests:
+            environment:
+                php:
+                    version: 7.2
             override:
               - command: vendor/bin/phpunit --coverage-clover=coverage.xml
                 coverage:
