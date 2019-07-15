@@ -22,8 +22,8 @@ build:
                 override:
                     - command: vendor/bin/phpunit --coverage-clover=coverage.xml
                       coverage:
-                      file: coverage.xml
-                      format: clover
+                          file: coverage.xml
+                          format: clover
 filter:
     paths:
         - 'app/*'
