@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Beer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use \App\Beer;
 
 class BeerController extends Controller
 {

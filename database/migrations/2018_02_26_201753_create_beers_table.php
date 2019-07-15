@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateBeersTable extends Migration
 {
@@ -15,7 +15,7 @@ class CreateBeersTable extends Migration
     {
         Schema::create('beers', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('type', ['beer','cider','deposit']);
+            $table->enum('type', ['beer', 'cider', 'deposit']);
             $table->integer('room');
             $table->integer('quantity');
             $table->integer('amount');

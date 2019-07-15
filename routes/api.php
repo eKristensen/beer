@@ -1,10 +1,10 @@
 <?php
 
+use App\Beer;
 use App\Product;
+use App\Room;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use \App\Beer;
-use \App\Room;
 
 /*
 |--------------------------------------------------------------------------

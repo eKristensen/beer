@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Beer;
 use App\Product;
+use App\Room;
 use Illuminate\Http\Request;
-use \App\Beer;
-use \App\Room;
 
 class RoomController extends Controller
 {
