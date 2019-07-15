@@ -1,3 +1,4 @@
+---
 # Inspiration: https://www.fastfwd.com/continuous-integration-laravel-travis-ci/
 
 language: php
@@ -18,4 +19,4 @@ script:
   - vendor/bin/phpunit --coverage-clover=coverage.xml
 
 after_success:
-    - bash <(curl -s https://codecov.io/bash) -t f867fcc5-e868-42ee-aa58-40c5dc974fcb
+  - bash <(curl -s https://codecov.io/bash) -t f867fcc5-e868-42ee-aa58-40c5dc974fcb
