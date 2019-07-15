@@ -12,7 +12,7 @@ class RoomController extends Controller
     public function store()
     {
         $validated = request()->validate([
-            'id' => 'required',
+            'id' => 'required|integer|gt:0',
             'name' => 'required'
         ]);
 
