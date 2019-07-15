@@ -19,6 +19,7 @@ class Room extends Model
     public function getSumAttribute()
     {
         $beer = new \App\Beer();
+
         return $beer->where('room', '=', $this->id)->where('refunded', '=', 0)->sum('amount');
     }
 }

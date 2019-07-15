@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
 class AddProduct extends Migration
@@ -17,7 +16,7 @@ class AddProduct extends Migration
             $table->string('product')->nullable()->after('type');
             $table->dropColumn('type');
         });
-        DB::statement("ALTER TABLE `beers` MODIFY COLUMN `amount` decimal(8,2);");
+        DB::statement('ALTER TABLE `beers` MODIFY COLUMN `amount` decimal(8,2);');
     }
 
     /**
@@ -31,6 +30,6 @@ class AddProduct extends Migration
             $table->dropColumn('product');
             $table->enum('type', ['beer', 'cider', 'deposit']);
         });
-        DB::statement("ALTER TABLE `beers` MODIFY COLUMN `amount` int;");
+        DB::statement('ALTER TABLE `beers` MODIFY COLUMN `amount` int;');
     }
 }

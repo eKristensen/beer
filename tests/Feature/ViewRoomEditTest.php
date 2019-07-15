@@ -4,8 +4,6 @@ namespace Tests\Feature;
 
 use App\Room;
 use App\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
@@ -34,8 +32,8 @@ class ViewRoomEditTest extends TestCase
         // Create a user
         $user = User::create([
             'password' => Hash::make('password'),
-            'email' => 'example@example.org',
-            'name' => 'John Doe',
+            'email'    => 'example@example.org',
+            'name'     => 'John Doe',
         ]);
 
         // Login that user in
@@ -57,8 +55,8 @@ class ViewRoomEditTest extends TestCase
         // Create a user
         $user = User::create([
             'password' => Hash::make('password'),
-            'email' => 'example@example.org',
-            'name' => 'John Doe',
+            'email'    => 'example@example.org',
+            'name'     => 'John Doe',
         ]);
 
         // Login that user in
@@ -66,8 +64,8 @@ class ViewRoomEditTest extends TestCase
 
         // Create room
         $room = Room::create([
-            'id' => 1,
-            'name' => 'Test room'
+            'id'   => 1,
+            'name' => 'Test room',
         ]);
 
         // Get the page
@@ -80,8 +78,8 @@ class ViewRoomEditTest extends TestCase
         $response->assertStatus(200);
 
         // And that the room data is shown
-        $response->assertSee('<th scope="row">' . $room->id . '</th>');
+        $response->assertSee('<th scope="row">'.$room->id.'</th>');
         $response->assertSee('<input type="text" class="form-control" '
-            . 'id="name" name="name" placeholder="Name" value="' . $room->name . '">');
+            .'id="name" name="name" placeholder="Name" value="'.$room->name.'">');
     }
 }

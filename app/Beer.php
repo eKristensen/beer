@@ -29,6 +29,7 @@ class Beer extends Model
 
         $this->refunded = true;
         $this->save();
+
         return true;
     }
 }

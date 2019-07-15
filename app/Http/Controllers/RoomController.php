@@ -12,8 +12,8 @@ class RoomController extends Controller
     public function store()
     {
         $validated = request()->validate([
-            'id' => 'required|integer|gt:0',
-            'name' => 'required'
+            'id'   => 'required|integer|gt:0',
+            'name' => 'required',
         ]);
 
         // Create and save user
@@ -49,14 +49,13 @@ class RoomController extends Controller
     public function depositStore()
     {
         $validated = request()->validate([
-            'room' => 'required',
-            'amount' => 'required|numeric'
+            'room'   => 'required',
+            'amount' => 'required|numeric',
         ]);
 
         $validated['type'] = 'deposit';
         $validated['quantity'] = 1;
         $validated['ipAddress'] = request()->ip();
-
 
         Beer::create($validated);
 
@@ -66,13 +65,13 @@ class RoomController extends Controller
     public function patch()
     {
         $validated = request()->validate([
-            'id' => 'required',
-            'name' => 'nullable',
-            'active' => 'nullable'
+            'id'     => 'required',
+            'name'   => 'nullable',
+            'active' => 'nullable',
         ]);
 
         $room = Room::find($validated['id']);
-        if ($validated['name'] != "") {
+        if ($validated['name'] != '') {
             $room->name = $validated['name'];
         }
         if (isset($validated['active'])) {
@@ -88,6 +87,7 @@ class RoomController extends Controller
     public function show(Room $room)
     {
         $beers = $room->beers;
+
         return view('rooms.show', compact('room', 'beers'));
     }
 }
