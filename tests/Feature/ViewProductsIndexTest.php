@@ -4,8 +4,6 @@ namespace Tests\Feature;
 
 use App\Product;
 use App\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
@@ -26,14 +24,13 @@ class ViewProductsIndexTest extends TestCase
         $response->assertRedirect('/login');
     }
 
-
     public function testPageLoadsAuthorized()
     {
         // Create a user
         $user = User::create([
             'password' => Hash::make('password'),
-            'email' => 'example@example.org',
-            'name' => 'John Doe',
+            'email'    => 'example@example.org',
+            'name'     => 'John Doe',
         ]);
 
         // Login that user in
@@ -53,17 +50,17 @@ class ViewProductsIndexTest extends TestCase
     {
         // create sample product
         $product = Product::create([
-            'name' => 'Test product',
-            'color' => 'fff000',
+            'name'     => 'Test product',
+            'color'    => 'fff000',
             'quantity' => '1,2,5',
-            'price' => '1232.00',
+            'price'    => '1232.00',
         ]);
 
         // Create a user so that we can see that product
         $user = User::create([
             'password' => Hash::make('password'),
-            'email' => 'example@example.org',
-            'name' => 'John Doe',
+            'email'    => 'example@example.org',
+            'name'     => 'John Doe',
         ]);
 
         // Login that user in

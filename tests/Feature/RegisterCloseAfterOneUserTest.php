@@ -3,8 +3,6 @@
 namespace Tests\Feature;
 
 use App\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
@@ -26,8 +24,8 @@ class RegisterCloseAfterOneUserTest extends TestCase
     {
         $user = User::create([
             'password' => Hash::make('password'),
-            'email' => 'example@example.org',
-            'name' => 'John Doe',
+            'email'    => 'example@example.org',
+            'name'     => 'John Doe',
         ]);
 
         $response = $this->get('/register');

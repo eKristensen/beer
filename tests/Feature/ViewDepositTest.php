@@ -6,8 +6,6 @@ use App\Beer;
 use App\Product;
 use App\Room;
 use App\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
@@ -35,8 +33,8 @@ class ViewDepositTest extends TestCase
         // Create a user
         $user = User::create([
             'password' => Hash::make('password'),
-            'email' => 'example@example.org',
-            'name' => 'John Doe',
+            'email'    => 'example@example.org',
+            'name'     => 'John Doe',
         ]);
 
         // Login that user in
@@ -58,8 +56,8 @@ class ViewDepositTest extends TestCase
         // Create a user
         $user = User::create([
             'password' => Hash::make('password'),
-            'email' => 'example@example.org',
-            'name' => 'John Doe',
+            'email'    => 'example@example.org',
+            'name'     => 'John Doe',
         ]);
 
         // Login that user in
@@ -67,8 +65,8 @@ class ViewDepositTest extends TestCase
 
         // Create room
         $room = Room::create([
-            'id' => 1,
-            'name' => 'Test room'
+            'id'   => 1,
+            'name' => 'Test room',
         ]);
 
         // Get the page
@@ -84,9 +82,9 @@ class ViewDepositTest extends TestCase
         $this->assertEquals($room->sum, 0);
 
         // And that the room data is shown
-        $response->assertSee('<option value="' . $room->id . '">' . $room->id
-            . ' ' . $room->name . ' ' . $room->sum . '</option>');
-        $response->assertSee('<p>Total differeance ' . $room->sum . '</p>');
+        $response->assertSee('<option value="'.$room->id.'">'.$room->id
+            .' '.$room->name.' '.$room->sum.'</option>');
+        $response->assertSee('<p>Total differeance '.$room->sum.'</p>');
     }
 
     // Test room with purchase, total sum must show (more than one purchase)
@@ -95,8 +93,8 @@ class ViewDepositTest extends TestCase
         // Create a user
         $user = User::create([
             'password' => Hash::make('password'),
-            'email' => 'example@example.org',
-            'name' => 'John Doe',
+            'email'    => 'example@example.org',
+            'name'     => 'John Doe',
         ]);
 
         // Login that user in
@@ -104,15 +102,15 @@ class ViewDepositTest extends TestCase
 
         // Create room
         $room = Room::create([
-            'id' => 1,
-            'name' => 'Test room'
+            'id'   => 1,
+            'name' => 'Test room',
         ]);
 
         $product = Product::create([
-            'name' => 'Test product',
-            'color' => 'fff',
+            'name'     => 'Test product',
+            'color'    => 'fff',
             'quantity' => '1,2,5',
-            'price' => '1232.00',
+            'price'    => '1232.00',
         ]);
 
         $quantity = 2;
@@ -138,9 +136,9 @@ class ViewDepositTest extends TestCase
         $this->assertEquals($room->sum, -$quantity * $product->price);
 
         // And that the room data is shown
-        $response->assertSee('<option value="' . $room->id . '">' . $room->id
-            . ' ' . $room->name . ' ' . $room->sum . '</option>');
-        $response->assertSee('<p>Total differeance ' . $room->sum . '</p>');
+        $response->assertSee('<option value="'.$room->id.'">'.$room->id
+            .' '.$room->name.' '.$room->sum.'</option>');
+        $response->assertSee('<p>Total differeance '.$room->sum.'</p>');
     }
 
     // Test total differeance with more than one room with serveral purchases
@@ -151,8 +149,8 @@ class ViewDepositTest extends TestCase
         // Create a user
         $user = User::create([
             'password' => Hash::make('password'),
-            'email' => 'example@example.org',
-            'name' => 'John Doe',
+            'email'    => 'example@example.org',
+            'name'     => 'John Doe',
         ]);
 
         // Login that user in
@@ -160,20 +158,20 @@ class ViewDepositTest extends TestCase
 
         // Create room
         $room_1 = Room::create([
-            'id' => 1,
-            'name' => 'Test room'
+            'id'   => 1,
+            'name' => 'Test room',
         ]);
 
         $room_2 = Room::create([
-            'id' => 2,
-            'name' => 'Test room'
+            'id'   => 2,
+            'name' => 'Test room',
         ]);
 
         $product = Product::create([
-            'name' => 'Test product',
-            'color' => 'fff',
+            'name'     => 'Test product',
+            'color'    => 'fff',
             'quantity' => '1,2,5',
-            'price' => '1232.00',
+            'price'    => '1232.00',
         ]);
 
         $quantity = 2;
@@ -185,7 +183,6 @@ class ViewDepositTest extends TestCase
         $beer_1->ipAddress = request()->ip();
         $beer_1->amount = -($product->price * $quantity);
         $beer_1->save();
-
 
         $beer_2 = new Beer();
         $beer_2->room = $room_2->id;
@@ -210,10 +207,10 @@ class ViewDepositTest extends TestCase
         $this->assertEquals($room_2->sum, -$quantity * $product->price * 2);
 
         // And that the room data is shown
-        $response->assertSee('<option value="' . $room_1->id . '">' . $room_1->id
-            . ' ' . $room_1->name . ' ' . $room_1->sum . '</option>');
-        $response->assertSee('<option value="' . $room_2->id . '">' . $room_2->id
-            . ' ' . $room_2->name . ' ' . $room_2->sum . '</option>');
-        $response->assertSee('<p>Total differeance ' . ($room_1->sum + $room_2->sum) . '.00</p>');
+        $response->assertSee('<option value="'.$room_1->id.'">'.$room_1->id
+            .' '.$room_1->name.' '.$room_1->sum.'</option>');
+        $response->assertSee('<option value="'.$room_2->id.'">'.$room_2->id
+            .' '.$room_2->name.' '.$room_2->sum.'</option>');
+        $response->assertSee('<p>Total differeance '.($room_1->sum + $room_2->sum).'.00</p>');
     }
 }

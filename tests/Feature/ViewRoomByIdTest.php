@@ -6,8 +6,6 @@ use App\Beer;
 use App\Product;
 use App\Room;
 use App\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
@@ -34,8 +32,8 @@ class ViewRoomByIdTest extends TestCase
         // Create a user
         $user = User::create([
             'password' => Hash::make('password'),
-            'email' => 'example@example.org',
-            'name' => 'John Doe',
+            'email'    => 'example@example.org',
+            'name'     => 'John Doe',
         ]);
 
         // Login that user in
@@ -54,8 +52,8 @@ class ViewRoomByIdTest extends TestCase
     public function testPageLoadsWithRoomUnauthorized()
     {
         $room = Room::create([
-            'id' => 1,
-            'name' => 'Test room'
+            'id'   => 1,
+            'name' => 'Test room',
         ]);
 
         $response = $this->get('/rooms/1');
@@ -71,14 +69,14 @@ class ViewRoomByIdTest extends TestCase
         // Create a user
         $user = User::create([
             'password' => Hash::make('password'),
-            'email' => 'example@example.org',
-            'name' => 'John Doe',
+            'email'    => 'example@example.org',
+            'name'     => 'John Doe',
         ]);
 
         // Create room
         $room = Room::create([
-            'id' => 1,
-            'name' => 'Test room'
+            'id'   => 1,
+            'name' => 'Test room',
         ]);
 
         // Login that user in
@@ -100,14 +98,14 @@ class ViewRoomByIdTest extends TestCase
         // Create a user
         $user = User::create([
             'password' => Hash::make('password'),
-            'email' => 'example@example.org',
-            'name' => 'John Doe',
+            'email'    => 'example@example.org',
+            'name'     => 'John Doe',
         ]);
 
         // Create room
         $room = Room::create([
-            'id' => 1,
-            'name' => 'Test room'
+            'id'   => 1,
+            'name' => 'Test room',
         ]);
 
         // Login that user in
@@ -123,7 +121,7 @@ class ViewRoomByIdTest extends TestCase
         $response->assertStatus(200);
 
         // And that the room data is shown
-        $response->assertSee("Transtrationer for konto id: " . $room->id);
+        $response->assertSee('Transtrationer for konto id: '.$room->id);
     }
 
     // test that beers purchased is there
@@ -132,22 +130,22 @@ class ViewRoomByIdTest extends TestCase
         // Create a user
         $user = User::create([
             'password' => Hash::make('password'),
-            'email' => 'example@example.org',
-            'name' => 'John Doe',
+            'email'    => 'example@example.org',
+            'name'     => 'John Doe',
         ]);
 
         // Create room
         $room = Room::create([
-            'id' => 1,
-            'name' => 'Test room'
+            'id'   => 1,
+            'name' => 'Test room',
         ]);
 
         // Create sample product
         $product = Product::create([
-            'name' => 'Test product',
-            'color' => 'fff',
+            'name'     => 'Test product',
+            'color'    => 'fff',
             'quantity' => '1,2,5',
-            'price' => '1232.00',
+            'price'    => '1232.00',
         ]);
 
         $quantity = 2;
@@ -174,6 +172,6 @@ class ViewRoomByIdTest extends TestCase
         $response->assertStatus(200);
 
         // And the purchase shows up, we only check if the price is shown
-        $response->assertSee("-" . ($product->price * 2) . ".00");
+        $response->assertSee('-'.($product->price * 2).'.00');
     }
 }

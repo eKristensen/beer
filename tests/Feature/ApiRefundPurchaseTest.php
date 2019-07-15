@@ -5,8 +5,6 @@ namespace Tests\Feature;
 use App\Beer;
 use App\Product;
 use App\Room;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ApiRefundPurchaseTest extends TestCase
@@ -22,15 +20,15 @@ class ApiRefundPurchaseTest extends TestCase
     {
         // Create room
         $room = Room::create([
-            'id' => 1,
-            'name' => 'Test room'
+            'id'   => 1,
+            'name' => 'Test room',
         ]);
 
         $product = Product::create([
-            'name' => 'Test product',
-            'color' => 'fff',
+            'name'     => 'Test product',
+            'color'    => 'fff',
             'quantity' => '1,2,5',
-            'price' => '1232.00',
+            'price'    => '1232.00',
         ]);
 
         $quantity = 2;
@@ -43,7 +41,7 @@ class ApiRefundPurchaseTest extends TestCase
         $beer->amount = -($product->price * $quantity);
         $beer->save();
 
-        $response = $this->get('/api/refund/' . $beer->id);
+        $response = $this->get('/api/refund/'.$beer->id);
 
         $response->assertStatus(200);
     }
@@ -60,26 +58,26 @@ class ApiRefundPurchaseTest extends TestCase
     public function testRefundWorks()
     {
         $room = Room::create([
-            'id' => 1,
+            'id'   => 1,
             'name' => 'Test room',
         ]);
 
         $product = Product::create([
-            'name' => 'Test product',
-            'color' => 'fff',
+            'name'     => 'Test product',
+            'color'    => 'fff',
             'quantity' => '1,2,5',
-            'price' => '1232.00',
+            'price'    => '1232.00',
         ]);
 
         $quantity = 2;
 
         // Buy two test product
         $beer = Beer::create([
-            'room' => $room->id,
-            'quantity' => $quantity,
-            'product' => $product->id,
+            'room'      => $room->id,
+            'quantity'  => $quantity,
+            'product'   => $product->id,
             'ipAddress' => request()->ip(),
-            'amount' => -($product->price * $quantity),
+            'amount'    => -($product->price * $quantity),
         ]);
 
         // Get fresh beer from the database
@@ -88,7 +86,7 @@ class ApiRefundPurchaseTest extends TestCase
         // Refunded must be false = 0
         $this->assertEquals($beer->refunded, 0);
 
-        $response = $this->get('/api/refund/' . $beer->id);
+        $response = $this->get('/api/refund/'.$beer->id);
 
         // Expect a code 200 OK
         $response->assertStatus(200);
@@ -97,7 +95,7 @@ class ApiRefundPurchaseTest extends TestCase
         $response->assertJson([
             'data' => [
                 'refunded' => true,
-                'amount' => $beer->amount,
+                'amount'   => $beer->amount,
             ],
         ]);
 
@@ -113,26 +111,26 @@ class ApiRefundPurchaseTest extends TestCase
     public function testRefundOkWhenAlreadyRefunded()
     {
         $room = Room::create([
-            'id' => 1,
+            'id'   => 1,
             'name' => 'Test room',
         ]);
 
         $product = Product::create([
-            'name' => 'Test product',
-            'color' => 'fff',
+            'name'     => 'Test product',
+            'color'    => 'fff',
             'quantity' => '1,2,5',
-            'price' => '1232.00',
+            'price'    => '1232.00',
         ]);
 
         $quantity = 2;
 
         // Buy two test product
         $beer = Beer::create([
-            'room' => $room->id,
-            'quantity' => $quantity,
-            'product' => $product->id,
+            'room'      => $room->id,
+            'quantity'  => $quantity,
+            'product'   => $product->id,
             'ipAddress' => request()->ip(),
-            'amount' => -($product->price * $quantity),
+            'amount'    => -($product->price * $quantity),
         ]);
 
         // Get fresh beer from the database and refund it right away
@@ -145,7 +143,7 @@ class ApiRefundPurchaseTest extends TestCase
         // Refunded must be true = 1
         $this->assertEquals($beer->refunded, 1);
 
-        $response = $this->get('/api/refund/' . $beer->id);
+        $response = $this->get('/api/refund/'.$beer->id);
 
         // Expect a code 200 OK
         $response->assertStatus(200);
@@ -154,7 +152,7 @@ class ApiRefundPurchaseTest extends TestCase
         $response->assertJson([
             'data' => [
                 'refunded' => true,
-                'amount' => $beer->amount,
+                'amount'   => $beer->amount,
             ],
         ]);
 
@@ -170,26 +168,26 @@ class ApiRefundPurchaseTest extends TestCase
     public function testRefundOutsideTimeframeIsRejected()
     {
         $room = Room::create([
-            'id' => 1,
+            'id'   => 1,
             'name' => 'Test room',
         ]);
 
         $product = Product::create([
-            'name' => 'Test product',
-            'color' => 'fff',
+            'name'     => 'Test product',
+            'color'    => 'fff',
             'quantity' => '1,2,5',
-            'price' => '1232.00',
+            'price'    => '1232.00',
         ]);
 
         $quantity = 2;
 
         // Buy two test product
         $beer = Beer::create([
-            'room' => $room->id,
-            'quantity' => $quantity,
-            'product' => $product->id,
+            'room'      => $room->id,
+            'quantity'  => $quantity,
+            'product'   => $product->id,
             'ipAddress' => request()->ip(),
-            'amount' => -($product->price * $quantity),
+            'amount'    => -($product->price * $quantity),
         ]);
 
         // Set time to be 35 minutes behind in time for all purchases
@@ -204,7 +202,7 @@ class ApiRefundPurchaseTest extends TestCase
         // Refunded must be false = 0
         $this->assertEquals($beer->refunded, 0);
 
-        $response = $this->get('/api/refund/' . $beer->id);
+        $response = $this->get('/api/refund/'.$beer->id);
 
         // Expect a code 403 Access denied
         $response->assertStatus(403);

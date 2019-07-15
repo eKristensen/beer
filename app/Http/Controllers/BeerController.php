@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Beer;
 use Carbon\Carbon;
-use Illuminate\Http\Request;
 
 class BeerController extends Controller
 {

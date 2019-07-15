@@ -10,7 +10,7 @@ class Product extends Model
 
     public function quantities()
     {
-        return explode(",", $this->quantity);
+        return explode(',', $this->quantity);
     }
 
     public function beers()
