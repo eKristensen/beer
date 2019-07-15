@@ -4,9 +4,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Coding Standards](https://img.shields.io/badge/cs-PSR--2-yellow.svg)](https://www.php-fig.org/psr/psr-2/)
 
-# PSR-2
+# Beer and other stuff accounting - Kitchen O, P. O. Pedersen Kollegiet
 
-We try to be [PSR-2](https://www.php-fig.org/psr/psr-2/) compliant. If there are any non-compliant code please notify us!
+System used to keep track of how drunk we get.
 
 # Install instructions
 
@@ -25,10 +25,6 @@ To use the application you must set a application key, do that with:
 <code>php artisan key:generate</code>
 
 When in the project root.
-
-# Beer and other stuff accounting - Kitchen O, P. O. Pedersen Kollegiet
-
-System used to keep track of how drunk we get.
 
 # Security risks
 
