@@ -5,8 +5,6 @@ namespace Tests\Feature;
 use App\Beer;
 use App\Product;
 use App\Room;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ApiGetSumForRoomTest extends TestCase
@@ -21,11 +19,11 @@ class ApiGetSumForRoomTest extends TestCase
     public function testApiRouteLoads()
     {
         $room = Room::create([
-            'id' => 1,
-            'name' => 'Test room'
+            'id'   => 1,
+            'name' => 'Test room',
         ]);
 
-        $response = $this->get('/api/sum/' . $room->id);
+        $response = $this->get('/api/sum/'.$room->id);
 
         // Expect a code 200 OK
         $response->assertStatus(200);
@@ -44,15 +42,15 @@ class ApiGetSumForRoomTest extends TestCase
     public function testSumWithSinglePurchase()
     {
         $room = Room::create([
-            'id' => 1,
-            'name' => 'Test room'
+            'id'   => 1,
+            'name' => 'Test room',
         ]);
 
         $product = Product::create([
-            'name' => 'Test product',
-            'color' => 'fff',
+            'name'     => 'Test product',
+            'color'    => 'fff',
             'quantity' => '1,2,5',
-            'price' => '1232.00',
+            'price'    => '1232.00',
         ]);
 
         $quantity = 2;
@@ -65,7 +63,7 @@ class ApiGetSumForRoomTest extends TestCase
         $beer->amount = -($product->price * $quantity);
         $beer->save();
 
-        $response = $this->get('/api/sum/' . $room->id);
+        $response = $this->get('/api/sum/'.$room->id);
 
         // Expect a code 200 OK
         $response->assertStatus(200);
@@ -77,7 +75,7 @@ class ApiGetSumForRoomTest extends TestCase
         $response->assertJson([
             'data' => [
                 'name' => $room->name,
-                'sum' => $room->sum,
+                'sum'  => $room->sum,
             ],
         ]);
     }
@@ -86,15 +84,15 @@ class ApiGetSumForRoomTest extends TestCase
     public function testSumWithTwoPurchases()
     {
         $room = Room::create([
-            'id' => 1,
-            'name' => 'Test room'
+            'id'   => 1,
+            'name' => 'Test room',
         ]);
 
         $product = Product::create([
-            'name' => 'Test product',
-            'color' => 'fff',
+            'name'     => 'Test product',
+            'color'    => 'fff',
             'quantity' => '1,2,5',
-            'price' => '1232.00',
+            'price'    => '1232.00',
         ]);
 
         $quantity = 2;
@@ -107,7 +105,6 @@ class ApiGetSumForRoomTest extends TestCase
         $beer_1->amount = -($product->price * $quantity);
         $beer_1->save();
 
-
         $beer_2 = new Beer();
         $beer_2->room = $room->id;
         $beer_2->quantity = $quantity;
@@ -116,7 +113,7 @@ class ApiGetSumForRoomTest extends TestCase
         $beer_2->amount = -($product->price * $quantity * 2);
         $beer_2->save();
 
-        $response = $this->get('/api/sum/' . $room->id);
+        $response = $this->get('/api/sum/'.$room->id);
 
         // Expect a code 200 OK
         $response->assertStatus(200);
@@ -128,7 +125,7 @@ class ApiGetSumForRoomTest extends TestCase
         $response->assertJson([
             'data' => [
                 'name' => $room->name,
-                'sum' => $room->sum,
+                'sum'  => $room->sum,
             ],
         ]);
     }
@@ -137,15 +134,15 @@ class ApiGetSumForRoomTest extends TestCase
     public function testSumWithPurchaseAndDeposit()
     {
         $room = Room::create([
-            'id' => 1,
-            'name' => 'Test room'
+            'id'   => 1,
+            'name' => 'Test room',
         ]);
 
         $product = Product::create([
-            'name' => 'Test product',
-            'color' => 'fff',
+            'name'     => 'Test product',
+            'color'    => 'fff',
             'quantity' => '1,2,5',
-            'price' => '1232.00',
+            'price'    => '1232.00',
         ]);
 
         $quantity = 2;
@@ -161,14 +158,14 @@ class ApiGetSumForRoomTest extends TestCase
 
         // Despsit 100
         $deposit = Beer::create([
-            'room' => $room->id,
-            'amount' => 100,
-            'type' => 'deposit',
-            'quantity' => 1,
+            'room'      => $room->id,
+            'amount'    => 100,
+            'type'      => 'deposit',
+            'quantity'  => 1,
             'ipAddress' => request()->ip(),
         ]);
 
-        $response = $this->get('/api/sum/' . $room->id);
+        $response = $this->get('/api/sum/'.$room->id);
 
         // Expect a code 200 OK
         $response->assertStatus(200);
@@ -180,7 +177,7 @@ class ApiGetSumForRoomTest extends TestCase
         $response->assertJson([
             'data' => [
                 'name' => $room->name,
-                'sum' => $room->sum,
+                'sum'  => $room->sum,
             ],
         ]);
     }
@@ -189,15 +186,15 @@ class ApiGetSumForRoomTest extends TestCase
     public function testSumWithRefundedPurchase()
     {
         $room = Room::create([
-            'id' => 1,
-            'name' => 'Test room'
+            'id'   => 1,
+            'name' => 'Test room',
         ]);
 
         $product = Product::create([
-            'name' => 'Test product',
-            'color' => 'fff',
+            'name'     => 'Test product',
+            'color'    => 'fff',
             'quantity' => '1,2,5',
-            'price' => '1232.00',
+            'price'    => '1232.00',
         ]);
 
         $quantity = 2;
@@ -212,7 +209,7 @@ class ApiGetSumForRoomTest extends TestCase
         $beer->refunded = true;
         $beer->save();
 
-        $response = $this->get('/api/sum/' . $room->id);
+        $response = $this->get('/api/sum/'.$room->id);
 
         // Expect a code 200 OK
         $response->assertStatus(200);
@@ -224,7 +221,7 @@ class ApiGetSumForRoomTest extends TestCase
         $response->assertJson([
             'data' => [
                 'name' => $room->name,
-                'sum' => $room->sum,
+                'sum'  => $room->sum,
             ],
         ]);
     }
@@ -234,20 +231,20 @@ class ApiGetSumForRoomTest extends TestCase
     {
         // Create room
         $room_1 = Room::create([
-            'id' => 1,
-            'name' => 'Test room'
+            'id'   => 1,
+            'name' => 'Test room',
         ]);
 
         $room_2 = Room::create([
-            'id' => 2,
-            'name' => 'Test room'
+            'id'   => 2,
+            'name' => 'Test room',
         ]);
 
         $product = Product::create([
-            'name' => 'Test product',
-            'color' => 'fff',
+            'name'     => 'Test product',
+            'color'    => 'fff',
             'quantity' => '1,2,5',
-            'price' => '1232.00',
+            'price'    => '1232.00',
         ]);
 
         $quantity = 2;
@@ -260,7 +257,6 @@ class ApiGetSumForRoomTest extends TestCase
         $beer_1->amount = -($product->price * $quantity);
         $beer_1->save();
 
-
         $beer_2 = new Beer();
         $beer_2->room = $room_2->id;
         $beer_2->quantity = $quantity;
@@ -269,7 +265,7 @@ class ApiGetSumForRoomTest extends TestCase
         $beer_2->amount = -($product->price * $quantity * 2);
         $beer_2->save();
 
-        $response = $this->get('/api/sum/' . $room_1->id);
+        $response = $this->get('/api/sum/'.$room_1->id);
 
         // Expect a code 200 OK
         $response->assertStatus(200);
@@ -281,7 +277,7 @@ class ApiGetSumForRoomTest extends TestCase
         $response->assertJson([
             'data' => [
                 'name' => $room_1->name,
-                'sum' => $room_1->sum,
+                'sum'  => $room_1->sum,
             ],
         ]);
     }

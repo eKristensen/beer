@@ -4,11 +4,9 @@ namespace Tests\Feature;
 
 use App\Product;
 use App\Room;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class ShowRoomsTest extends TestCase
+class ViewRoomsIndexTest extends TestCase
 {
     /**
      * A basic feature test example.
@@ -25,10 +23,10 @@ class ShowRoomsTest extends TestCase
     public function testProductShows()
     {
         $product = Product::create([
-            'name' => 'Test product',
-            'color' => 'fff',
+            'name'     => 'Test product',
+            'color'    => 'fff',
             'quantity' => '1,2,5',
-            'price' => '1232.00',
+            'price'    => '1232.00',
         ]);
 
         $response = $this->get('/rooms');
@@ -36,17 +34,17 @@ class ShowRoomsTest extends TestCase
         $response->assertStatus(200);
 
         $response->assertSee($product->name);
-        $response->assertSee($product->price . " kr");
+        $response->assertSee($product->price.' kr');
     }
 
     public function testProductDisabled()
     {
         $product = Product::create([
-            'name' => 'Test product',
-            'color' => 'fff',
+            'name'     => 'Test product',
+            'color'    => 'fff',
             'quantity' => '1,2,5',
-            'price' => '1232',
-            'active' => false,
+            'price'    => '1232',
+            'active'   => false,
         ]);
 
         $response = $this->get('/rooms');
@@ -59,7 +57,7 @@ class ShowRoomsTest extends TestCase
     public function testRoomShows()
     {
         $room = Room::create([
-            'id' => 1,
+            'id'   => 1,
             'name' => 'Test room',
         ]);
 
@@ -73,8 +71,8 @@ class ShowRoomsTest extends TestCase
     public function testRoomDisabled()
     {
         $room = Room::create([
-            'id' => 1,
-            'name' => 'Test room',
+            'id'     => 1,
+            'name'   => 'Test room',
             'active' => false,
         ]);
 

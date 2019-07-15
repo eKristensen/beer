@@ -3,8 +3,6 @@
 namespace Tests\Feature;
 
 use App\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
@@ -30,8 +28,8 @@ class RedirectIfAuthenticated extends TestCase
         // Create a user
         $user = User::create([
             'password' => Hash::make('password'),
-            'email' => 'example@example.org',
-            'name' => 'John Doe',
+            'email'    => 'example@example.org',
+            'name'     => 'John Doe',
         ]);
 
         // Login that user in

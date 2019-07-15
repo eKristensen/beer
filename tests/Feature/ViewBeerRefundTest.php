@@ -5,8 +5,6 @@ namespace Tests\Feature;
 use App\Beer;
 use App\Product;
 use App\Room;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ViewBeerRefundTest extends TestCase
@@ -26,15 +24,15 @@ class ViewBeerRefundTest extends TestCase
     public function testShowPurchase()
     {
         $room = Room::create([
-            'id' => 1,
+            'id'   => 1,
             'name' => 'Test room',
         ]);
 
         $product = Product::create([
-            'name' => 'Test product',
-            'color' => 'fff',
+            'name'     => 'Test product',
+            'color'    => 'fff',
             'quantity' => '1,2,5',
-            'price' => '1232.00',
+            'price'    => '1232.00',
         ]);
 
         $quantity = 2;
@@ -51,23 +49,22 @@ class ViewBeerRefundTest extends TestCase
 
         $response->assertStatus(200);
 
-        $response->assertSee("-" . ($product->price * 2) . ".00 kr.");
+        $response->assertSee('-'.($product->price * 2).'.00 kr.');
         $response->assertSee($product->name);
     }
-
 
     public function testDontShowOldPurchase()
     {
         $room = Room::create([
-            'id' => 1,
-            'name' => 'Test room'
+            'id'   => 1,
+            'name' => 'Test room',
         ]);
 
         $product = Product::create([
-            'name' => 'Test product',
-            'color' => 'fff',
+            'name'     => 'Test product',
+            'color'    => 'fff',
             'quantity' => '1,2,5',
-            'price' => '1232.00',
+            'price'    => '1232.00',
         ]);
 
         $quantity = 2;
@@ -90,7 +87,7 @@ class ViewBeerRefundTest extends TestCase
 
         $response->assertStatus(200);
 
-        $response->assertDontSee("-" . ($product->price * 2) . ".00 kr.");
+        $response->assertDontSee('-'.($product->price * 2).'.00 kr.');
         $response->assertDontSee($product->name);
     }
 }

@@ -10,16 +10,17 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::all();
+
         return view('products.index', compact('products'));
     }
 
     public function store()
     {
         $validated = request()->validate([
-            'name' => 'required',
-            'color' => 'nullable',
+            'name'     => 'required',
+            'color'    => 'nullable',
             'quantity' => 'required',
-            'price' => 'required'
+            'price'    => 'required',
         ]);
 
         Product::create($validated);
@@ -30,22 +31,22 @@ class ProductController extends Controller
     public function patch()
     {
         $validated = request()->validate([
-            'id' => 'required',
-            'name' => 'required',
-            'color' => 'nullable',
+            'id'       => 'required',
+            'name'     => 'required',
+            'color'    => 'nullable',
             'quantity' => 'required',
-            'price' => 'required',
-            'active' => 'nullable'
+            'price'    => 'required',
+            'active'   => 'nullable',
         ]);
 
         $product = Product::find($validated['id']);
-        if ($validated['name'] != "") {
+        if ($validated['name'] != '') {
             $product->name = $validated['name'];
         }
-        if ($validated['price'] != "") {
+        if ($validated['price'] != '') {
             $product->price = $validated['price'];
         }
-        if ($validated['color'] != "") {
+        if ($validated['color'] != '') {
             $product->color = $validated['color'];
         }
         if (isset($validated['active'])) {

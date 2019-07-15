@@ -5,8 +5,6 @@ namespace Tests\Feature;
 use App\Beer;
 use App\Product;
 use App\Room;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ApiBuyTest extends TestCase
@@ -30,11 +28,11 @@ class ApiBuyTest extends TestCase
     public function testProductNotFound()
     {
         $room = Room::create([
-            'id' => 1,
-            'name' => 'Test room'
+            'id'   => 1,
+            'name' => 'Test room',
         ]);
 
-        $response = $this->get('/api/buy/' . $room->id . '/1/1');
+        $response = $this->get('/api/buy/'.$room->id.'/1/1');
 
         // Expect a code 404
         $response->assertStatus(404);
@@ -44,15 +42,15 @@ class ApiBuyTest extends TestCase
     public function testQuantityIsAlwyasAnInteger()
     {
         $room = Room::create([
-            'id' => 1,
+            'id'   => 1,
             'name' => 'Test room',
         ]);
 
         $product = Product::create([
-            'name' => 'Test product',
-            'color' => 'fff',
+            'name'     => 'Test product',
+            'color'    => 'fff',
             'quantity' => '1,2,5',
-            'price' => '1232.00',
+            'price'    => '1232.00',
         ]);
 
         $notNumbers = [
@@ -65,7 +63,7 @@ class ApiBuyTest extends TestCase
             // Get sum now
             $sum_before = Room::find($room->id)->sum;
 
-            $response = $this->get('/api/buy/' . $room->id . '/' . $product->id . '/' . $test);
+            $response = $this->get('/api/buy/'.$room->id.'/'.$product->id.'/'.$test);
 
             // Expect a code 404 Not Found
             $response->assertStatus(404);
@@ -83,16 +81,16 @@ class ApiBuyTest extends TestCase
     public function testRoomInactive()
     {
         $room = Room::create([
-            'id' => 1,
-            'name' => 'Test room',
+            'id'     => 1,
+            'name'   => 'Test room',
             'active' => false,
         ]);
 
         $product = Product::create([
-            'name' => 'Test product',
-            'color' => 'fff',
+            'name'     => 'Test product',
+            'color'    => 'fff',
             'quantity' => '1,2,5',
-            'price' => '1232.00',
+            'price'    => '1232.00',
         ]);
 
         // Get sum now
@@ -102,7 +100,7 @@ class ApiBuyTest extends TestCase
         $this->assertEquals($sum_before, 0);
 
         // Try to buy one of whatever
-        $response = $this->get('/api/buy/' . $room->id . '/' . $product->id . '/1');
+        $response = $this->get('/api/buy/'.$room->id.'/'.$product->id.'/1');
 
         // Expect a code 403 Access Denied
         $response->assertStatus(403);
@@ -124,16 +122,16 @@ class ApiBuyTest extends TestCase
     public function testProductInactive()
     {
         $room = Room::create([
-            'id' => 1,
+            'id'   => 1,
             'name' => 'Test room',
         ]);
 
         $product = Product::create([
-            'name' => 'Test product',
-            'color' => 'fff',
+            'name'     => 'Test product',
+            'color'    => 'fff',
             'quantity' => '1,2,5',
-            'price' => '1232.00',
-            'active' => false,
+            'price'    => '1232.00',
+            'active'   => false,
         ]);
 
         // Get sum now
@@ -143,7 +141,7 @@ class ApiBuyTest extends TestCase
         $this->assertEquals($sum_before, 0);
 
         // Try to buy one of whatever
-        $response = $this->get('/api/buy/' . $room->id . '/' . $product->id . '/1');
+        $response = $this->get('/api/buy/'.$room->id.'/'.$product->id.'/1');
 
         // Expect a code 403 Access Denied
         $response->assertStatus(403);
@@ -164,15 +162,15 @@ class ApiBuyTest extends TestCase
     public function testBuyWorks()
     {
         $room = Room::create([
-            'id' => 1,
+            'id'   => 1,
             'name' => 'Test room',
         ]);
 
         $product = Product::create([
-            'name' => 'Test product',
-            'color' => 'fff',
+            'name'     => 'Test product',
+            'color'    => 'fff',
             'quantity' => '1,2,5',
-            'price' => '1232.00',
+            'price'    => '1232.00',
         ]);
 
         // Get sum now
@@ -182,16 +180,16 @@ class ApiBuyTest extends TestCase
         $this->assertEquals($sum_before, 0);
 
         // Try to buy one of whatever
-        $response = $this->get('/api/buy/' . $room->id . '/' . $product->id . '/1');
+        $response = $this->get('/api/buy/'.$room->id.'/'.$product->id.'/1');
 
         // Expect a code 200 OK
         $response->assertStatus(200);
 
         // Assert proper JSON response
         $response->assertJson([
-            'name' => $room->name,
+            'name'    => $room->name,
             'product' => $product->name,
-            'sum' => -$product->price,
+            'sum'     => -$product->price,
         ]);
 
         // Check the sum of the room is unchanged

@@ -21,8 +21,8 @@ Route::get('/sum/{room}', function (Room $room) {
     return [
         'data' => [
             'name' => $room->name,
-            'sum' => $room->sum,
-        ]
+            'sum'  => $room->sum,
+        ],
     ];
 });
 
@@ -48,9 +48,9 @@ Route::get('/buy/{room}/{product}/{quantity}', function (Room $room, Product $pr
     $beer->save();
 
     return [
-            'name' => $room->name,
+            'name'    => $room->name,
             'product' => $product->name,
-            'sum' => $room->sum,
+            'sum'     => $room->sum,
         ];
 
     // Check integer type
@@ -58,7 +58,7 @@ Route::get('/buy/{room}/{product}/{quantity}', function (Room $room, Product $pr
 
 Route::get('/refund/{beer}', function (Beer $beer) {
     if (!Room::find($beer->room)->active) {
-        return null;
+        return;
     }
 
     // If refund is not possible then return 403
@@ -69,7 +69,7 @@ Route::get('/refund/{beer}', function (Beer $beer) {
     return [
         'data' => [
             'refunded' => $beer->refunded,
-            'amount' => $beer->amount,
-        ]
+            'amount'   => $beer->amount,
+        ],
     ];
 });

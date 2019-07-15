@@ -3,8 +3,6 @@
 namespace Tests\Feature;
 
 use App\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
@@ -35,8 +33,8 @@ class StoreNewRoomTest extends TestCase
         // Create a user
         $user = User::create([
             'password' => Hash::make('password'),
-            'email' => 'example@example.org',
-            'name' => 'John Doe',
+            'email'    => 'example@example.org',
+            'name'     => 'John Doe',
         ]);
 
         // Login that user in
@@ -63,8 +61,8 @@ class StoreNewRoomTest extends TestCase
         // Create a user
         $user = User::create([
             'password' => Hash::make('password'),
-            'email' => 'example@example.org',
-            'name' => 'John Doe',
+            'email'    => 'example@example.org',
+            'name'     => 'John Doe',
         ]);
 
         // Login that user in
@@ -77,10 +75,10 @@ class StoreNewRoomTest extends TestCase
         // true = error is expected, false error is not expected
         $idToTest = [
             'a' => true,
-            -1 => true,
-            0 => true,
-            2 => false,
-            30 => false,
+            -1  => true,
+            0   => true,
+            2   => false,
+            30  => false,
         ];
 
         foreach ($idToTest as $key => $value) {
@@ -109,8 +107,8 @@ class StoreNewRoomTest extends TestCase
         // Create a user
         $user = User::create([
             'password' => Hash::make('password'),
-            'email' => 'example@example.org',
-            'name' => 'John Doe',
+            'email'    => 'example@example.org',
+            'name'     => 'John Doe',
         ]);
 
         // Login that user in
@@ -126,7 +124,7 @@ class StoreNewRoomTest extends TestCase
 
         // Create room with post
         $response = $this->from('/rooms/edit')->post('/rooms', [
-            'id' => 22,
+            'id'   => 22,
             'name' => 'Test room',
         ]);
 
@@ -139,7 +137,7 @@ class StoreNewRoomTest extends TestCase
 
         // Check the newly created room is stored
         $this->assertDatabaseHas('rooms', [
-            'id' => 22,
+            'id'   => 22,
             'name' => 'Test room',
         ]);
     }
