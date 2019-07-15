@@ -28,6 +28,20 @@ class LoginController extends Controller
     protected $redirectTo = '/rooms/edit';
 
     /**
+     * Max login attempts.
+     *
+     * @var int
+     */
+    protected $maxAttempts = 4;
+
+    /**
+     * Retention time on max attempts.
+     *
+     * @var int
+     */
+    protected $decayMinutes = 30;
+
+    /**
      * Create a new controller instance.
      *
      * @return void
