@@ -22,8 +22,6 @@ class ProductController extends Controller
             'price' => 'required'
         ]);
 
-
-        // Create and save user
         Product::create($validated);
 
         return back();
