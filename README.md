@@ -38,7 +38,7 @@ You're welcome to fix this. Please see [Contributing](CONTRIBUTING.md).
 
 # Code formatter
 
-There is no single way to do it. But PSR-2-R is the target: https://github.com/php-fig-rectified/fig-rectified-standards
+There is no single way to do it. But [PSR-2](https://www.php-fig.org/psr/psr-2/) is the target.
 
 ## One way to do it:
 
