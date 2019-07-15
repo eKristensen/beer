@@ -21,3 +21,5 @@ Homestead.json
 
 bootstrap/cache/*.php
 reports/
+
+.php_cs.cache
