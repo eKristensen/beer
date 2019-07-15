@@ -1,3 +1,4 @@
+---
 build:
     nodes:
         analysis:
@@ -21,12 +22,9 @@ build:
                     version: 7.2
             tests:
                 override:
-                  - command: vendor/bin/phpunit --coverage-clover=coverage.xml
-                    coverage:
+                    - command: vendor/bin/phpunit --coverage-clover=coverage.xml
+                      coverage:
                       file: coverage.xml
-
-                      # These formats are supported:
-                      # clover, cobertura, jacoco, python-cc, ruby-cc, go-cc, lcov
                       format: clover
 filter:
     paths:
