@@ -123,7 +123,7 @@ class ViewRoomByIdTest extends TestCase
         $response->assertStatus(200);
 
         // And that the room data is shown
-        $response->assertSee("Transtrationer for konto id: ".$room->id);
+        $response->assertSee("Transtrationer for konto id: " . $room->id);
     }
 
     // test that beers purchased is there
@@ -174,6 +174,6 @@ class ViewRoomByIdTest extends TestCase
         $response->assertStatus(200);
 
         // And the purchase shows up, we only check if the price is shown
-        $response->assertSee("-".($product->price*2).".00");
+        $response->assertSee("-" . ($product->price * 2) . ".00");
     }
 }

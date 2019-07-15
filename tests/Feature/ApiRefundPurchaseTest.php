@@ -43,7 +43,7 @@ class ApiRefundPurchaseTest extends TestCase
         $beer->amount = -($product->price * $quantity);
         $beer->save();
 
-        $response = $this->get('/api/refund/'.$beer->id);
+        $response = $this->get('/api/refund/' . $beer->id);
 
         $response->assertStatus(200);
     }
@@ -88,7 +88,7 @@ class ApiRefundPurchaseTest extends TestCase
         // Refunded must be false = 0
         $this->assertEquals($beer->refunded, 0);
 
-        $response = $this->get('/api/refund/'.$beer->id);
+        $response = $this->get('/api/refund/' . $beer->id);
 
         // Expect a code 200 OK
         $response->assertStatus(200);
@@ -145,7 +145,7 @@ class ApiRefundPurchaseTest extends TestCase
         // Refunded must be true = 1
         $this->assertEquals($beer->refunded, 1);
 
-        $response = $this->get('/api/refund/'.$beer->id);
+        $response = $this->get('/api/refund/' . $beer->id);
 
         // Expect a code 200 OK
         $response->assertStatus(200);
@@ -204,7 +204,7 @@ class ApiRefundPurchaseTest extends TestCase
         // Refunded must be false = 0
         $this->assertEquals($beer->refunded, 0);
 
-        $response = $this->get('/api/refund/'.$beer->id);
+        $response = $this->get('/api/refund/' . $beer->id);
 
         // Expect a code 403 Access denied
         $response->assertStatus(403);

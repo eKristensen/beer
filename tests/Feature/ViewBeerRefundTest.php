@@ -51,7 +51,7 @@ class ViewBeerRefundTest extends TestCase
 
         $response->assertStatus(200);
 
-        $response->assertSee("-".($product->price*2).".00 kr.");
+        $response->assertSee("-" . ($product->price * 2) . ".00 kr.");
         $response->assertSee($product->name);
     }
 
@@ -90,7 +90,7 @@ class ViewBeerRefundTest extends TestCase
 
         $response->assertStatus(200);
 
-        $response->assertDontSee("-".($product->price*2).".00 kr.");
+        $response->assertDontSee("-" . ($product->price * 2) . ".00 kr.");
         $response->assertDontSee($product->name);
     }
 }

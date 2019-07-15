@@ -25,7 +25,7 @@ class ApiGetSumForRoomTest extends TestCase
             'name' => 'Test room'
         ]);
 
-        $response = $this->get('/api/sum/'.$room->id);
+        $response = $this->get('/api/sum/' . $room->id);
 
         // Expect a code 200 OK
         $response->assertStatus(200);
@@ -65,13 +65,13 @@ class ApiGetSumForRoomTest extends TestCase
         $beer->amount = -($product->price * $quantity);
         $beer->save();
 
-        $response = $this->get('/api/sum/'.$room->id);
+        $response = $this->get('/api/sum/' . $room->id);
 
         // Expect a code 200 OK
         $response->assertStatus(200);
 
         // Check that the sum is as expected
-        $this->assertEquals($room->sum, -$quantity*$product->price);
+        $this->assertEquals($room->sum, -$quantity * $product->price);
 
         // Assert proper JSON response
         $response->assertJson([
@@ -116,13 +116,13 @@ class ApiGetSumForRoomTest extends TestCase
         $beer_2->amount = -($product->price * $quantity * 2);
         $beer_2->save();
 
-        $response = $this->get('/api/sum/'.$room->id);
+        $response = $this->get('/api/sum/' . $room->id);
 
         // Expect a code 200 OK
         $response->assertStatus(200);
 
         // Check that the sum is as expected
-        $this->assertEquals($room->sum, -$quantity*$product->price-$product->price*$quantity*2);
+        $this->assertEquals($room->sum, -$quantity * $product->price - $product->price * $quantity * 2);
 
         // Assert proper JSON response
         $response->assertJson([
@@ -168,13 +168,13 @@ class ApiGetSumForRoomTest extends TestCase
             'ipAddress' => request()->ip(),
         ]);
 
-        $response = $this->get('/api/sum/'.$room->id);
+        $response = $this->get('/api/sum/' . $room->id);
 
         // Expect a code 200 OK
         $response->assertStatus(200);
 
         // Check that the sum is as expected
-        $this->assertEquals($room->sum, -$quantity*$product->price+$deposit->amount);
+        $this->assertEquals($room->sum, -$quantity * $product->price + $deposit->amount);
 
         // Assert proper JSON response
         $response->assertJson([
@@ -212,7 +212,7 @@ class ApiGetSumForRoomTest extends TestCase
         $beer->refunded = true;
         $beer->save();
 
-        $response = $this->get('/api/sum/'.$room->id);
+        $response = $this->get('/api/sum/' . $room->id);
 
         // Expect a code 200 OK
         $response->assertStatus(200);
@@ -269,7 +269,7 @@ class ApiGetSumForRoomTest extends TestCase
         $beer_2->amount = -($product->price * $quantity * 2);
         $beer_2->save();
 
-        $response = $this->get('/api/sum/'.$room_1->id);
+        $response = $this->get('/api/sum/' . $room_1->id);
 
         // Expect a code 200 OK
         $response->assertStatus(200);

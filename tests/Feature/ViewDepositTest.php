@@ -84,8 +84,9 @@ class ViewDepositTest extends TestCase
         $this->assertEquals($room->sum, 0);
 
         // And that the room data is shown
-        $response->assertSee('<option value="'.$room->id.'">'.$room->id.' '.$room->name.' '.$room->sum.'</option>');
-        $response->assertSee('<p>Total differeance '.$room->sum.'</p>');
+        $response->assertSee('<option value="' . $room->id . '">' . $room->id
+            . ' ' . $room->name . ' ' . $room->sum . '</option>');
+        $response->assertSee('<p>Total differeance ' . $room->sum . '</p>');
     }
 
     // Test room with purchase, total sum must show (more than one purchase)
@@ -134,11 +135,12 @@ class ViewDepositTest extends TestCase
         $response->assertStatus(200);
 
         // No purchases means the sum is expected to be -1232*2
-        $this->assertEquals($room->sum, -$quantity*$product->price);
+        $this->assertEquals($room->sum, -$quantity * $product->price);
 
         // And that the room data is shown
-        $response->assertSee('<option value="'.$room->id.'">'.$room->id.' '.$room->name.' '.$room->sum.'</option>');
-        $response->assertSee('<p>Total differeance '.$room->sum.'</p>');
+        $response->assertSee('<option value="' . $room->id . '">' . $room->id
+            . ' ' . $room->name . ' ' . $room->sum . '</option>');
+        $response->assertSee('<p>Total differeance ' . $room->sum . '</p>');
     }
 
     // Test total differeance with more than one room with serveral purchases
@@ -204,12 +206,14 @@ class ViewDepositTest extends TestCase
 
         // No purchases means the sum is expected to be -1232*2
         // Room two got twice as much
-        $this->assertEquals($room_1->sum, -$quantity*$product->price);
-        $this->assertEquals($room_2->sum, -$quantity*$product->price*2);
+        $this->assertEquals($room_1->sum, -$quantity * $product->price);
+        $this->assertEquals($room_2->sum, -$quantity * $product->price * 2);
 
         // And that the room data is shown
-        $response->assertSee('<option value="'.$room_1->id.'">'.$room_1->id.' '.$room_1->name.' '.$room_1->sum.'</option>');
-        $response->assertSee('<option value="'.$room_2->id.'">'.$room_2->id.' '.$room_2->name.' '.$room_2->sum.'</option>');
-        $response->assertSee('<p>Total differeance '.($room_1->sum+$room_2->sum).'.00</p>');
+        $response->assertSee('<option value="' . $room_1->id . '">' . $room_1->id
+            . ' ' . $room_1->name . ' ' . $room_1->sum . '</option>');
+        $response->assertSee('<option value="' . $room_2->id . '">' . $room_2->id
+            . ' ' . $room_2->name . ' ' . $room_2->sum . '</option>');
+        $response->assertSee('<p>Total differeance ' . ($room_1->sum + $room_2->sum) . '.00</p>');
     }
 }

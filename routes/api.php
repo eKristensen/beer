@@ -19,7 +19,7 @@ use \App\Room;
 
 Route::get('/sum/{room}', function (Room $room) {
     return [
-        'data'=>[
+        'data' => [
             'name' => $room->name,
             'sum' => $room->sum,
         ]
@@ -67,7 +67,7 @@ Route::get('/refund/{beer}', function (Beer $beer) {
     }
 
     return [
-        'data'=>[
+        'data' => [
             'refunded' => $beer->refunded,
             'amount' => $beer->amount,
         ]

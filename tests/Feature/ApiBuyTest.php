@@ -34,7 +34,7 @@ class ApiBuyTest extends TestCase
             'name' => 'Test room'
         ]);
 
-        $response = $this->get('/api/buy/'.$room->id.'/1/1');
+        $response = $this->get('/api/buy/' . $room->id . '/1/1');
 
         // Expect a code 404
         $response->assertStatus(404);
@@ -65,7 +65,7 @@ class ApiBuyTest extends TestCase
             // Get sum now
             $sum_before = Room::find($room->id)->sum;
 
-            $response = $this->get('/api/buy/'.$room->id.'/'.$product->id.'/'.$test);
+            $response = $this->get('/api/buy/' . $room->id . '/' . $product->id . '/' . $test);
 
             // Expect a code 404 Not Found
             $response->assertStatus(404);
@@ -102,7 +102,7 @@ class ApiBuyTest extends TestCase
         $this->assertEquals($sum_before, 0);
 
         // Try to buy one of whatever
-        $response = $this->get('/api/buy/'.$room->id.'/'.$product->id.'/1');
+        $response = $this->get('/api/buy/' . $room->id . '/' . $product->id . '/1');
 
         // Expect a code 403 Access Denied
         $response->assertStatus(403);
@@ -143,7 +143,7 @@ class ApiBuyTest extends TestCase
         $this->assertEquals($sum_before, 0);
 
         // Try to buy one of whatever
-        $response = $this->get('/api/buy/'.$room->id.'/'.$product->id.'/1');
+        $response = $this->get('/api/buy/' . $room->id . '/' . $product->id . '/1');
 
         // Expect a code 403 Access Denied
         $response->assertStatus(403);
@@ -182,7 +182,7 @@ class ApiBuyTest extends TestCase
         $this->assertEquals($sum_before, 0);
 
         // Try to buy one of whatever
-        $response = $this->get('/api/buy/'.$room->id.'/'.$product->id.'/1');
+        $response = $this->get('/api/buy/' . $room->id . '/' . $product->id . '/1');
 
         // Expect a code 200 OK
         $response->assertStatus(200);
@@ -198,7 +198,7 @@ class ApiBuyTest extends TestCase
         $sum_after = Room::find($room->id)->sum;
 
         // Sum must have changed with the price of the product, otherwise the purchase didn't work.
-        $this->assertEquals($sum_before-$product->price, $sum_after);
+        $this->assertEquals($sum_before - $product->price, $sum_after);
 
         // Test IP shows up as expected and is saved,
         // asumed to be the only purchase in the database
