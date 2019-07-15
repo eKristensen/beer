@@ -12,16 +12,16 @@ build:
                         use_website_config: true
                     - js-scrutinizer-run
         tests: true
-    coverage:
-      tests:
-        override:
-          - command: vendor/bin/phpunit --coverage-clover=coverage.xml
-            coverage:
-              file: coverage.xml
+        coverage:
+          tests:
+            override:
+              - command: vendor/bin/phpunit --coverage-clover=coverage.xml
+                coverage:
+                  file: coverage.xml
 
-              # These formats are supported:
-              # clover, cobertura, jacoco, python-cc, ruby-cc, go-cc, lcov
-              format: clover
+                  # These formats are supported:
+                  # clover, cobertura, jacoco, python-cc, ruby-cc, go-cc, lcov
+                  format: clover
 filter:
     paths:
         - 'app/*'
