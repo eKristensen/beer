@@ -3,6 +3,7 @@
 [![Minimum PHP Version](http://img.shields.io/badge/php-%3E%3D%207.2-8892BF.svg)](https://php.net/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Coding Standards](https://img.shields.io/badge/cs-PSR--2-yellow.svg)](https://www.php-fig.org/psr/psr-2/)
+[![StyleCI](https://github.styleci.io/repos/123131937/shield?branch=master)](https://github.styleci.io/repos/123131937)
 
 # Beer and other stuff accounting - Kitchen O, P. O. Pedersen Kollegiet
 
@@ -36,6 +37,8 @@ You're welcome to fix this. Please see [Contributing](CONTRIBUTING.md).
 
 There is no single way to do it. But [PSR-2](https://www.php-fig.org/psr/psr-2/) is the target.
 
+Combine php cs fixer and php cs: https://github.com/Symplify/EasyCodingStandard
+
 ## One way to do it:
 
 <code>php-cs-fixer-v2 fix --rules=@PSR2 .</code>
@@ -53,3 +56,7 @@ Analyze the code with:
 
 Try to fix stuff with:
 <code>phpcbf --standard=PSR2 --ignore=/vendor/*,/bootstrap/*,/storage/framework/views*,*.blade.php,*.js,*.css .</code>
+
+# PHP Linter
+
+https://github.com/overtrue/phplint
