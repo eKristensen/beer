@@ -6,6 +6,7 @@
 [![StyleCI](https://github.styleci.io/repos/123131937/shield?branch=master)](https://github.styleci.io/repos/123131937)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/eKristensen/beer/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/eKristensen/beer/?branch=master)
 [![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FeKristensen%2Fbeer.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FeKristensen%2Fbeer?ref=badge_shield)
+[![Code Coverage](https://scrutinizer-ci.com/g/eKristensen/beer/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/eKristensen/beer/?branch=master)
 
 # Beer and other stuff accounting - Kitchen O, P. O. Pedersen Kollegiet
 
