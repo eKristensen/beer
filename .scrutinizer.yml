@@ -1,0 +1,41 @@
+build:
+    nodes:
+        analysis:
+            project_setup:
+                override:
+                    - 'true'
+            tests:
+                override:
+                    - php-scrutinizer-run
+                    -
+                        command: phpcs-run
+                        use_website_config: true
+                    - js-scrutinizer-run
+        tests: true
+    coverage:
+      tests:
+        override:
+          - command: vendor/bin/phpunit --coverage-clover=coverage.xml
+            coverage:
+              file: coverage.xml
+
+              # These formats are supported:
+              # clover, cobertura, jacoco, python-cc, ruby-cc, go-cc, lcov
+              format: clover
+filter:
+    paths:
+        - 'app/*'
+    excluded_paths:
+        - 'app/views/*'
+        - 'app/config/*'
+        - 'app/database/*'
+        - '*.min.js'
+checks:
+    php: true
+    javascript: true
+
+coding_style:
+    php:
+        spaces:
+            around_operators:
+                concatenation: true
