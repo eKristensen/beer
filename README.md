@@ -5,6 +5,7 @@
 [![Coding Standards](https://img.shields.io/badge/cs-PSR--2-yellow.svg)](https://www.php-fig.org/psr/psr-2/)
 [![StyleCI](https://github.styleci.io/repos/123131937/shield?branch=master)](https://github.styleci.io/repos/123131937)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/eKristensen/beer/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/eKristensen/beer/?branch=master)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FeKristensen%2Fbeer.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FeKristensen%2Fbeer?ref=badge_shield)
 
 # Beer and other stuff accounting - Kitchen O, P. O. Pedersen Kollegiet
 
@@ -61,3 +62,7 @@ Try to fix stuff with:
 # PHP Linter
 
 https://github.com/overtrue/phplint
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FeKristensen%2Fbeer.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FeKristensen%2Fbeer?ref=badge_large)
