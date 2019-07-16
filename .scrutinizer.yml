@@ -3,10 +3,12 @@ build:
     environment:
         php:
             version: 7.3
+
+    services:
+        mysql: 5.7
+
     nodes:
         analysis:
-            services:
-                mysql: 5.7
 
             project_setup:
                 override:
@@ -25,8 +27,6 @@ build:
                     - js-scrutinizer-run
         tests: true
         coverage:
-            services:
-                mysql: 5.7
 
             tests:
                 override:
