@@ -33,20 +33,28 @@ class RoomController extends Controller
         $validated = request()->validate([
             'id'     => 'required',
             'name'   => 'nullable',
-            'active' => 'nullable',
+            'active' => 'nullable|in:1',
         ]);
 
+        // Get the room
         $room = Room::find($validated['id']);
-        if ($validated['name'] != '') {
+
+        // Set room name if name is set, and not empty, avoid empty names
+        if (isset($validated['name']) && $validated['name'] != '') {
             $room->name = $validated['name'];
         }
+
+        // Set active to true if it is set otherwise to false
         if (isset($validated['active'])) {
             $room->active = true;
         } else {
             $room->active = false;
         }
+
+        // Save changes
         $room->save();
 
+        // Return to previous page
         return back();
     }
 
