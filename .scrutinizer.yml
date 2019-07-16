@@ -26,7 +26,16 @@ build:
                         command: phpcs-run
                         use_website_config: true
                     - js-scrutinizer-run
-        tests: false
+        tests:
+            tests:
+                override:
+                    - composer self-update
+                    - composer install --no-interaction
+                    - mysql -e 'CREATE DATABASE beer_test;'
+                    - cp .env.travis .env.testing
+                    - cp .env.travis .env
+                    - php artisan key:generate --env=testing
+                    - command: vendor/bin/phpunit
         coverage:
 
             tests:
