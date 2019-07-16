@@ -2,15 +2,22 @@
 build:
     environment:
         php:
-            version: 7.2
+            version: 7.3
     nodes:
         analysis:
+            services:
+                mysql: 5.7
 
             project_setup:
                 override:
                     - 'true'
             tests:
                 override:
+                    - composer self-update
+                    - composer install --no-interaction
+                    - mysql -e 'CREATE DATABASE beer_test;'
+                    - cp .env.travis .env.testing
+                    - php artisan key:generate --env=testing
                     - php-scrutinizer-run
                     -
                         command: phpcs-run
@@ -18,6 +25,9 @@ build:
                     - js-scrutinizer-run
         tests: true
         coverage:
+            services:
+                mysql: 5.7
+
             tests:
                 override:
                     - command: vendor/bin/phpunit --coverage-clover=coverage.xml
