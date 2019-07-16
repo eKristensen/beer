@@ -21,10 +21,10 @@ class DepositController extends Controller
     {
         $validated = request()->validate([
             'room'   => 'required',
-            'amount' => 'required|numeric',
+            'amount' => 'required|numeric|gt:0',
         ]);
 
-        $validated['type'] = 'deposit';
+        $validated['product'] = 'deposit';
         $validated['quantity'] = 1;
         $validated['ipAddress'] = request()->ip();
 
