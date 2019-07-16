@@ -22,7 +22,7 @@ class RegisterCloseAfterOneUserTest extends TestCase
 
     public function testWithUserRegistered()
     {
-        $user = User::create([
+        User::create([
             'password' => Hash::make('password'),
             'email'    => 'example@example.org',
             'name'     => 'John Doe',

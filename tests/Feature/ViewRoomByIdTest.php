@@ -56,7 +56,7 @@ class ViewRoomByIdTest extends TestCase
             'name' => 'Test room',
         ]);
 
-        $response = $this->get('/rooms/1');
+        $response = $this->get('/rooms/'.$room->id);
 
         // Redirect is expected since we're not logged in
         $response->assertStatus(302);
@@ -83,7 +83,7 @@ class ViewRoomByIdTest extends TestCase
         Auth::login($user);
 
         // Get the page
-        $response = $this->get('/rooms/1');
+        $response = $this->get('/rooms/'.$room->id);
 
         // Asser user is logged in now
         $this->assertAuthenticatedAs($user);

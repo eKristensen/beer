@@ -146,7 +146,7 @@ class PatchRoomTest extends TestCase
 
         foreach ($idToTest as $value) {
             // Create room
-            $room = Room::create($value['setup']);
+            Room::create($value['setup']);
 
             // Get the page
             $response = $this->from('/rooms')->patch('/rooms', $value['input']);
