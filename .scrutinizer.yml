@@ -19,6 +19,7 @@ build:
                     - composer install --no-interaction
                     - mysql -e 'CREATE DATABASE beer_test;'
                     - cp .env.travis .env.testing
+                    - cp .env.travis .env
                     - php artisan key:generate --env=testing
                     - php-scrutinizer-run
                     -
@@ -34,6 +35,7 @@ build:
                     - composer install --no-interaction
                     - mysql -e 'CREATE DATABASE beer_test;'
                     - cp .env.travis .env.testing
+                    - cp .env.travis .env
                     - php artisan key:generate --env=testing
                     - command: vendor/bin/phpunit --coverage-clover=coverage.xml
                       coverage:
