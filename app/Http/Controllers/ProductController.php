@@ -20,7 +20,7 @@ class ProductController extends Controller
             'name'     => 'required',
             'color'    => 'nullable',
             'quantity' => 'required',
-            'price'    => 'required',
+            'price'    => 'required|numeric|gt:0',
         ]);
 
         Product::create($validated);
@@ -35,7 +35,7 @@ class ProductController extends Controller
             'name'     => 'required',
             'color'    => 'nullable',
             'quantity' => 'required',
-            'price'    => 'required',
+            'price'    => 'required|numeric|gt:0',
             'active'   => 'nullable',
         ]);
 
