@@ -1,27 +1,44 @@
+---
 build:
+    environment:
+        php:
+            version: 7.3
     nodes:
         analysis:
+            services:
+                mysql: 5.7
+
             project_setup:
                 override:
                     - 'true'
             tests:
                 override:
+                    - composer self-update
+                    - composer install --no-interaction
+                    - mysql -e 'CREATE DATABASE beer_test;'
+                    - cp .env.travis .env.testing
+                    - php artisan key:generate --env=testing
                     - php-scrutinizer-run
                     -
                         command: phpcs-run
                         use_website_config: true
                     - js-scrutinizer-run
         tests: true
-    coverage:
-      tests:
-        override:
-          - command: vendor/bin/phpunit --coverage-clover=coverage.xml
-            coverage:
-              file: coverage.xml
+        coverage:
+            services:
+                mysql: 5.7
 
-              # These formats are supported:
-              # clover, cobertura, jacoco, python-cc, ruby-cc, go-cc, lcov
-              format: clover
+            tests:
+                override:
+                    - composer self-update
+                    - composer install --no-interaction
+                    - mysql -e 'CREATE DATABASE beer_test;'
+                    - cp .env.travis .env.testing
+                    - php artisan key:generate --env=testing
+                    - command: vendor/bin/phpunit --coverage-clover=coverage.xml
+                      coverage:
+                          file: coverage.xml
+                          format: clover
 filter:
     paths:
         - 'app/*'
