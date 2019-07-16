@@ -12,9 +12,4 @@ class Product extends Model
     {
         return explode(',', $this->quantity);
     }
-
-    public function beers()
-    {
-        return $this->hasMany(Beer::class);
-    }
 }
