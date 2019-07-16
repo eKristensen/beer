@@ -27,9 +27,13 @@ build:
                         use_website_config: true
                     - js-scrutinizer-run
         tests:
-            override:
-                # Dont do the test, it doesn't work
-                command: php -v
+            project_setup:
+                override:
+                    - 'true'
+            tests:
+                override:
+                    # Dont do the test, it doesn't work
+                    command: php -v
 
 filter:
     paths:
