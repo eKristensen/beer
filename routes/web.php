@@ -21,8 +21,8 @@ Route::post('/rooms', 'RoomController@store')->middleware('auth');
 Route::patch('/rooms', 'RoomController@patch')->middleware('auth');
 Route::get('/rooms/{room}', 'RoomController@show')->middleware('auth');
 
-Route::get('/deposit', 'RoomController@depositShow')->middleware('auth');
-Route::post('/deposit', 'RoomController@depositStore')->middleware('auth');
+Route::get('/deposit', 'DepositController@index')->middleware('auth');
+Route::post('/deposit', 'DepositController@store')->middleware('auth');
 
 Route::get('/refund', 'BeerController@refund');
 

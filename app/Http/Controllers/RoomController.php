@@ -9,19 +9,6 @@ use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {
-    public function store()
-    {
-        $validated = request()->validate([
-            'id'   => 'required|integer|gt:0',
-            'name' => 'required',
-        ]);
-
-        // Create and save user
-        Room::create($validated);
-
-        return back();
-    }
-
     public function index()
     {
         $rooms = Room::where('active', '=', '1')->get();
@@ -30,34 +17,14 @@ class RoomController extends Controller
         return view('rooms.index', compact('rooms', 'products'));
     }
 
-    public function edit()
-    {
-        $rooms = Room::all();
-
-        return view('rooms.edit', compact('rooms'));
-    }
-
-    public function depositShow()
-    {
-        $rooms = Room::all();
-        $total = new Beer();
-        $diff = $total->where('refunded', '=', 0)->sum('amount');
-
-        return view('rooms.deposit', compact('rooms', 'diff'));
-    }
-
-    public function depositStore()
+    public function store()
     {
         $validated = request()->validate([
-            'room'   => 'required',
-            'amount' => 'required|numeric',
+            'id'   => 'required|integer|gt:0',
+            'name' => 'required',
         ]);
 
-        $validated['type'] = 'deposit';
-        $validated['quantity'] = 1;
-        $validated['ipAddress'] = request()->ip();
-
-        Beer::create($validated);
+        Room::create($validated);
 
         return back();
     }
@@ -82,6 +49,13 @@ class RoomController extends Controller
         $room->save();
 
         return back();
+    }
+
+    public function edit()
+    {
+        $rooms = Room::all();
+
+        return view('rooms.edit', compact('rooms'));
     }
 
     public function show(Room $room)
