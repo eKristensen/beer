@@ -30,6 +30,11 @@ build:
 
             tests:
                 override:
+                    - composer self-update
+                    - composer install --no-interaction
+                    - mysql -e 'CREATE DATABASE beer_test;'
+                    - cp .env.travis .env.testing
+                    - php artisan key:generate --env=testing
                     - command: vendor/bin/phpunit --coverage-clover=coverage.xml
                       coverage:
                           file: coverage.xml
