@@ -26,7 +26,6 @@ build:
                         command: phpcs-run
                         use_website_config: true
                     - js-scrutinizer-run
-        tests: true
         coverage:
 
             tests:
