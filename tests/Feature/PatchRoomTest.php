@@ -4,8 +4,6 @@ namespace Tests\Feature;
 
 use App\Room;
 use App\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
@@ -91,10 +89,10 @@ class PatchRoomTest extends TestCase
                     'id' => 1,
                 ],
                 'output' => [
-                    'id' => 1,
-                    'name' => 'Test room',
+                    'id'     => 1,
+                    'name'   => 'Test room',
                     'active' => 0,
-                ]
+                ],
             ],
             [ // Test #2 set active to false implicit
                 'setup' => [
@@ -102,47 +100,47 @@ class PatchRoomTest extends TestCase
                     'name' => 'Test room',
                 ],
                 'input' => [
-                    'id' => 1,
+                    'id'   => 1,
                     'name' => 'Test room changed',
                 ],
                 'output' => [
-                    'id' => 1,
-                    'name' => 'Test room changed',
+                    'id'     => 1,
+                    'name'   => 'Test room changed',
                     'active' => 0,
-                ]
+                ],
             ],
             [ // Test #3, change active test, start with room being inactive
                 'setup' => [
-                    'id'   => 1,
-                    'name' => 'Test room',
+                    'id'     => 1,
+                    'name'   => 'Test room',
                     'active' => false,
                 ],
                 'input' => [
-                    'id' => 1,
+                    'id'     => 1,
                     'active' => 1,
                 ],
                 'output' => [
-                    'id' => 1,
-                    'name' => 'Test room',
+                    'id'     => 1,
+                    'name'   => 'Test room',
                     'active' => 1,
-                ]
+                ],
             ],
             [ // Test #4
                 'setup' => [
-                    'id'   => 1,
-                    'name' => 'Test room',
+                    'id'     => 1,
+                    'name'   => 'Test room',
                     'active' => false,
                 ],
                 'input' => [
-                    'id' => 1,
-                    'name' => 'Test room changed',
+                    'id'     => 1,
+                    'name'   => 'Test room changed',
                     'active' => 1,
                 ],
                 'output' => [
-                    'id' => 1,
-                    'name' => 'Test room changed',
+                    'id'     => 1,
+                    'name'   => 'Test room changed',
                     'active' => 1,
-                ]
+                ],
             ],
         ];
 
@@ -186,20 +184,20 @@ class PatchRoomTest extends TestCase
         // Test different id's:
         // true = error is expected, false error is not expected
         $idToTest = [
-            0  => true,
-            true => true,
+            0     => true,
+            true  => true,
             false => true,
-            '0' => true,
-            'a' => true,
-            '1' => false,
-            1  => false,
-            null => false,
+            '0'   => true,
+            'a'   => true,
+            '1'   => false,
+            1     => false,
+            null  => false,
         ];
 
         foreach ($idToTest as $key => $value) {
             // Get the page
             $response = $this->from('/rooms')->patch('/rooms', [
-                'active' => $key
+                'active' => $key,
             ]);
 
             // Redirect back with data about the error
