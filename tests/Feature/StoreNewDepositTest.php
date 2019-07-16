@@ -3,8 +3,6 @@
 namespace Tests\Feature;
 
 use App\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
@@ -124,13 +122,13 @@ class StoreNewDepositTest extends TestCase
 
         // Check that room 22 does not exist prior to the test
         $this->assertDatabaseMissing('beers', [
-            'room'     => 1,
+            'room'      => 1,
             'amount'    => 2.45,
         ]);
 
         // Create room with post
         $response = $this->from('/deposit')->post('/deposit', [
-            'room'     => 1,
+            'room'      => 1,
             'amount'    => 2.45,
         ]);
 
@@ -143,10 +141,10 @@ class StoreNewDepositTest extends TestCase
 
         // Check the newly created room is stored
         $this->assertDatabaseHas('beers', [
-            'room'     => 1,
+            'room'      => 1,
             'amount'    => 2.45,
-            'product' => 'deposit',
-            'quantity' => 1,
+            'product'   => 'deposit',
+            'quantity'  => 1,
             'ipAddress' => request()->ip(),
         ]);
     }
