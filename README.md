@@ -44,6 +44,10 @@ In here, create the admin user with the following commands:
     $user->password = Hash::make('your-super-secure-password');
     $user->save();
 
+Exit the shell with
+
+    exit();
+
 # Security risks
 
 If you use this system on your own then please not that there is no limitation to who can place a order. Anybody who can access the website can buy anything on behalf of anyone. The webserver should be protected so that the purchase site not is public. If you get a leak, it is possible to remove imposters, since the IP for each purchase is noted.
