@@ -33,10 +33,10 @@ class ProductController extends Controller
         $validated = request()->validate([
             'id'       => 'required',
             'name'     => 'required',
-            'color'    => 'nullable',
+            'color'    => 'required',
             'quantity' => 'required',
             'price'    => 'required|numeric|gt:0',
-            'active'   => 'nullable',
+            'active'   => 'nullable|in:1',
         ]);
 
         $product = Product::find($validated['id']);
