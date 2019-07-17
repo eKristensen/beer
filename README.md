@@ -30,6 +30,20 @@ To use the application you must set a application key, do that with:
 
 When in the project root.
 
+## Create admin user
+
+In the root of the project enter PHP artisan tinker:
+
+    php artisan tinker
+
+In here, create the admin user with the following commands:
+
+    $user = new User();
+    $user->name = "Your name";
+    $user->email = "your-email@example.org";
+    $user->password = Hash::make('your-super-secure-password');
+    $user->save();
+
 # Security risks
 
 If you use this system on your own then please not that there is no limitation to who can place a order. Anybody who can access the website can buy anything on behalf of anyone. The webserver should be protected so that the purchase site not is public. If you get a leak, it is possible to remove imposters, since the IP for each purchase is noted.
