@@ -22,6 +22,32 @@ class RedirectIfAuthenticated extends TestCase
         $response->assertRedirect('/login');
     }
 
+    // Test middleware RedirectIfAuthenticated works
+    public function testRedirectIfAuthenticatedMiddleware()
+    {
+        // Insperation: https://semaphoreci.com/community/tutorials/testing-middleware-in-laravel-with-phpunit
+
+        // Create a user
+        $user = User::create([
+            'password' => Hash::make('password'),
+            'email'    => 'example@example.org',
+            'name'     => 'John Doe',
+        ]);
+
+        $this->actingAs($user);
+
+        $request = Request::create('/login', 'GET');
+
+        $middleware = new RedirectIfAuthenticated;
+
+        // Use the middleware
+        $response = $middleware->handle($request, function () {});
+
+        // Redirect is expected since we're not logged in
+        $response->assertStatus(302);
+        $response->assertRedirect('/rooms/edit');
+    }
+
     // redirect if you try to visit the login page while logged in
     public function testNotAuthenticated()
     {
