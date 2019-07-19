@@ -51,6 +51,10 @@ class ViewBeerRefundTest extends TestCase
 
         $response->assertSee('-'.($product->price * 2).'.00 kr.');
         $response->assertSee($product->name);
+
+        // Check refund button is there
+        $response->assertSee('<button type="button" class="btn btn-danger"'
+            .' onclick="refund('.$beer->id.')">Refunder</button>');
     }
 
     public function testDontShowOldPurchase()
