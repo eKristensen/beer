@@ -37,7 +37,7 @@ class ViewRoomsIndexTest extends TestCase
         $response->assertSee($product->price.' kr');
     }
 
-    public function testProductDisabled()
+    public function testInactiveProductDoesNotShow()
     {
         $product = Product::create([
             'name'     => 'Test product',
@@ -54,6 +54,36 @@ class ViewRoomsIndexTest extends TestCase
         $response->assertDontSee($product->name);
     }
 
+    public function testProductQuantityWorks()
+    {
+        $room = Room::create([
+            'id'   => 1,
+            'name' => 'Test room',
+        ]);
+
+        $product = Product::create([
+            'name'     => 'Test product',
+            'color'    => 'fff',
+            'quantity' => '1,2,5',
+            'price'    => '1232',
+        ]);
+
+        $response = $this->get('/rooms');
+
+        $response->assertStatus(200);
+
+        // Colspan must be right
+        $response->assertSee('colspan="' . count($product->quantities()) . '"');
+
+        // Check buy buttons does show for every price
+        foreach ($product->quantities() as $quantity) {
+            $response->assertSee('<button type="button" class="btn btn-success"'
+                . '  style="background-color: #'.$product->color.';border-color:'
+                . ' #'.$product->color.';"  onclick="buy('.$room->id.',\''
+                . $product->id.'\','.$quantity.')">+'.$quantity.'</button>');
+        }
+    }
+
     public function testRoomShows()
     {
         $room = Room::create([
@@ -68,7 +98,7 @@ class ViewRoomsIndexTest extends TestCase
         $response->assertSee($room->name);
     }
 
-    public function testRoomDisabled()
+    public function testInactiveRoomDoesNotShow()
     {
         $room = Room::create([
             'id'     => 1,
