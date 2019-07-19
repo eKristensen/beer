@@ -38,10 +38,11 @@ class RedirectIfAuthenticated extends TestCase
 
         $request = Request::create('/login', 'GET');
 
-        $middleware = new RedirectIfAuthenticated;
+        $middleware = new self();
 
         // Use the middleware
-        $response = $middleware->handle($request, function () {});
+        $response = $middleware->handle($request, function () {
+        });
 
         // Redirect is expected since we're not logged in
         $response->assertStatus(302);
