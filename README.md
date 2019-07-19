@@ -7,6 +7,7 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/eKristensen/beer/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/eKristensen/beer/?branch=master)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FeKristensen%2Fbeer.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FeKristensen%2Fbeer?ref=badge_shield)
 [![GuardRails badge](https://badges.guardrails.io/eKristensen/beer.svg?token=a8b10a6c14e10ac8c0c450b1c0af5ae2cc146cb95722d7e15ee2bf5655d3a199)](https://dashboard.guardrails.io/default/gh/eKristensen/beer)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=eKristensen/beer)](https://dependabot.com)
 
 # Beer and other stuff accounting - Kitchen O, P. O. Pedersen Kollegiet
 
