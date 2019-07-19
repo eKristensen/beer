@@ -33,7 +33,7 @@ class RoomController extends Controller
         $validated = request()->validate([
             'id'     => 'required',
             'name'   => 'nullable',
-            'active' => 'nullable|in:1',
+            'active' => 'nullable|in:on',
         ]);
 
         // Get the room

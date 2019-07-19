@@ -36,7 +36,7 @@ class ProductController extends Controller
             'color'    => 'required',
             'quantity' => 'required',
             'price'    => 'required|numeric|gt:0',
-            'active'   => 'nullable|in:1',
+            'active'   => 'nullable|in:on',
         ]);
 
         $product = Product::find($validated['id']);

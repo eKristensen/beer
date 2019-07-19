@@ -169,7 +169,7 @@ class PatchProductTest extends TestCase
                     'price'    => 7.77,
                     'color'    => '0f0f',
                     'quantity' => '5,8,9',
-                    'active'   => 1,
+                    'active'   => 'on',
                 ],
                 'output' => [
                     'name'     => 'Test product changed',

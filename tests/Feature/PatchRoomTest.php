@@ -117,7 +117,7 @@ class PatchRoomTest extends TestCase
                 ],
                 'input' => [
                     'id'     => 1,
-                    'active' => 1,
+                    'active' => 'on',
                 ],
                 'output' => [
                     'id'     => 1,
@@ -134,7 +134,7 @@ class PatchRoomTest extends TestCase
                 'input' => [
                     'id'     => 1,
                     'name'   => 'Test room changed',
-                    'active' => 1,
+                    'active' => 'on',
                 ],
                 'output' => [
                     'id'     => 1,
@@ -189,8 +189,9 @@ class PatchRoomTest extends TestCase
             false => true,
             '0'   => true,
             'a'   => true,
-            '1'   => false,
-            1     => false,
+            '1'   => true,
+            1     => true,
+            'on'  => false,
             null  => false,
         ];
 
