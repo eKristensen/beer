@@ -3,8 +3,6 @@
 namespace Tests\Feature;
 
 use App\User;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
@@ -33,7 +31,7 @@ class CanLoginTest extends TestCase
 
         // Create room with post
         $response = $this->from('/login')->post('/login', [
-            'email'      => 'example@example.org',
+            'email'       => 'example@example.org',
             'password'    => 'password1234',
         ]);
 
@@ -75,7 +73,7 @@ class CanLoginTest extends TestCase
 
         // Create room with post
         $response = $this->from('/login')->post('/login', [
-            'email'      => 'example@example.org',
+            'email'       => 'example@example.org',
             'password'    => 'not-the-password',
         ]);
 
