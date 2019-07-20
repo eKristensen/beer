@@ -13,12 +13,12 @@
 
 System used to keep track of how drunk we get.
 
-# Enviroment requirements:
+# Enviroment requirements
 
 Ubuntu Server 18.04 LTS recommended, but any server capable of running the following will work:
 
 * Web-server Eg. nginx (see sample config below) or apache
-* PHP 7.3
+* PHP 7.3 or later
 * MySQL or MariaDB server
 
 It is recommended to setup lets encrypt on your webserver. Please look at [Certbot](https://certbot.eff.org/)
