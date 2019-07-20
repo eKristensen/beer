@@ -105,7 +105,7 @@ Baisc config with nginx, https redirect and the server files in <code>/var/www/b
         listen      80;
         server_name example.com;
         location / {
-                return 301 https://$host$request_uri;
+            return 301 https://$host$request_uri;
         }
     }
 
@@ -115,9 +115,6 @@ Baisc config with nginx, https redirect and the server files in <code>/var/www/b
         ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem; # managed by Certbot
         include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
         ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
-
-        allow   192.168.1.0/24;
-        deny    all;
 
         root /var/www/beer/public;
 
@@ -130,7 +127,13 @@ Baisc config with nginx, https redirect and the server files in <code>/var/www/b
         }
 
         location ~ \.php$ {
-                include snippets/fastcgi-php.conf;
-                fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+            include snippets/fastcgi-php.conf;
+            fastcgi_pass unix:/run/php/php7.3-fpm.sock;
         }
     }
+
+Add this to protect the server from outsider if running locally:
+
+
+        allow   192.168.1.0/24;
+        deny    all;
