@@ -123,7 +123,7 @@ Baisc config with nginx, https redirect and the server files in <code>/var/www/b
         server_name example.com;
 
         location / {
-                try_files $uri $uri/ /index.php?$query_string;
+            try_files $uri $uri/ /index.php?$query_string;
         }
 
         location ~ \.php$ {
