@@ -102,11 +102,11 @@ https://github.com/overtrue/phplint
 Baisc config with nginx, https redirect and the server files in <code>/var/www/beer</code>
 
     server {
-            listen      80;
-            server_name example.com;
-            location / {
-                    return 301 https://$host$request_uri;
-            }
+        listen      80;
+        server_name example.com;
+        location / {
+                return 301 https://$host$request_uri;
+        }
     }
 
     server {
@@ -116,22 +116,21 @@ Baisc config with nginx, https redirect and the server files in <code>/var/www/b
         include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
         ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
 
+        allow   192.168.1.0/24;
+        deny    all;
 
-            allow   192.168.1.0/24;
-            deny    all;
+        root /var/www/beer/public;
 
-            root /var/www/beer/public;
+        index index.php index.html index.htm;
 
-            index index.php index.html index.htm;
+        server_name example.com;
 
-            server_name example.com;
+        location / {
+                try_files $uri $uri/ /index.php?$query_string;
+        }
 
-            location / {
-                    try_files $uri $uri/ /index.php?$query_string;
-            }
-
-            location ~ \.php$ {
-                    include snippets/fastcgi-php.conf;
-                    fastcgi_pass unix:/run/php/php7.3-fpm.sock;
-            }
+        location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+                fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+        }
     }
