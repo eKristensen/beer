@@ -134,5 +134,4 @@ Baisc config with nginx, https redirect and the server files in <code>/var/www/b
                     include snippets/fastcgi-php.conf;
                     fastcgi_pass unix:/run/php/php7.3-fpm.sock;
             }
-
-
+    }
