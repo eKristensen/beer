@@ -13,6 +13,16 @@
 
 System used to keep track of how drunk we get.
 
+# Enviroment requirements:
+
+Ubuntu Server 18.04 LTS recommended, but any server capable of running the following will work:
+
+* Web-server Eg. nginx (see sample config below) or apache
+* PHP 7.3
+* MySQL or MariaDB server
+
+It is recommended to setup lets encrypt on your webserver. Please look at [Certbot](https://certbot.eff.org/)
+
 # Install instructions
 
 This is a laravel project. Some steps from https://laravel.com/docs/5.8/installation do still apply here. Webserver must have PHP 7.2 or newer and point to the public folder.
@@ -86,3 +96,43 @@ https://github.com/overtrue/phplint
 
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FeKristensen%2Fbeer.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FeKristensen%2Fbeer?ref=badge_large)
+
+# Nginx sample configuration
+
+Baisc config with nginx, https redirect and the server files in <code>/var/www/beer</code>
+
+    server {
+            listen      80;
+            server_name example.com;
+            location / {
+                    return 301 https://$host$request_uri;
+            }
+    }
+
+    server {
+        listen 443 ssl; # managed by Certbot
+        ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem; # managed by Certbot
+        ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem; # managed by Certbot
+        include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+        ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+
+            allow   192.168.1.0/24;
+            deny    all;
+
+            root /var/www/beer/public;
+
+            index index.php index.html index.htm;
+
+            server_name example.com;
+
+            location / {
+                    try_files $uri $uri/ /index.php?$query_string;
+            }
+
+            location ~ \.php$ {
+                    include snippets/fastcgi-php.conf;
+                    fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+            }
+
+
