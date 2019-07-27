@@ -25,3 +25,5 @@ matrix:
         - bash <(curl -s https://codecov.io/bash) -t f867fcc5-e868-42ee-aa58-40c5dc974fcb
 
     - language: node_js
+      node_js:
+        - node
