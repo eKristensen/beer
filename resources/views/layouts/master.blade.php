@@ -9,6 +9,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="/css/bootstrap.min.css" rel="stylesheet">
+    @yield ('header')
   </head>
 
   <body>
