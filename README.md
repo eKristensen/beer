@@ -93,6 +93,14 @@ Try to fix stuff with:
 
 https://github.com/overtrue/phplint
 
+# Javascript testing
+
+Travis is also testing javascript with vue unit tests
+
+* https://dev.to/tuandm/how-to-test-vue-components-with-laravel-mix-and-mocha-3kgc
+* https://vuejs.org/v2/cookbook/index.html
+* https://vuejs.org/v2/guide/unit-testing.html
+* https://laracasts.com/series/testing-vue/episodes/1
 
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FeKristensen%2Fbeer.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FeKristensen%2Fbeer?ref=badge_large)

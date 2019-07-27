@@ -1,22 +1,27 @@
 ---
 # Inspiration: https://www.fastfwd.com/continuous-integration-laravel-travis-ci/
+# https://stackoverflow.com/questions/27644586/how-to-set-up-travis-ci-with-multiple-languages
 
-language: php
-php:
-  - 7.3
+matrix:
+  include:
+    - language: php
+      php:
+        - 7.3
 
-services:
-  - mysql
+      services:
+        - mysql
 
-before_script:
-  - composer self-update
-  - composer install --no-interaction
-  - mysql -e 'CREATE DATABASE beer_test;'
-  - cp .env.travis .env.testing
-  - php artisan key:generate --env=testing
+      before_script:
+        - composer self-update
+        - composer install --no-interaction
+        - mysql -e 'CREATE DATABASE beer_test;'
+        - cp .env.travis .env.testing
+        - php artisan key:generate --env=testing
 
-script:
-  - vendor/bin/phpunit --coverage-clover=coverage.xml
+      script:
+        - vendor/bin/phpunit --coverage-clover=coverage.xml
 
-after_success:
-  - bash <(curl -s https://codecov.io/bash) -t f867fcc5-e868-42ee-aa58-40c5dc974fcb
+      after_success:
+        - bash <(curl -s https://codecov.io/bash) -t f867fcc5-e868-42ee-aa58-40c5dc974fcb
+
+    - language: node_js
