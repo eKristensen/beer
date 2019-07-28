@@ -78,8 +78,8 @@ class ViewRoomEditTest extends TestCase
         $response->assertStatus(200);
 
         // And that the room data is shown
-        $response->assertSee('<th scope="row">'.$room->id.'</th>');
-        $response->assertSee('<input type="text" class="form-control" '
+        $response->assertSee('<th>'.$room->id.'</th>');
+        $response->assertSee('<input type="text" class="input" '
             .'id="name" name="name" placeholder="Name" value="'.$room->name.'">');
     }
 }

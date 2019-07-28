@@ -77,7 +77,7 @@ class ViewRoomsIndexTest extends TestCase
 
         // Check buy buttons does show for every price
         foreach ($product->quantities() as $quantity) {
-            $response->assertSee('<button type="button" class="btn btn-success"'
+            $response->assertSee('<button type="button" class="button is-success"'
                 .'  style="background-color: #'.$product->color.';border-color:'
                 .' #'.$product->color.';"  onclick="buy('.$room->id.',\''
                 .$product->id.'\','.$quantity.')">+'.$quantity.'</button>');

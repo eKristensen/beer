@@ -146,3 +146,7 @@ Add this to protect the server from outsider if running locally:
 
         allow   192.168.1.0/24;
         deny    all;
+
+# Credits
+
+Converted from [Bootstarp](https://getbootstrap.com/) to [Bulma](https://bulma.io/) with help from https://github.com/laravel-frontend-presets/bulma

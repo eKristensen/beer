@@ -53,7 +53,7 @@ class ViewBeerRefundTest extends TestCase
         $response->assertSee($product->name);
 
         // Check refund button is there
-        $response->assertSee('<button type="button" class="btn btn-danger"'
+        $response->assertSee('<button type="button" class="button is-danger"'
             .' onclick="refund('.$beer->id.')">Refunder</button>');
     }
 

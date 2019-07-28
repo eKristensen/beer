@@ -3,7 +3,7 @@
 @section ('content')
 
 
-<table class="table table-striped table-sm">
+<table class="table is-striped is-fullwidth">
   <thead>
     <tr>
       <th scope="col">Navn</th>
@@ -20,19 +20,28 @@
       <th scope="row">{{ $room->name }}</th>
 @foreach ($products as $product)
       @foreach ($product->quantities() as $amount)
-      <td><button type="button" class="btn btn-success" @if ($product->color != '') style="background-color: #{{ $product->color }};border-color: #{{ $product->color }};" @endif onclick="buy({{ $room->id }},'{{ $product->id }}',{{$amount}})">+{{$amount}}</button></td>
+      <td><button type="button" class="button is-success" @if ($product->color != '') style="background-color: #{{ $product->color }};border-color: #{{ $product->color }};" @endif onclick="buy({{ $room->id }},'{{ $product->id }}',{{$amount}})">+{{$amount}}</button></td>
       @endforeach
 @endforeach
 
-      <td><button type="button" class="btn btn-info" onclick="sum({{ $room->id }})">Tjek</button></td>
+      <td><button type="button" class="button is-info" onclick="sum({{ $room->id }})">Tjek</button></td>
     </tr>
 @endforeach
 
   </tbody>
 </table>
 
-<hr>
+<nav class="card">
+  <header class="card-header">
+      <p class="card-header-title">
+          Inden for 30 minutter kan dit køb fortrydes. Vælg de køb der skal refunderes.
+      </p>
+      <p class="card-content">
+          <a href=/refund role="button" class="button is-danger">Fortryd</a>
+      </p>
+  </header>
+</nav>
 
-Inden for 30 minutter kan dit køb fortrydes. Vælg de køb der skal refunderes. <a href=/refund role="button" class="btn btn-danger">Fortryd</a>
+
 
 @endsection ('content')

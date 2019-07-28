@@ -5,6 +5,11 @@
 // Variables
 @import "variables";
 
+// Bulma
+// https://bulma.io/documentation/customize/with-node-sass/
+@charset "utf-8";
+@import "bulma";
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);

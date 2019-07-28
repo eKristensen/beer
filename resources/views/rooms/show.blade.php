@@ -1,59 +1,56 @@
 @extends('layouts.app')
 
+@section('content')
+    <div class="container">
+        <div class="columns is-marginless is-centered">
+            <div class="column is-7">
+                <nav class="card">
+                    <header class="card-header">
+                        <p class="card-header-title">
+                            Transtrationer for konto id: {{ $room->id }}
+                        </p>
+                    </header>
 
-@section ('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Transtrationer for konto id: {{ $room->id }}</div>
+                    <div class="card-content">
+                      <table class="table is-striped">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Type</th>
+                            <th>Produkt</th>
+                            <th>Antal</th>
+                            <th>Total</th>
+                            <th>IP</th>
+                            <th>Oprettet</th>
+                            <th>Ændret</th>
+                            <th>Refunderet</th>
+                          </tr>
+                        </thead>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+                        <tbody>
+                          @foreach ($beers as $beer)
 
-<table class="table table-striped table-sm">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Type</th>
-      <th scope="col">Produkt</th>
-      <th scope="col">Antal</th>
-      <th scope="col">Total</th>
-      <th scope="col">IP</th>
-      <th scope="col">Oprettet</th>
-      <th scope="col">Ændret</th>
-      <th scope="col">Refunderet</th>
-    </tr>
-  </thead>
+                              <tr>
+                                <th scope="row">{{$beer->id}}</th>
 
-  <tbody>
-@foreach ($beers as $beer)
-    
-        <tr>
-      <th scope="row">{{$beer->id}}</th>
+                                <td>{{$beer->type}}</td>
+                                <td>{{$beer->product}}</td>
+                                <td>{{$beer->quantity}}</td>
+                                <td>{{$beer->amount}}</td>
+                                <td>{{$beer->ipAddress}}</td>
+                                <td>{{$beer->created_at}}</td>
+                                <td>{{$beer->updated_at}}</td>
+                                <td>{{$beer->refunded}}</td>
 
-    <td>{{$beer->type}}</td>
-    <td>{{$beer->product}}</td>
-    <td>{{$beer->quantity}}</td>
-    <td>{{$beer->amount}}</td>
-    <td>{{$beer->ipAddress}}</td>
-    <td>{{$beer->created_at}}</td>
-    <td>{{$beer->updated_at}}</td>
-    <td>{{$beer->refunded}}</td>
+                              </tr>
+                          @endforeach
 
-     </tr>
-@endforeach
+                        </tbody>
+                      </table>
 
-  </tbody>
-</table>
-
-                </div>
+                    </div>
+                </nav>
             </div>
-            
-
-
-@endsection ('content')
+        </div>
+    </div>
+@endsection

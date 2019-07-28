@@ -2,13 +2,32 @@
 
 @section ('content')
 
-<h1>Siden er hentet: {{ \Carbon\Carbon::now() }}</h1>
+<section class="hero is-primary">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                Siden er hentet: {{ \Carbon\Carbon::now() }}
+            </h1>
+        </div>
+    </div>
+</section>
 
-<a href=/rooms role="button" class="btn btn-primary">Tilbage</a>
+<br>
 
-<p>Betalinger for de sidste 30 minutter kan fortrydes</p>
+<nav class="card">
+  <header class="card-header">
+      <p class="card-header-title">
+          Betalinger for de sidste 30 minutter kan fortrydes
+      </p>
+      <p class="card-content">
+          <a href=/rooms role="button" class="button is-primary">Tilbage</a>
+      </p>
+  </header>
+</nav>
 
-<table class="table table-striped table-sm">
+<br>
+
+<table class="table is-striped is-fullwidth">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -40,7 +59,7 @@
         @if ($beer->refunded)
         Refunderet
         @else
-        <button type="button" class="btn btn-danger" onclick="refund({{ $beer->id }})">Refunder</button>
+        <button type="button" class="button is-danger" onclick="refund({{ $beer->id }})">Refunder</button>
         @endif
         </td>
     </tr>
@@ -51,6 +70,6 @@
 
 <hr>
 
-<a href=/rooms role="button" class="btn btn-primary">Tilbage</a>
+<a href=/rooms role="button" class="button is-primary is-pulled-right">Tilbage</a>
 
 @endsection ('content')
