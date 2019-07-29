@@ -105,6 +105,7 @@ Route::get('/statistics', function () {
             (int) $room->count,
         ]);
     }
+
     return [
         'data' => $output,
     ];

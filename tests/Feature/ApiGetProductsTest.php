@@ -3,8 +3,6 @@
 namespace Tests\Feature;
 
 use App\Product;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ApiGetProductsTest extends TestCase
@@ -39,7 +37,7 @@ class ApiGetProductsTest extends TestCase
         $response->assertJson([
             'data' => [
                 [
-                    'id' => $product->id,
+                    'id'   => $product->id,
                     'name' => $product->name,
                 ],
             ],
@@ -69,7 +67,6 @@ class ApiGetProductsTest extends TestCase
     // Test more than one product can show
     public function testMoreOnlyActiveShows()
     {
-
         $product_1 = Product::create([
             'name'     => 'Test product 1',
             'color'    => 'fff',
@@ -77,14 +74,12 @@ class ApiGetProductsTest extends TestCase
             'price'    => '1232.00',
         ]);
 
-
         $product_2 = Product::create([
             'name'     => 'Test product 2',
             'color'    => 'fff',
             'quantity' => '1,2,5',
             'price'    => '1232.00',
         ]);
-
 
         $product_3 = Product::create([
             'name'     => 'Test product 3',
@@ -103,11 +98,11 @@ class ApiGetProductsTest extends TestCase
         $response->assertJson([
             'data' => [
                 [
-                    'id' => $product_1->id,
+                    'id'   => $product_1->id,
                     'name' => $product_1->name,
                 ],
                 [
-                    'id' => $product_2->id,
+                    'id'   => $product_2->id,
                     'name' => $product_2->name,
                 ],
             ],
