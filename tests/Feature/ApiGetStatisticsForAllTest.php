@@ -18,6 +18,8 @@ class ApiGetStatisticsForAllTest extends TestCase
     {
         $response = $this->get('/api/statistics');
 
+        $response->assertSee('Yo man whats wrong?');
+
         $response->assertStatus(200);
     }
 
