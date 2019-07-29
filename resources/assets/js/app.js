@@ -16,7 +16,7 @@ const axios = require('axios');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('high-score', require('./components/HighScoreComponent.vue').default);
 
 const app = new Vue({
     el: '#app'

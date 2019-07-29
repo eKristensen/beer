@@ -67,7 +67,7 @@
                             </td>
 
                             <td>
-                            <button type="submit" class="btn btn-primary">Rediger</button>
+                            <button type="submit" class="button">Rediger</button>
                             </td>
                           </tr>
                             </tbody>

@@ -1,10 +1,13 @@
 <?php
 
 use App\Beer;
+use App\Http\Resources\Product as ProductResource;
 use App\Product;
 use App\Room;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,5 +74,38 @@ Route::get('/refund/{beer}', function (Beer $beer) {
             'refunded' => $beer->refunded,
             'amount'   => $beer->amount,
         ],
+    ];
+});
+
+Route::get('/products', function () {
+    return ProductResource::collection(Product::all()->where('active', '=', true));
+});
+
+Route::get('/statistics', function () {
+    $rooms = DB::table('rooms')
+        ->select(DB::raw('sum(beers.quantity) as count, rooms.name'))
+        ->leftJoin('beers', function ($join) {
+            $join->on('rooms.id', '=', 'beers.room')
+                ->join('products', 'beers.product', '=', 'products.id')
+                ->where('products.active', '=', true)
+                ->where('beers.refunded', '=', false)
+                ->where('beers.created_at', '>', Carbon::now()
+                    ->subDays(30)
+                    ->toDateTimeString());
+        })
+        ->where('rooms.active', '=', true)
+        ->groupBy('rooms.id')
+        ->get();
+
+    $output = [];
+
+    foreach ($rooms as $room) {
+        array_push($output, [
+            $room->name,
+            (int) $room->count,
+        ]);
+    }
+    return [
+        'data' => $output,
     ];
 });
