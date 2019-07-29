@@ -5,8 +5,6 @@ namespace Tests\Feature;
 use App\Beer;
 use App\Product;
 use App\Room;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ApiGetStatisticsForAllTest extends TestCase
@@ -82,7 +80,7 @@ class ApiGetStatisticsForAllTest extends TestCase
             'color'    => 'fff',
             'quantity' => '1,2,5',
             'price'    => '1232.00',
-            'active' => false,
+            'active'   => false,
         ]);
 
         $quantity = 2;
@@ -125,7 +123,7 @@ class ApiGetStatisticsForAllTest extends TestCase
             'name'     => 'Test product',
             'color'    => 'fff',
             'quantity' => '1,2,5',
-            'price'    => '1232.00'
+            'price'    => '1232.00',
         ]);
 
         $quantity = 2;
@@ -163,8 +161,8 @@ class ApiGetStatisticsForAllTest extends TestCase
     {
         // Sample data
         $room = Room::create([
-            'id'   => 1,
-            'name' => 'Test room',
+            'id'     => 1,
+            'name'   => 'Test room',
             'active' => false,
         ]);
 
