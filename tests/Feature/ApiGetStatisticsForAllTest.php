@@ -261,5 +261,7 @@ class ApiGetStatisticsForAllTest extends TestCase
     // Sikre at værelse som har vælgt at "opt-out" ikke er med i statistik
     // Tilføj test hvor feltet opt-out tilføjes til "Room" modellen.
 
+    // Viser korrekt værelsesnavn og tælling når flere værelser hentes ned
+
     // Tjek det sorteret efter antal (tilføje order by count() stuff)
 }
