@@ -1,7 +1,6 @@
 <?php
 
 use App\Beer;
-use App\Http\Resources\Product as ProductResource;
 use App\Product;
 use App\Room;
 use Carbon\Carbon;
@@ -78,7 +77,12 @@ Route::get('/refund/{beer}', function (Beer $beer) {
 });
 
 Route::get('/products', function () {
-    return ProductResource::collection(Product::all()->where('active', '=', true));
+    return [
+        'data' => DB::table('products')
+            ->select('id', 'name')
+            ->where('active', '=', true)
+            ->get()
+    ];
 });
 
 Route::get('/statistics', function () {
