@@ -81,7 +81,7 @@ Route::get('/products', function () {
         'data' => DB::table('products')
             ->select('id', 'name')
             ->where('active', '=', true)
-            ->get()
+            ->get(),
     ];
 });
 
