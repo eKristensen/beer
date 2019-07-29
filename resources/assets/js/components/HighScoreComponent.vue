@@ -79,7 +79,13 @@
                     this.products = response.data.data;
                 })
                 .catch(error => {
-                    this.products = "Error";
+                    // TODO Error
+                    Swal.fire({
+                      title: 'Det skete en fejl.',
+                      text: error,
+                      type: 'error',
+                      timer: 3000
+                    })
                 });
             },
             get_all_statistics() {
@@ -104,6 +110,12 @@
                 })
                 .catch(error => {
                     // TODO Error
+                    Swal.fire({
+                      title: 'Det skete en fejl.',
+                      text: error,
+                      type: 'error',
+                      timer: 3000
+                    })
                 });
             },
             get_statistics(product) {
@@ -127,6 +139,12 @@
                 })
                 .catch(error => {
                     // TODO Error
+                    Swal.fire({
+                      title: 'Det skete en fejl.',
+                      text: error,
+                      type: 'error',
+                      timer: 3000
+                    })
                 });
             }
         },
