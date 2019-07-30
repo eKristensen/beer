@@ -38,8 +38,7 @@ let buyfunc = function buy(room,type,quantity) {
     Swal.fire({
       title: 'Det skete en fejl.',
       text: error,
-      type: 'error',
-      timer: 3000
+      type: 'error'
     })
     console.log(error);
   });
@@ -62,8 +61,7 @@ let sumfunc = function sum(room) {
     Swal.fire({
       title: 'Det skete en fejl.',
       text: error,
-      type: 'error',
-      timer: 3000
+      type: 'error'
     })
     console.log(error);
   });
@@ -86,8 +84,7 @@ let refundfunc = function refund(id) {
     Swal.fire({
       title: 'Det skete en fejl.',
       text: error,
-      type: 'error',
-      timer: 3000
+      type: 'error'
     })
     console.log(error);
   });
