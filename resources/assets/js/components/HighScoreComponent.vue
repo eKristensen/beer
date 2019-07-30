@@ -32,7 +32,7 @@
                         type: 'column'
                     },
                     title: {
-                        text: 'Statistik'
+                        text: 'Vælg produkt for at se statistik'
                     },
                     subtitle: {
                         text: 'For de sidste 30 dage'
