@@ -55,6 +55,7 @@
                     series: [{
                         name: 'Vælg data',
                         data: [
+                            [' ', 0]
                         ],
                         dataLabels: {
                             enabled: true,

@@ -37,7 +37,7 @@
           Inden for 30 minutter kan dit køb fortrydes. Vælg de køb der skal refunderes.
       </p>
       <p class="card-content">
-          <a href=/refund role="button" class="button is-danger">Fortryd</a>
+          <a href=/highscore role="button" class="button is-warning">Highscore</a> <a href=/refund role="button" class="button is-danger">Fortryd</a>
       </p>
   </header>
 </nav>
