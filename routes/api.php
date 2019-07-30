@@ -99,7 +99,7 @@ Route::get('/statistics/{product}', function (Product $product) {
                         ->toDateTimeString(),
                     Carbon::now()
                         ->subMinutes(30)
-                        ->toDateTimeString()
+                        ->toDateTimeString(),
                 ])
                 ->where('products.id', '=', $product->id);
         })
@@ -137,7 +137,7 @@ Route::get('/statistics', function () {
                         ->toDateTimeString(),
                     Carbon::now()
                         ->subMinutes(30)
-                        ->toDateTimeString()
+                        ->toDateTimeString(),
                 ]);
         })
         ->where('rooms.active', '=', true)
