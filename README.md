@@ -102,6 +102,7 @@ Travis is also testing javascript with vue unit tests
 * https://vuejs.org/v2/cookbook/index.html
 * https://vuejs.org/v2/guide/unit-testing.html
 * https://laracasts.com/series/testing-vue/episodes/1
+* https://vue-test-utils.vuejs.org/
 
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FeKristensen%2Fbeer.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FeKristensen%2Fbeer?ref=badge_large)

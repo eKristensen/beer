@@ -98,7 +98,9 @@ Route::get('/statistics', function () {
                     ->toDateTimeString());
         })
         ->where('rooms.active', '=', true)
+        ->where('rooms.statistics', '=', true)
         ->groupBy('rooms.id')
+        ->orderBy('count', 'desc')
         ->get();
 
     $output = [];

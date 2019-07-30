@@ -260,8 +260,86 @@ class ApiGetStatisticsForAllTest extends TestCase
 
     // Sikre at værelse som har vælgt at "opt-out" ikke er med i statistik
     // Tilføj test hvor feltet opt-out tilføjes til "Room" modellen.
+    public function testStatisticsSetToFalseIsRespected()
+    {
+        // Sample data
+        $room = Room::create([
+            'id'   => 1,
+            'name' => 'Test room',
+        ]);
+
+        $room->statistics = false;
+        $room->save();
+        $this->assertEquals(Room::find($room->id)->statistics, false);
+
+        $response = $this->get('/api/statistics');
+
+        // Expect a code 200 OK
+        $response->assertStatus(200);
+
+        // Assert proper JSON response
+        $response->assertDontSee($room->name);
+    }
 
     // Viser korrekt værelsesnavn og tælling når flere værelser hentes ned
-
     // Tjek det sorteret efter antal (tilføje order by count() stuff)
+    public function testCheckOrderingOfMultiplateOrderes()
+    {
+        // Sample data
+        $room_1 = Room::create([
+            'id'   => 1,
+            'name' => 'Test room #1',
+        ]);
+
+        $room_2 = Room::create([
+            'id'   => 2,
+            'name' => 'Test room #2',
+        ]);
+
+        $product = Product::create([
+            'name'     => 'Test product',
+            'color'    => 'fff',
+            'quantity' => '1,2,5',
+            'price'    => '1232.00',
+        ]);
+
+        $quantity = 2;
+
+        // Buy two test product
+        $beer_1 = Beer::create([
+            'room'      => $room_1->id,
+            'quantity'  => $quantity,
+            'product'   => $product->id,
+            'ipAddress' => request()->ip(),
+            'amount'    => -($product->price * $quantity),
+        ]);
+
+
+        $beer_2 = Beer::create([
+            'room'      => $room_2->id,
+            'quantity'  => 2*$quantity,
+            'product'   => $product->id,
+            'ipAddress' => request()->ip(),
+            'amount'    => -($product->price * $quantity),
+        ]);
+
+        $response = $this->get('/api/statistics');
+
+        // Expect a code 200 OK
+        $response->assertStatus(200);
+
+        // Assert proper JSON response
+        $response->assertJson([
+            'data' => [
+                [
+                    $room_2->name,
+                    $beer_2->quantity,
+                ],
+                [
+                    $room_1->name,
+                    $beer_1->quantity,
+                ],
+            ],
+        ]);
+    }
 }
