@@ -314,10 +314,9 @@ class ApiGetStatisticsForAllTest extends TestCase
             'amount'    => -($product->price * $quantity),
         ]);
 
-
         $beer_2 = Beer::create([
             'room'      => $room_2->id,
-            'quantity'  => 2*$quantity,
+            'quantity'  => 2 * $quantity,
             'product'   => $product->id,
             'ipAddress' => request()->ip(),
             'amount'    => -($product->price * $quantity),
