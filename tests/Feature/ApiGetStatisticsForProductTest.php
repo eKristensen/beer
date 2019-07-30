@@ -5,8 +5,6 @@ namespace Tests\Feature;
 use App\Beer;
 use App\Product;
 use App\Room;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class ApiGetStatisticsForProductTest extends TestCase
@@ -36,7 +34,6 @@ class ApiGetStatisticsForProductTest extends TestCase
 
         $response->assertStatus(200);
     }
-
 
     public function testCanLoaddata()
     {
