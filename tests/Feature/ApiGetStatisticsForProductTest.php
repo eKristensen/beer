@@ -21,6 +21,51 @@ class ApiGetStatisticsForProductTest extends TestCase
         $response->assertStatus(404);
     }
 
+    public function testDontCountIfLessThanThirtyMinutesOld()
+    {
+        // Sample data
+        $room = Room::create([
+            'id'   => 1,
+            'name' => 'Test room',
+        ]);
+
+        $product = Product::create([
+            'name'     => 'Test product',
+            'color'    => 'fff',
+            'quantity' => '1,2,5',
+            'price'    => '1232.00',
+        ]);
+
+        $quantity = 2;
+
+        // Buy two test product
+        $beer = Beer::create([
+            'room'      => $room->id,
+            'quantity'  => $quantity,
+            'product'   => $product->id,
+            'ipAddress' => request()->ip(),
+            'amount'    => -($product->price * $quantity),
+        ]);
+
+        $response = $this->get('/api/statistics/'.$product->id);
+
+        // Expect a code 200 OK
+        $response->assertStatus(200);
+
+        // Assert proper JSON response
+        $response->assertJson([
+            'data' => [
+                [
+                    $room->name,
+                    0,
+                ],
+            ],
+        ]);
+
+        // Check that the count is not text
+        $response->assertDontSee('"'.$beer->quantity.'"');
+    }
+
     public function testPageLoads()
     {
         $product = Product::create([
@@ -60,6 +105,12 @@ class ApiGetStatisticsForProductTest extends TestCase
             'ipAddress' => request()->ip(),
             'amount'    => -($product->price * $quantity),
         ]);
+
+        // Set time to be 31 minutes old so the purchase is included in the statistics
+        \DB::update(
+            'UPDATE beers SET created_at = ?',
+            [\Carbon\Carbon::now()->subMinutes(31)->toDateTimeString()]
+        );
 
         $response = $this->get('/api/statistics/'.$product->id);
 
@@ -108,6 +159,12 @@ class ApiGetStatisticsForProductTest extends TestCase
             'amount'    => -($product->price * $quantity),
         ]);
 
+        // Set time to be 31 minutes old so the purchase is included in the statistics
+        \DB::update(
+            'UPDATE beers SET created_at = ?',
+            [\Carbon\Carbon::now()->subMinutes(31)->toDateTimeString()]
+        );
+
         $response = $this->get('/api/statistics/'.$product->id);
 
         // Expect a code 200 OK
@@ -150,6 +207,12 @@ class ApiGetStatisticsForProductTest extends TestCase
             'ipAddress' => request()->ip(),
             'amount'    => -($product->price * $quantity),
         ]);
+
+        // Set time to be 31 minutes old so the purchase is included in the statistics
+        \DB::update(
+            'UPDATE beers SET created_at = ?',
+            [\Carbon\Carbon::now()->subMinutes(31)->toDateTimeString()]
+        );
 
         // Refunder
         $beer->refund;
@@ -263,6 +326,12 @@ class ApiGetStatisticsForProductTest extends TestCase
             'amount'    => 100,
         ]);
 
+        // Set time to be 31 minutes old so the purchase is included in the statistics
+        \DB::update(
+            'UPDATE beers SET created_at = ?',
+            [\Carbon\Carbon::now()->subMinutes(31)->toDateTimeString()]
+        );
+
         $product = Product::create([
             'name'     => 'Test product',
             'color'    => 'fff',
@@ -357,6 +426,12 @@ class ApiGetStatisticsForProductTest extends TestCase
             'amount'    => -($product->price * $quantity),
         ]);
 
+        // Set time to be 31 minutes old so the purchase is included in the statistics
+        \DB::update(
+            'UPDATE beers SET created_at = ?',
+            [\Carbon\Carbon::now()->subMinutes(31)->toDateTimeString()]
+        );
+
         $response = $this->get('/api/statistics/'.$product->id);
 
         // Expect a code 200 OK
@@ -418,6 +493,12 @@ class ApiGetStatisticsForProductTest extends TestCase
             'ipAddress' => request()->ip(),
             'amount'    => -($product_2->price * $quantity),
         ]);
+
+        // Set time to be 31 minutes old so the purchase is included in the statistics
+        \DB::update(
+            'UPDATE beers SET created_at = ?',
+            [\Carbon\Carbon::now()->subMinutes(31)->toDateTimeString()]
+        );
 
         $response = $this->get('/api/statistics/'.$product_1->id);
 

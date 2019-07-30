@@ -21,6 +21,51 @@ class ApiGetStatisticsForAllTest extends TestCase
         $response->assertStatus(200);
     }
 
+    public function testDontCountIfLessThanThirtyMinutesOld()
+    {
+        // Sample data
+        $room = Room::create([
+            'id'   => 1,
+            'name' => 'Test room',
+        ]);
+
+        $product = Product::create([
+            'name'     => 'Test product',
+            'color'    => 'fff',
+            'quantity' => '1,2,5',
+            'price'    => '1232.00',
+        ]);
+
+        $quantity = 2;
+
+        // Buy two test product
+        $beer = Beer::create([
+            'room'      => $room->id,
+            'quantity'  => $quantity,
+            'product'   => $product->id,
+            'ipAddress' => request()->ip(),
+            'amount'    => -($product->price * $quantity),
+        ]);
+
+        $response = $this->get('/api/statistics');
+
+        // Expect a code 200 OK
+        $response->assertStatus(200);
+
+        // Assert proper JSON response
+        $response->assertJson([
+            'data' => [
+                [
+                    $room->name,
+                    0,
+                ],
+            ],
+        ]);
+
+        // Check that the count is not text
+        $response->assertDontSee('"'.$beer->quantity.'"');
+    }
+
     public function testCanLoaddata()
     {
         // Sample data
@@ -46,6 +91,12 @@ class ApiGetStatisticsForAllTest extends TestCase
             'ipAddress' => request()->ip(),
             'amount'    => -($product->price * $quantity),
         ]);
+
+        // Set time to be 31 minutes old so the purchase is included in the statistics
+        \DB::update(
+            'UPDATE beers SET created_at = ?',
+            [\Carbon\Carbon::now()->subMinutes(31)->toDateTimeString()]
+        );
 
         $response = $this->get('/api/statistics');
 
@@ -94,6 +145,12 @@ class ApiGetStatisticsForAllTest extends TestCase
             'amount'    => -($product->price * $quantity),
         ]);
 
+        // Set time to be 31 minutes old so the purchase is included in the statistics
+        \DB::update(
+            'UPDATE beers SET created_at = ?',
+            [\Carbon\Carbon::now()->subMinutes(31)->toDateTimeString()]
+        );
+
         $response = $this->get('/api/statistics');
 
         // Expect a code 200 OK
@@ -136,6 +193,12 @@ class ApiGetStatisticsForAllTest extends TestCase
             'ipAddress' => request()->ip(),
             'amount'    => -($product->price * $quantity),
         ]);
+
+        // Set time to be 31 minutes old so the purchase is included in the statistics
+        \DB::update(
+            'UPDATE beers SET created_at = ?',
+            [\Carbon\Carbon::now()->subMinutes(31)->toDateTimeString()]
+        );
 
         // Refunder
         $beer->refund;
@@ -242,6 +305,12 @@ class ApiGetStatisticsForAllTest extends TestCase
             'amount'    => 100,
         ]);
 
+        // Set time to be 31 minutes old so the purchase is included in the statistics
+        \DB::update(
+            'UPDATE beers SET created_at = ?',
+            [\Carbon\Carbon::now()->subMinutes(31)->toDateTimeString()]
+        );
+
         $response = $this->get('/api/statistics');
 
         // Expect a code 200 OK
@@ -267,6 +336,12 @@ class ApiGetStatisticsForAllTest extends TestCase
             'id'   => 1,
             'name' => 'Test room',
         ]);
+
+        // Set time to be 31 minutes old so the purchase is included in the statistics
+        \DB::update(
+            'UPDATE beers SET created_at = ?',
+            [\Carbon\Carbon::now()->subMinutes(31)->toDateTimeString()]
+        );
 
         $room->statistics = false;
         $room->save();
@@ -321,6 +396,12 @@ class ApiGetStatisticsForAllTest extends TestCase
             'ipAddress' => request()->ip(),
             'amount'    => -($product->price * $quantity),
         ]);
+
+        // Set time to be 31 minutes old so the purchase is included in the statistics
+        \DB::update(
+            'UPDATE beers SET created_at = ?',
+            [\Carbon\Carbon::now()->subMinutes(31)->toDateTimeString()]
+        );
 
         $response = $this->get('/api/statistics');
 

@@ -93,9 +93,14 @@ Route::get('/statistics/{product}', function (Product $product) {
                 ->join('products', 'beers.product', '=', 'products.id')
                 ->where('products.active', '=', true)
                 ->where('beers.refunded', '=', false)
-                ->where('beers.created_at', '>', Carbon::now()
-                    ->subDays(30)
-                    ->toDateTimeString())
+                ->whereBetween('beers.created_at', [
+                    Carbon::now()
+                        ->subDays(30)
+                        ->toDateTimeString(),
+                    Carbon::now()
+                        ->subMinutes(30)
+                        ->toDateTimeString()
+                ])
                 ->where('products.id', '=', $product->id);
         })
         ->where('rooms.active', '=', true)
@@ -126,9 +131,14 @@ Route::get('/statistics', function () {
                 ->join('products', 'beers.product', '=', 'products.id')
                 ->where('products.active', '=', true)
                 ->where('beers.refunded', '=', false)
-                ->where('beers.created_at', '>', Carbon::now()
-                    ->subDays(30)
-                    ->toDateTimeString());
+                ->whereBetween('beers.created_at', [
+                    Carbon::now()
+                        ->subDays(30)
+                        ->toDateTimeString(),
+                    Carbon::now()
+                        ->subMinutes(30)
+                        ->toDateTimeString()
+                ]);
         })
         ->where('rooms.active', '=', true)
         ->where('rooms.statistics', '=', true)
