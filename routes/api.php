@@ -85,6 +85,40 @@ Route::get('/products', function () {
     ];
 });
 
+Route::get('/statistics/{product}', function (Product $product) {
+    $rooms = DB::table('rooms')
+        ->select(DB::raw('sum(beers.quantity) as count, MAX(rooms.name) as name'))
+        ->leftJoin('beers', function ($join) use ($product) {
+            $join->on('rooms.id', '=', 'beers.room')
+                ->join('products', 'beers.product', '=', 'products.id')
+                ->where('products.active', '=', true)
+                ->where('beers.refunded', '=', false)
+                ->where('beers.created_at', '>', Carbon::now()
+                    ->subDays(30)
+                    ->toDateTimeString())
+                ->where('products.id', '=', $product->id);
+        })
+        ->where('rooms.active', '=', true)
+        ->where('rooms.statistics', '=', true)
+        ->groupBy('rooms.id')
+        ->orderBy('count', 'desc')
+        ->get();
+
+    $output = [];
+
+    foreach ($rooms as $room) {
+        array_push($output, [
+            $room->name,
+            (int) $room->count,
+        ]);
+    }
+
+    return [
+        'data' => $output,
+    ];
+});
+
+
 Route::get('/statistics', function () {
     $rooms = DB::table('rooms')
         ->select(DB::raw('sum(beers.quantity) as count, MAX(rooms.name) as name'))
