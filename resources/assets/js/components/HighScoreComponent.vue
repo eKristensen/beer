@@ -2,10 +2,11 @@
     <div class="container">
         <br>
         <div class="buttons">
+            <a href=/rooms role="button" class="button is-primary">Tilbage</a>
             <button class="button is-loading" v-if="products==null"></button>
-            <button class="button" v-if="products!=null" v-on:click="get_all_statistics()">Alle produkter</button>
+            <button class="button is-link" id="get-all" v-if="products!=null" @click="get_all_statistics()">Alle produkter</button>
             <template v-for="product in products">
-                <button class="button" v-on:click="get_statistics(product)">{{ product.name }}</button>
+                <button class="button is-info" v-on:click="get_statistics(product)">{{ product.name }}</button>
             </template>
         </div>
         <highcharts :options="chartOptions"></highcharts>
@@ -15,6 +16,7 @@
 <script>
     import axios from 'axios';
     import {Chart} from 'highcharts-vue'
+    import Swal from 'sweetalert2'
 
     export default {
         name: 'HighScoreComponent',
@@ -83,8 +85,7 @@
                     Swal.fire({
                       title: 'Det skete en fejl.',
                       text: error,
-                      type: 'error',
-                      timer: 3000
+                      type: 'error'
                     })
                 });
             },
@@ -113,8 +114,7 @@
                     Swal.fire({
                       title: 'Det skete en fejl.',
                       text: error,
-                      type: 'error',
-                      timer: 3000
+                      type: 'error'
                     })
                 });
             },
@@ -142,8 +142,7 @@
                     Swal.fire({
                       title: 'Det skete en fejl.',
                       text: error,
-                      type: 'error',
-                      timer: 3000
+                      type: 'error'
                     })
                 });
             }
