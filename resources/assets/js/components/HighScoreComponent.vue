@@ -125,6 +125,7 @@
                     url: '/api/statistics/'+product.id
                 })
                 .then(response => {
+                    this.chartOptions.title.text = product.name
                     this.chartOptions.series = [{
                         name: product.name,
                         data: response.data.data,
