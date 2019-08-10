@@ -44,10 +44,10 @@ Route::get('/buy/{room}/{product}/{quantity}', function (Room $room, Product $pr
     $beer = $room
         ->beers()
         ->create([
-            'quantity' => $quantity,
-            'product' => $product->id,
+            'quantity'  => $quantity,
+            'product'   => $product->id,
             'ipAddress' => request()->ip(),
-            'amount' => -($product->price * $quantity),
+            'amount'    => -($product->price * $quantity),
         ]);
 
     return [
