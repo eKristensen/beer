@@ -39,3 +39,4 @@ clean-all:
 # Run tests, if error ensure that you run "make"
 check:
 	phpunit
+	npm test

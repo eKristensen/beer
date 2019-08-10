@@ -41,13 +41,14 @@ Route::get('/buy/{room}/{product}/{quantity}', function (Room $room, Product $pr
     }
 
     // Create purchase
-    $beer = new Beer();
-    $beer->room = $room->id;
-    $beer->quantity = $quantity;
-    $beer->product = $product->id;
-    $beer->ipAddress = request()->ip();
-    $beer->amount = -($product->price * $quantity);
-    $beer->save();
+    $beer = $room
+        ->beers()
+        ->create([
+            'quantity' => $quantity,
+            'product' => $product->id,
+            'ipAddress' => request()->ip(),
+            'amount' => -($product->price * $quantity),
+        ]);
 
     return [
             'name'    => $room->name,
