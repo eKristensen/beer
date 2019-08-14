@@ -27,11 +27,11 @@
         "node-sass": "^4.12.0",
         "resolve-url-loader": "^3.1.0",
         "sass": "^1.22.9",
-        "sass-loader": "^7.1.0",
-        "sweetalert2": "^8.15.2",
+        "sass-loader": "^7.2.0",
+        "sweetalert2": "^8.15.3",
         "vue": "^2.6.10",
         "vue-recaptcha": "^1.2.0",
         "vue-template-compiler": "^2.6.10",
-        "webpack": "^4.39.1"
+        "webpack": "^4.39.2"
     }
 }
