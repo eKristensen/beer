@@ -5,7 +5,7 @@
 
 <table class="table is-striped is-fullwidth" style="margin-bottom:0;">
   <thead>
-    <tr>
+    <tr style="font-size: small;">
       <th scope="col">Navn</th>
 @foreach ($products as $product)
       <th scope="col" colspan="{{ count($product->quantities()) }}">{{ $product->name }} ({{ $product->price }} kr)</th>
@@ -17,7 +17,7 @@
 
 @foreach ($rooms as $room)
     <tr>
-      <th scope="row">{{ $room->name }}</th>
+      <th scope="row" style="vertical-align:middle;">{{ $room->name }}</th>
 @foreach ($products as $product)
       @foreach ($product->quantities() as $amount)
       <td><button type="button" class="button is-success" @if ($product->color != '') style="background-color: #{{ $product->color }};border-color: #{{ $product->color }};" @endif onclick="buy({{ $room->id }},'{{ $product->id }}',{{$amount}})">+{{$amount}}</button></td>
