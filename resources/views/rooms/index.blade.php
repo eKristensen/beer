@@ -3,7 +3,7 @@
 @section ('content')
 
 
-<table class="table is-striped is-fullwidth" style="margin-bottom=0;">
+<table class="table is-striped is-fullwidth" style="margin-bottom:0;">
   <thead>
     <tr>
       <th scope="col">Navn</th>
