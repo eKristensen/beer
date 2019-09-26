@@ -40,3 +40,9 @@ clean-all:
 check:
 	phpunit
 	npm test
+
+# Run this on server when deploying a new version of the code
+deploy-update:
+	composer install --no-dev
+	php artisan view:clear
+	php artisan cache:clear
