@@ -51,10 +51,10 @@ Route::get('/buy/{room}/{product}/{quantity}', function (Room $room, Product $pr
         ]);
 
     return [
-            'name'    => $room->name,
-            'product' => $product->name,
-            'sum'     => $room->sum,
-        ];
+        'name'    => $room->name,
+        'product' => $product->name,
+        'sum'     => $room->sum,
+    ];
 
     // Check integer type
 })->where('quantity', '[0-9]+');
