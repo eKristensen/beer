@@ -11,6 +11,6 @@ class KernelSchedulerTest extends TestCase
     {
         // Check that exit code for artisan is 0
         // "0" means no errors, success
-        $this->assertEquals(Artisan::call('schedule:run'),0);
+        $this->assertEquals(Artisan::call('schedule:run'), 0);
     }
 }
