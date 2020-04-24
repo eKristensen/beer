@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/eKristensen/beer.svg?branch=master)](https://travis-ci.com/eKristensen/beer)
 [![codecov](https://codecov.io/gh/eKristensen/beer/branch/master/graph/badge.svg)](https://codecov.io/gh/eKristensen/beer)
-[![Minimum PHP Version](http://img.shields.io/badge/php-%3E%3D%207.3-8892BF.svg)](https://php.net/)
+[![Minimum PHP Version](http://img.shields.io/badge/php-%3E%3D%207.4-8892BF.svg)](https://php.net/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![Coding Standards](https://img.shields.io/badge/cs-PSR--2-yellow.svg)](https://www.php-fig.org/psr/psr-2/)
 [![StyleCI](https://github.styleci.io/repos/123131937/shield?branch=master)](https://github.styleci.io/repos/123131937)
@@ -20,7 +20,7 @@ System used to keep track of how drunk we get.
 Ubuntu Server 18.04 LTS recommended, but any server capable of running the following will work:
 
 * Web-server Eg. nginx (see sample config below) or apache
-* PHP 7.3 or later
+* PHP 7.4 or later
 * MySQL or MariaDB server
 
 It is recommended to setup lets encrypt on your webserver. Please look at [Certbot](https://certbot.eff.org/)
@@ -139,7 +139,7 @@ Baisc config with nginx, https redirect and the server files in <code>/var/www/b
 
         location ~ \.php$ {
             include snippets/fastcgi-php.conf;
-            fastcgi_pass unix:/run/php/php7.3-fpm.sock;
+            fastcgi_pass unix:/run/php/php7.4-fpm.sock;
         }
     }
 
