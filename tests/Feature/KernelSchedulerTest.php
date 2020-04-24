@@ -2,6 +2,7 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Support\Facades\Artisan;
 use Tests\TestCase;
 
 class KernelSchedulerTest extends TestCase
