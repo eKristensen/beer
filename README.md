@@ -17,7 +17,7 @@ System used to keep track of how drunk we get.
 
 # Enviroment requirements
 
-Ubuntu Server 18.04 LTS recommended, but any server capable of running the following will work:
+Ubuntu Server 20.04 LTS recommended, but any server capable of running the following will work:
 
 * Web-server Eg. nginx (see sample config below) or apache
 * PHP 7.4 or later
