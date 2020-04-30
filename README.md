@@ -162,6 +162,8 @@ change this file <code>home/pi/.config/lxsession/LXDE-pi/autostart</code>
     @xset s noblank
     @chromium-browser --app=https://beer.8r.dk/rooms --start-fullscreen
 
+Website: https://www.raspberrypi.org/forums/viewtopic.php?t=132637
+
 # Credits
 
 Converted from [Bootstarp](https://getbootstrap.com/) to [Bulma](https://bulma.io/) with help from https://github.com/laravel-frontend-presets/bulma
