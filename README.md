@@ -153,7 +153,7 @@ Add this to protect the server from outsider if running locally:
 
 Example with an Raspberry Pi with Rasbian minimal desktop.
 
-change this file <code>home/pi/.config/lxsession/LXDE-pi/autostart</code>
+change this file <code>/home/pi/.config/lxsession/LXDE-pi/autostart</code>
 
     @lxpanel --profile LXDE-pi
     @pcmanfm --desktop --profile LXDE-pi
