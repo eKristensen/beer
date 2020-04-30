@@ -155,14 +155,12 @@ Example with an Raspberry Pi with Rasbian minimal desktop.
 
 change this file <code>home/pi/.config/lxsession/LXDE-pi/autostart</code>
 
-<code>
-@lxpanel --profile LXDE-pi
-@pcmanfm --desktop --profile LXDE-pi
-@xscreensaver -no-splash
-@point-rpi
-@xset s noblank
-@chromium-browser --app=https://beer.8r.dk/rooms --start-fullscreen
-</code>
+    @lxpanel --profile LXDE-pi
+    @pcmanfm --desktop --profile LXDE-pi
+    @xscreensaver -no-splash
+    @point-rpi
+    @xset s noblank
+    @chromium-browser --app=https://beer.8r.dk/rooms --start-fullscreen
 
 # Credits
 
