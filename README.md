@@ -17,7 +17,7 @@ System used to keep track of how drunk we get.
 
 # Enviroment requirements
 
-Ubuntu Server 20.04 LTS recommended, but any server capable of running the following will work:
+Ubuntu Server 20.04 LTS or Fedora 32+ is recommended, but any server capable of running the following will work:
 
 * Web-server Eg. nginx (see sample config below) or apache
 * PHP 7.4 or later
@@ -27,7 +27,7 @@ It is recommended to setup lets encrypt on your webserver. Please look at [Certb
 
 # Install instructions
 
-This is a laravel project. Some steps from https://laravel.com/docs/5.8/installation do still apply here. Webserver must have PHP 7.2 or newer and point to the public folder.
+This is a laravel project. Some steps from https://laravel.com/docs/5.8/installation do still apply here. Webserver must have PHP 7.4 or newer and point to the public folder.
 
 On the webserver install dependencies with this command:
 
@@ -108,7 +108,7 @@ Travis is also testing javascript with vue unit tests
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FeKristensen%2Fbeer.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FeKristensen%2Fbeer?ref=badge_large)
 
-# Nginx sample configuration
+# Nginx sample configuration (Ubuntu)
 
 Baisc config with nginx, https redirect and the server files in <code>/var/www/beer</code>
 
@@ -148,6 +148,96 @@ Add this to protect the server from outsider if running locally:
 
         allow   192.168.1.0/24;
         deny    all;
+
+# Nginx sample configuration (Fedora)
+
+Setup of php-fpm is slightly different for Fedora. Use the following as inspiration.
+
+First /etc/nginx/nginx.conf
+
+    # For more information on configuration, see:
+    #   * Official English Documentation: http://nginx.org/en/docs/
+    #   * Official Russian Documentation: http://nginx.org/ru/docs/
+
+    user nginx;
+    worker_processes auto;
+    error_log /var/log/nginx/error.log;
+    pid /run/nginx.pid;
+
+    # Load dynamic modules. See /usr/share/doc/nginx/README.dynamic.
+    include /usr/share/nginx/modules/*.conf;
+
+    events {
+        worker_connections 1024;
+    }
+
+    http {
+        log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+                          '$status $body_bytes_sent "$http_referer" '
+                          '"$http_user_agent" "$http_x_forwarded_for"';
+
+        access_log  /var/log/nginx/access.log  main;
+
+        sendfile            on;
+        tcp_nopush          on;
+        tcp_nodelay         on;
+        keepalive_timeout   65;
+        types_hash_max_size 4096;
+        server_tokens off;
+
+        include             /etc/nginx/mime.types;
+        default_type        application/octet-stream;
+
+        ##
+        # Virtual Host Configs
+        ##
+
+        include /etc/nginx/conf.d/*.conf;
+        include /etc/nginx/sites-enabled/*;
+
+    }
+
+Next the beer site:
+
+    server {
+        listen      80;
+        server_name beer.8r.dk;
+        location / {
+            return 301 https://$host$request_uri;
+        }
+    }
+
+    server {
+        listen 443 ssl; # managed by Certbot
+        ssl_certificate /etc/letsencrypt/live/beer.8r.dk/fullchain.pem; # managed by Certbot
+        ssl_certificate_key /etc/letsencrypt/live/beer.8r.dk/privkey.pem; # managed by Certbot
+        include /etc/letsencrypt/options-ssl-nginx.conf; # managed by Certbot
+        ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem; # managed by Certbot
+
+        allow   192.168.1.0/24;
+        deny    all;
+
+        root /var/www/beer/public;
+
+        index index.php index.html index.htm index.nginx-debian.html;
+
+        server_name beer.8r.dk;
+
+        location / {
+            try_files $uri $uri/ /index.php?$query_string;
+        }
+
+        location ~ \.(php|phar)(/.*)?$ {
+            fastcgi_split_path_info ^(.+\.(?:php|phar))(/.*)$;
+
+            fastcgi_intercept_errors on;
+            fastcgi_index  index.php;
+            include        fastcgi_params;
+            fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+            fastcgi_param  PATH_INFO $fastcgi_path_info;
+            fastcgi_pass   unix:/run/php-fpm/www.sock;
+        }
+    }
 
 # Client setup
 
