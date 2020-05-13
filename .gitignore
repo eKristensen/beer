@@ -24,3 +24,6 @@ reports/
 
 .php_cs.cache
 .phpunit.result.cache
+
+# Dont keep compiled javascript code
+public/js/app.js
