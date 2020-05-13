@@ -119,6 +119,14 @@ Travis is also testing javascript with vue unit tests
 ## License
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FeKristensen%2Fbeer.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FeKristensen%2Fbeer?ref=badge_large)
 
+# Cron job
+
+For automatic updates you could use the <code>beer-update.sh</code> script in this repo with this crontab to update every day at 5am:
+
+    0 5 * * * sh /home/popadmin/homepage-update.sh >/dev/null 2>&1
+
+Please not any issues will be disrecarded. Keep an eye on the upstream code. The intention is only to have working code on the master branch, then this won't be any issue.
+
 # Nginx sample configuration (Ubuntu)
 
 Baisc config with nginx, https redirect and the server files in <code>/var/www/beer</code>
