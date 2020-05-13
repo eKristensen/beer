@@ -43,6 +43,17 @@ To use the application you must set a application key, do that with:
 
 When in the project root.
 
+## Javascript
+
+As pr May 13, 2020 this github repo no longer contains the compiled javascript code. Please compile on your own with npm. Run to get JavaScript working:
+
+    npm install
+    npm run prod
+
+Another easy way to update is with
+
+    make deploy-update
+
 ## Create admin user
 
 In the root of the project enter PHP artisan tinker:
