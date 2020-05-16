@@ -30,7 +30,7 @@ let buyfunc = function buy(room,type,quantity) {
     Swal.fire({
       title: 'Køb: '+quantity+' '+response.data.product,
       html: response.data.name+'<br>Ny saldo: '+response.data.sum+' kr.',
-      type: 'success',
+      icon: 'success',
       timer: 3000
     })
   })
@@ -38,7 +38,7 @@ let buyfunc = function buy(room,type,quantity) {
     Swal.fire({
       title: 'Det skete en fejl.',
       text: error,
-      type: 'error'
+      icon: 'error'
     })
     console.log(error);
   });
@@ -53,7 +53,7 @@ let sumfunc = function sum(room) {
     Swal.fire({
       title: 'Saldo: '+response.data.data.sum + ' kr.',
       text: response.data.data.name,
-      type: 'info',
+      icon: 'info',
       timer: 5000
     })
   })
@@ -61,7 +61,7 @@ let sumfunc = function sum(room) {
     Swal.fire({
       title: 'Det skete en fejl.',
       text: error,
-      type: 'error'
+      icon: 'error'
     })
     console.log(error);
   });
@@ -76,7 +76,7 @@ let refundfunc = function refund(id) {
     Swal.fire({
       title: 'Refunderet',
       html: 'Beløb: '+response.data.data.amount,
-      type: 'success',
+      icon: 'success',
       timer: 3000
     }).then((value) => location.reload())
   })
@@ -84,7 +84,7 @@ let refundfunc = function refund(id) {
     Swal.fire({
       title: 'Det skete en fejl.',
       text: error,
-      type: 'error'
+      icon: 'error'
     })
     console.log(error);
   });

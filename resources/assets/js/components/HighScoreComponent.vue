@@ -86,7 +86,7 @@
                     Swal.fire({
                       title: 'Det skete en fejl.',
                       text: error,
-                      type: 'error'
+                      icon: 'error'
                     })
                 });
             },
@@ -115,7 +115,7 @@
                     Swal.fire({
                       title: 'Det skete en fejl.',
                       text: error,
-                      type: 'error'
+                      icon: 'error'
                     })
                 });
             },
@@ -144,7 +144,7 @@
                     Swal.fire({
                       title: 'Det skete en fejl.',
                       text: error,
-                      type: 'error'
+                      icon: 'error'
                     })
                 });
             }
