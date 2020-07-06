@@ -23,7 +23,7 @@
         "jsdom-global": "^3.0.2",
         "laravel-mix": "^5.0.4",
         "mocha": "^7.2.0",
-        "mochapack": "^2.0.0",
+        "mochapack": "^2.0.2",
         "node-sass": "^4.14.1",
         "resolve-url-loader": "^3.1.1",
         "sass": "^1.26.8",
