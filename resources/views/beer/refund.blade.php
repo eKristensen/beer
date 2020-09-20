@@ -17,7 +17,7 @@
 <nav class="card">
   <header class="card-header">
       <p class="card-header-title">
-          Fortrydelsesreten bortfalder ved brud på plomberingen dog senest 30 minutter efter køb.
+          Fortrydelsesretten bortfalder ved brud på plomberingen dog senest 30 minutter efter køb.
       </p>
       <p class="card-content">
           <a href=/rooms role="button" class="button is-primary">Tilbage</a>
