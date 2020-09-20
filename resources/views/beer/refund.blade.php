@@ -17,7 +17,7 @@
 <nav class="card">
   <header class="card-header">
       <p class="card-header-title">
-          Betalinger for de sidste 30 minutter kan fortrydes
+          Fortrydelsesreten bortfalder ved brud på plomberingen dog senest 30 minutter efter køb.
       </p>
       <p class="card-content">
           <a href=/rooms role="button" class="button is-primary">Tilbage</a>
