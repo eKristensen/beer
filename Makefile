@@ -48,8 +48,10 @@ check:
 
 # Run this on server when deploying a new version of the code
 deploy-update:
+	php artisan down
 	composer install --no-dev
 	php artisan view:clear
 	php artisan cache:clear
 	npm install
 	npm run prod
+	php artisan up
