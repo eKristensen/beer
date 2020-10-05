@@ -5165,16 +5165,16 @@
         },
         {
             "name": "overtrue/phplint",
-            "version": "2.0.3",
+            "version": "2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/overtrue/phplint.git",
-                "reference": "a3be12b40ee4f33a25dfeacc7a5a458742a0d987"
+                "reference": "11f1ac8c583013897fc3f77634530588073a414d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/overtrue/phplint/zipball/a3be12b40ee4f33a25dfeacc7a5a458742a0d987",
-                "reference": "a3be12b40ee4f33a25dfeacc7a5a458742a0d987",
+                "url": "https://api.github.com/repos/overtrue/phplint/zipball/11f1ac8c583013897fc3f77634530588073a414d",
+                "reference": "11f1ac8c583013897fc3f77634530588073a414d",
                 "shasum": ""
             },
             "require": {
@@ -5227,7 +5227,7 @@
                 "phplint",
                 "syntax"
             ],
-            "time": "2020-09-22T11:23:57+00:00"
+            "time": "2020-10-02T04:37:14+00:00"
         },
         {
             "name": "phar-io/manifest",
