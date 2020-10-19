@@ -5341,23 +5341,23 @@
         },
         {
             "name": "php-cs-fixer/diff",
-            "version": "v1.3.0",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHP-CS-Fixer/diff.git",
-                "reference": "78bb099e9c16361126c86ce82ec4405ebab8e756"
+                "reference": "dbd31aeb251639ac0b9e7e29405c1441907f5759"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHP-CS-Fixer/diff/zipball/78bb099e9c16361126c86ce82ec4405ebab8e756",
-                "reference": "78bb099e9c16361126c86ce82ec4405ebab8e756",
+                "url": "https://api.github.com/repos/PHP-CS-Fixer/diff/zipball/dbd31aeb251639ac0b9e7e29405c1441907f5759",
+                "reference": "dbd31aeb251639ac0b9e7e29405c1441907f5759",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.6 || ^7.0"
+                "php": "^5.6 || ^7.0 || ^8.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^5.7.23 || ^6.4.3",
+                "phpunit/phpunit": "^5.7.23 || ^6.4.3 || ^7.0",
                 "symfony/process": "^3.3"
             },
             "type": "library",
@@ -5372,12 +5372,12 @@
             ],
             "authors": [
                 {
-                    "name": "Kore Nordmann",
-                    "email": "mail@kore-nordmann.de"
-                },
-                {
                     "name": "Sebastian Bergmann",
                     "email": "sebastian@phpunit.de"
+                },
+                {
+                    "name": "Kore Nordmann",
+                    "email": "mail@kore-nordmann.de"
                 },
                 {
                     "name": "SpacePossum"
@@ -5388,7 +5388,7 @@
             "keywords": [
                 "diff"
             ],
-            "time": "2018-02-15T16:58:55+00:00"
+            "time": "2020-10-14T08:39:05+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -5650,16 +5650,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "0.12.48",
+            "version": "0.12.50",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "d364cfbac9ffd869570cdfea7eaa6541c3dac666"
+                "reference": "b8248f9c81265af75d6d969ca3252aaf3e998f3a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/d364cfbac9ffd869570cdfea7eaa6541c3dac666",
-                "reference": "d364cfbac9ffd869570cdfea7eaa6541c3dac666",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/b8248f9c81265af75d6d969ca3252aaf3e998f3a",
+                "reference": "b8248f9c81265af75d6d969ca3252aaf3e998f3a",
                 "shasum": ""
             },
             "require": {
@@ -5702,7 +5702,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-01T13:20:16+00:00"
+            "time": "2020-10-16T12:22:23+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -7985,23 +7985,23 @@
         },
         {
             "name": "symplify/autowire-array-parameter",
-            "version": "8.3.33",
+            "version": "8.3.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/autowire-array-parameter.git",
-                "reference": "32383600f4b155cf3eadf51494dcdfd66bbb2c3a"
+                "reference": "32297970a13e160200142d95fb00aee77d7b0943"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/autowire-array-parameter/zipball/32383600f4b155cf3eadf51494dcdfd66bbb2c3a",
-                "reference": "32383600f4b155cf3eadf51494dcdfd66bbb2c3a",
+                "url": "https://api.github.com/repos/symplify/autowire-array-parameter/zipball/32297970a13e160200142d95fb00aee77d7b0943",
+                "reference": "32297970a13e160200142d95fb00aee77d7b0943",
                 "shasum": ""
             },
             "require": {
                 "nette/utils": "^3.0",
                 "php": ">=7.2",
                 "symfony/dependency-injection": "^4.4|^5.1",
-                "symplify/package-builder": "^8.3.33"
+                "symplify/package-builder": "^8.3.40"
             },
             "require-dev": {
                 "phpunit/phpunit": "^8.5|^9.0"
@@ -8032,20 +8032,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-10T21:52:31+00:00"
+            "time": "2020-10-18T00:16:54+00:00"
         },
         {
             "name": "symplify/coding-standard",
-            "version": "8.3.33",
+            "version": "8.3.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/coding-standard.git",
-                "reference": "715ec346c79c0f269abd61e96287e00c6f3ae525"
+                "reference": "d073abb49dad9eedcdd49ff9772b82de02b4db1e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/coding-standard/zipball/715ec346c79c0f269abd61e96287e00c6f3ae525",
-                "reference": "715ec346c79c0f269abd61e96287e00c6f3ae525",
+                "url": "https://api.github.com/repos/symplify/coding-standard/zipball/d073abb49dad9eedcdd49ff9772b82de02b4db1e",
+                "reference": "d073abb49dad9eedcdd49ff9772b82de02b4db1e",
                 "shasum": ""
             },
             "require": {
@@ -8057,18 +8057,21 @@
                 "phpstan/phpstan": "^0.12.40",
                 "slevomat/coding-standard": "^6.3.11",
                 "squizlabs/php_codesniffer": "^3.5",
-                "symplify/autowire-array-parameter": "^8.3.33",
-                "symplify/package-builder": "^8.3.33",
-                "symplify/symplify-kernel": "^8.3.33"
+                "symplify/autowire-array-parameter": "^8.3.40",
+                "symplify/package-builder": "^8.3.40",
+                "symplify/symplify-kernel": "^8.3.40"
             },
             "require-dev": {
+                "doctrine/orm": "^2.7",
                 "nette/application": "^3.0",
                 "nette/bootstrap": "^3.0",
                 "phpunit/phpunit": "^8.5|^9.0",
-                "symplify/easy-coding-standard-tester": "^8.3.33",
-                "symplify/package-builder": "^8.3.33",
-                "symplify/phpstan-extensions": "^8.3.33",
-                "symplify/smart-file-system": "^8.3.33"
+                "symfony/framework-bundle": "^4.4|^5.1",
+                "symfony/http-kernel": "^4.4|^5.1",
+                "symplify/easy-coding-standard-tester": "^8.3.40",
+                "symplify/package-builder": "^8.3.40",
+                "symplify/phpstan-extensions": "^8.3.40",
+                "symplify/smart-file-system": "^8.3.40"
             },
             "type": "library",
             "extra": {
@@ -8098,20 +8101,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-10T21:52:31+00:00"
+            "time": "2020-10-18T00:16:54+00:00"
         },
         {
             "name": "symplify/console-color-diff",
-            "version": "8.3.33",
+            "version": "8.3.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/console-color-diff.git",
-                "reference": "8f1e47f85330b63a2abb412c7e72b6f99010cb99"
+                "reference": "42dddc0d6333f11dc0a3f0da12c81e6008fad990"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/console-color-diff/zipball/8f1e47f85330b63a2abb412c7e72b6f99010cb99",
-                "reference": "8f1e47f85330b63a2abb412c7e72b6f99010cb99",
+                "url": "https://api.github.com/repos/symplify/console-color-diff/zipball/42dddc0d6333f11dc0a3f0da12c81e6008fad990",
+                "reference": "42dddc0d6333f11dc0a3f0da12c81e6008fad990",
                 "shasum": ""
             },
             "require": {
@@ -8121,7 +8124,7 @@
                 "symfony/console": "^4.4|^5.1",
                 "symfony/dependency-injection": "^4.4|^5.1",
                 "symfony/http-kernel": "^4.4|^5.1",
-                "symplify/package-builder": "^8.3.33"
+                "symplify/package-builder": "^8.3.40"
             },
             "require-dev": {
                 "phpunit/phpunit": "^8.5|^9.0"
@@ -8152,20 +8155,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-10T21:52:31+00:00"
+            "time": "2020-10-18T00:16:54+00:00"
         },
         {
             "name": "symplify/easy-coding-standard",
-            "version": "8.3.33",
+            "version": "8.3.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/easy-coding-standard.git",
-                "reference": "61429d1d59bd498bebba48be237eed654af1dbef"
+                "reference": "360a15b389d12bb39337ed37178e706cd831771b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/easy-coding-standard/zipball/61429d1d59bd498bebba48be237eed654af1dbef",
-                "reference": "61429d1d59bd498bebba48be237eed654af1dbef",
+                "url": "https://api.github.com/repos/symplify/easy-coding-standard/zipball/360a15b389d12bb39337ed37178e706cd831771b",
+                "reference": "360a15b389d12bb39337ed37178e706cd831771b",
                 "shasum": ""
             },
             "require": {
@@ -8186,17 +8189,17 @@
                 "symfony/finder": "^4.4|^5.1",
                 "symfony/http-kernel": "^4.4|^5.1",
                 "symfony/yaml": "^4.4|^5.1",
-                "symplify/autowire-array-parameter": "^8.3.33",
-                "symplify/coding-standard": "^8.3.33",
-                "symplify/console-color-diff": "^8.3.33",
-                "symplify/package-builder": "^8.3.33",
-                "symplify/set-config-resolver": "^8.3.33",
-                "symplify/smart-file-system": "^8.3.33",
-                "symplify/symplify-kernel": "^8.3.33"
+                "symplify/autowire-array-parameter": "^8.3.40",
+                "symplify/coding-standard": "^8.3.40",
+                "symplify/console-color-diff": "^8.3.40",
+                "symplify/package-builder": "^8.3.40",
+                "symplify/set-config-resolver": "^8.3.40",
+                "symplify/smart-file-system": "^8.3.40",
+                "symplify/symplify-kernel": "^8.3.40"
             },
             "require-dev": {
                 "phpunit/phpunit": "^8.5|^9.0",
-                "symplify/easy-coding-standard-tester": "^8.3.33"
+                "symplify/easy-coding-standard-tester": "^8.3.40"
             },
             "bin": [
                 "bin/ecs"
@@ -8232,20 +8235,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-10T21:52:31+00:00"
+            "time": "2020-10-18T00:16:54+00:00"
         },
         {
             "name": "symplify/package-builder",
-            "version": "8.3.33",
+            "version": "8.3.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/package-builder.git",
-                "reference": "08b6abfea796ab8eebf9712a1dcefb231dc4f1eb"
+                "reference": "b6c85a5cc975ca2710e01d4c06d905dba7bd4b58"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/package-builder/zipball/08b6abfea796ab8eebf9712a1dcefb231dc4f1eb",
-                "reference": "08b6abfea796ab8eebf9712a1dcefb231dc4f1eb",
+                "url": "https://api.github.com/repos/symplify/package-builder/zipball/b6c85a5cc975ca2710e01d4c06d905dba7bd4b58",
+                "reference": "b6c85a5cc975ca2710e01d4c06d905dba7bd4b58",
                 "shasum": ""
             },
             "require": {
@@ -8258,8 +8261,8 @@
                 "symfony/finder": "^4.4|^5.1",
                 "symfony/http-kernel": "^4.4|^5.1",
                 "symfony/yaml": "^4.4|^5.1",
-                "symplify/autowire-array-parameter": "^8.3.33",
-                "symplify/symplify-kernel": "^8.3.33"
+                "symplify/autowire-array-parameter": "^8.3.40",
+                "symplify/symplify-kernel": "^8.3.40"
             },
             "require-dev": {
                 "phpunit/phpunit": "^8.5|^9.0"
@@ -8290,20 +8293,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-10T21:52:31+00:00"
+            "time": "2020-10-18T00:16:54+00:00"
         },
         {
             "name": "symplify/set-config-resolver",
-            "version": "8.3.33",
+            "version": "8.3.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/set-config-resolver.git",
-                "reference": "0d180e0ab37029463c717eb05f03f7eeb07b003b"
+                "reference": "3729975d5d684dec6d4234373443a7e143991008"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/set-config-resolver/zipball/0d180e0ab37029463c717eb05f03f7eeb07b003b",
-                "reference": "0d180e0ab37029463c717eb05f03f7eeb07b003b",
+                "url": "https://api.github.com/repos/symplify/set-config-resolver/zipball/3729975d5d684dec6d4234373443a7e143991008",
+                "reference": "3729975d5d684dec6d4234373443a7e143991008",
                 "shasum": ""
             },
             "require": {
@@ -8315,8 +8318,8 @@
                 "symfony/filesystem": "^4.4|^5.1",
                 "symfony/finder": "^4.4|^5.1",
                 "symfony/yaml": "^4.4|^5.1",
-                "symplify/smart-file-system": "^8.3.33",
-                "symplify/symplify-kernel": "^8.3.33"
+                "symplify/smart-file-system": "^8.3.40",
+                "symplify/symplify-kernel": "^8.3.40"
             },
             "require-dev": {
                 "phpunit/phpunit": "^8.5|^9.0"
@@ -8347,20 +8350,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-10T21:52:31+00:00"
+            "time": "2020-10-18T00:16:54+00:00"
         },
         {
             "name": "symplify/smart-file-system",
-            "version": "8.3.33",
+            "version": "8.3.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/smart-file-system.git",
-                "reference": "2f4728940ca40db0122dcfa811fdd3d0e3559cfe"
+                "reference": "ef9f4ae8e6270a6a27c0401a56c8511c5e3bf203"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/smart-file-system/zipball/2f4728940ca40db0122dcfa811fdd3d0e3559cfe",
-                "reference": "2f4728940ca40db0122dcfa811fdd3d0e3559cfe",
+                "url": "https://api.github.com/repos/symplify/smart-file-system/zipball/ef9f4ae8e6270a6a27c0401a56c8511c5e3bf203",
+                "reference": "ef9f4ae8e6270a6a27c0401a56c8511c5e3bf203",
                 "shasum": ""
             },
             "require": {
@@ -8399,20 +8402,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-05T09:48:44+00:00"
+            "time": "2020-10-14T11:43:23+00:00"
         },
         {
             "name": "symplify/symplify-kernel",
-            "version": "8.3.33",
+            "version": "8.3.40",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/symplify-kernel.git",
-                "reference": "a2ac0938111f2582109bd7589a0b739b252a6661"
+                "reference": "6f908c72e22a0b89ab9b587c1c27d9e9417ff2ad"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/symplify-kernel/zipball/a2ac0938111f2582109bd7589a0b739b252a6661",
-                "reference": "a2ac0938111f2582109bd7589a0b739b252a6661",
+                "url": "https://api.github.com/repos/symplify/symplify-kernel/zipball/6f908c72e22a0b89ab9b587c1c27d9e9417ff2ad",
+                "reference": "6f908c72e22a0b89ab9b587c1c27d9e9417ff2ad",
                 "shasum": ""
             },
             "require": {
@@ -8420,8 +8423,8 @@
                 "symfony/console": "^4.4|^5.1",
                 "symfony/dependency-injection": "^4.4|^5.1",
                 "symfony/http-kernel": "^4.4|^5.1",
-                "symplify/package-builder": "^8.3.33",
-                "symplify/smart-file-system": "^8.3.33"
+                "symplify/package-builder": "^8.3.40",
+                "symplify/smart-file-system": "^8.3.40"
             },
             "require-dev": {
                 "phpunit/phpunit": "^8.5|^9.0"
@@ -8442,7 +8445,7 @@
                 "MIT"
             ],
             "description": "Internal Kernel for Symplify packages",
-            "time": "2020-10-10T21:52:31+00:00"
+            "time": "2020-10-18T00:16:54+00:00"
         },
         {
             "name": "theseer/tokenizer",
