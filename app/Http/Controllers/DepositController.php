@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Beer;
 use App\Room;
+use App\PersonToRoomSummary;
 use Illuminate\Http\Request;
 
 class DepositController extends Controller
@@ -11,10 +12,11 @@ class DepositController extends Controller
     public function index()
     {
         $rooms = Room::all();
+        $summary = PersonToRoomSummary::all();
         $total = new Beer();
         $diff = $total->where('refunded', '=', 0)->sum('amount');
 
-        return view('rooms.deposit', compact('rooms', 'diff'));
+        return view('rooms.deposit', compact('rooms', 'diff', 'summary'));
     }
 
     public function store()
