@@ -45,7 +45,7 @@ class ApiGetProductsTest extends TestCase
     }
 
     // Test inactive does not show
-    public function testInactiveIsHidden()
+    public function testInactiveIsShown()
     {
         $product = Product::create([
             'name'     => 'Test product',
@@ -65,7 +65,7 @@ class ApiGetProductsTest extends TestCase
     }
 
     // Test more than one product can show
-    public function testMoreOnlyActiveShows()
+    public function testInctiveProductsShows()
     {
         $product_1 = Product::create([
             'name'     => 'Test product 1',
@@ -104,6 +104,10 @@ class ApiGetProductsTest extends TestCase
                 [
                     'id'   => $product_2->id,
                     'name' => $product_2->name,
+                ],
+                [
+                    'id'   => $product_3->id,
+                    'name' => $product_3->name,
                 ],
             ],
         ]);

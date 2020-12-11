@@ -132,7 +132,7 @@ class ApiGetStatisticsForProductTest extends TestCase
     }
 
     // Kun for aktive produkter
-    public function testInactiveProductIsExcluded()
+    public function testInactiveProductIsIncluded()
     {
         // Sample data
         $room = Room::create([
@@ -175,7 +175,7 @@ class ApiGetStatisticsForProductTest extends TestCase
             'data' => [
                 [
                     $room->name,
-                    0,
+                    2,
                 ],
             ],
         ]);
