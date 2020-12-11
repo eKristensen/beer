@@ -5,7 +5,7 @@ namespace Tests\Feature;
 use App\Product;
 use Tests\TestCase;
 
-class ApiGetProductsTest extends TestCase
+class ApiGetStatisticsProductsTest extends TestCase
 {
     /**
      * A basic feature test example.
@@ -61,7 +61,7 @@ class ApiGetProductsTest extends TestCase
         $response->assertStatus(200);
 
         // Assert proper JSON response
-        $response->assertDontSee($product->name);
+        $response->assertSee($product->name);
     }
 
     // Test more than one product can show
@@ -113,6 +113,6 @@ class ApiGetProductsTest extends TestCase
         ]);
 
         // Check inactive does not show again
-        $response->assertDontSee($product_3->name);
+        $response->assertSee($product_3->name);
     }
 }

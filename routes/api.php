@@ -80,7 +80,7 @@ Route::get('/refund/{beer}', function (Beer $beer) {
 Route::get('/statistics/products', function () {
     $activeProdcuts = DB::table('products')
         ->select(DB::raw('max(products.id) as id, max(products.name) as name, max(products.active) as active'))
-        ->rightJoin('beers', function ($join) {
+        ->leftJoin('beers', function ($join) {
             $join->on('beers.product', '=', 'products.id')
                 ->leftJoin('rooms', 'rooms.id', '=', 'beers.room')
                 ->where('beers.refunded', '=', false)

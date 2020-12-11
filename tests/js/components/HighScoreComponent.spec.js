@@ -20,7 +20,7 @@ describe('HighScoreComponent.vue', () => {
 
     // Mock any GET request to /users
     // arguments for reply are (status, data, headers)
-    mock.onGet('/api/products').reply(200, {
+    mock.onGet('/api/statistics/products').reply(200, {
       data: [
         { id: 1, name: 'Test product #1' },
         { id: 2, name: 'Test product #2' }
@@ -60,7 +60,7 @@ describe('HighScoreComponent.vue', () => {
 
     // Mock any GET request to /users
     // arguments for reply are (status, data, headers)
-    mock.onGet('/api/products').reply(200, {
+    mock.onGet('/api/statistics/products').reply(200, {
       data: [
         { id: 1, name: 'Test product #1' },
         { id: 2, name: 'Test product #2' }
