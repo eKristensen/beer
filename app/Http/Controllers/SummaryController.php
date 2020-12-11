@@ -10,7 +10,7 @@ class SummaryController extends Controller
     public function store()
     {
         $validated = request()->validate([
-            'id'     => 'required',
+            'id'        => 'required',
             'room_id'   => 'required',
         ]);
 
@@ -22,7 +22,7 @@ class SummaryController extends Controller
     public function patch()
     {
         $validated = request()->validate([
-            'id'     => 'required',
+            'id'        => 'required',
             'room_id'   => 'required',
         ]);
 
