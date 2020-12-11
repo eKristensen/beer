@@ -76,7 +76,7 @@
             get_products() {
               axios({
                     method: 'get',
-                    url: '/api/products'
+                    url: '/api/statistics/products'
                 })
                 .then(response => {
                     this.products = response.data.data;
