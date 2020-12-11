@@ -79,10 +79,9 @@ Route::get('/refund/{beer}', function (Beer $beer) {
 
 Route::get('/statistics/products', function () {
     $activeProdcuts = DB::table('products')
-        ->select(DB::raw('max(products.id) as id, max(products.name) as name, max(products.active) as active'))
+        ->select(DB::raw('sum(beers.quantity) as count, max(products.id) as id, max(products.name) as name, max(products.active) as active'))
         ->leftJoin('beers', function ($join) {
             $join->on('beers.product', '=', 'products.id')
-                ->leftJoin('rooms', 'rooms.id', '=', 'beers.room')
                 ->where('beers.refunded', '=', false)
                 ->whereBetween('beers.created_at', [
                     Carbon::now()
@@ -91,12 +90,12 @@ Route::get('/statistics/products', function () {
                     Carbon::now()
                         ->subMinutes(30)
                         ->toDateTimeString(),
-                ])
-                ->where('rooms.statistics', '=', true)
-                ->orWhere('products.active', '=', true);
+                ]);
         })
         ->groupBy('products.id')
         ->orderBy('products.id', 'asc')
+        ->havingRaw('count > 0')
+        ->orHavingRaw('active > 0')
         ->get();
 
     return [
