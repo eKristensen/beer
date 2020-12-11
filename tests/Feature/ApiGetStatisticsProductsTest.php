@@ -3,8 +3,8 @@
 namespace Tests\Feature;
 
 use App\Beer;
-use App\Room;
 use App\Product;
+use App\Room;
 use Tests\TestCase;
 
 class ApiGetStatisticsProductsTest extends TestCase
@@ -366,6 +366,5 @@ class ApiGetStatisticsProductsTest extends TestCase
 
         // Check inactive does not show again
         $response->assertDontSee($product_3->name);
-
     }
 }
