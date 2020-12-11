@@ -106,7 +106,7 @@ Route::get('/statistics/products', function () {
 
 Route::get('/statistics/{product}', function (Product $product) {
     $rooms = DB::table('rooms')
-        ->select(DB::raw('sum(beers.quantity) as count, MAX(rooms.name) as name, max(products.active) as active'))
+        ->select(DB::raw('sum(beers.quantity) as count, MAX(rooms.name) as name, max(rooms.active) as active'))
         ->leftJoin('beers', function ($join) use ($product) {
             $join->on('rooms.id', '=', 'beers.room')
                 ->join('products', 'beers.product', '=', 'products.id')
