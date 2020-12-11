@@ -14,7 +14,7 @@ class ApiGetProductsTest extends TestCase
      */
     public function testThatItLoads()
     {
-        $response = $this->get('/api/products');
+        $response = $this->get('/api/statistics/products');
 
         $response->assertStatus(200);
     }
@@ -28,7 +28,7 @@ class ApiGetProductsTest extends TestCase
             'price'    => '1232.00',
         ]);
 
-        $response = $this->get('/api/products');
+        $response = $this->get('/api/statistics/products');
 
         // Expect a code 200 OK
         $response->assertStatus(200);
@@ -55,7 +55,7 @@ class ApiGetProductsTest extends TestCase
             'active'   => false,
         ]);
 
-        $response = $this->get('/api/products');
+        $response = $this->get('/api/statistics/products');
 
         // Expect a code 200 OK
         $response->assertStatus(200);
@@ -89,7 +89,7 @@ class ApiGetProductsTest extends TestCase
             'active'   => false,
         ]);
 
-        $response = $this->get('/api/products');
+        $response = $this->get('/api/statistics/products');
 
         // Expect a code 200 OK
         $response->assertStatus(200);
