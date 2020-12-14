@@ -17,7 +17,7 @@
         "nunomaduro/collision": "^3.0",
         "phpunit/phpunit": "^9.0",
         "overtrue/phplint": "^2.0",
-        "symplify/easy-coding-standard": "^8.0"
+        "symplify/easy-coding-standard": "^9.0"
     },
     "autoload": {
         "classmap": [
