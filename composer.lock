@@ -6259,16 +6259,16 @@
         },
         {
             "name": "symplify/easy-coding-standard",
-            "version": "v9.3.11",
+            "version": "v9.3.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symplify/easy-coding-standard.git",
-                "reference": "634da6abea9e7f9b4489d8bd313227c968c94d2c"
+                "reference": "0a2700ce5b4cd4054261b5f4b95d4b6563401918"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symplify/easy-coding-standard/zipball/634da6abea9e7f9b4489d8bd313227c968c94d2c",
-                "reference": "634da6abea9e7f9b4489d8bd313227c968c94d2c",
+                "url": "https://api.github.com/repos/symplify/easy-coding-standard/zipball/0a2700ce5b4cd4054261b5f4b95d4b6563401918",
+                "reference": "0a2700ce5b4cd4054261b5f4b95d4b6563401918",
                 "shasum": ""
             },
             "require": {
@@ -6286,6 +6286,11 @@
                 "bin/ecs"
             ],
             "type": "library",
+            "autoload": {
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
@@ -6301,7 +6306,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-05-13T11:38:11+00:00"
+            "time": "2021-06-05T15:51:56+00:00"
         },
         {
             "name": "theseer/tokenizer",
