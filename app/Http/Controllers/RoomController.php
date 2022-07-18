@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Room;
-use Illuminate\Http\Request;
 
 class RoomController extends Controller
 {

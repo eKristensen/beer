@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Beer;
 use App\PersonToRoomSummary;
 use App\Room;
-use Illuminate\Http\Request;
 
 class DepositController extends Controller
 {
