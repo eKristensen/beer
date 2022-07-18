@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\PersonToRoomSummary;
-use Illuminate\Http\Request;
 
 class SummaryController extends Controller
 {
