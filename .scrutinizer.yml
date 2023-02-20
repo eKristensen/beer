@@ -4,7 +4,7 @@ build:
         php:
             version: 8.1
 
-        node: "v18.14.1"
+        node: "v16"
 
     services:
         mysql: 5.7
