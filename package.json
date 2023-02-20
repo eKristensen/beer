@@ -24,7 +24,7 @@
         "laravel-mix": "^5.0.9",
         "mocha": "^8.4.0",
         "mochapack": "^2.1.0",
-        "node-sass": "^6.0.0",
+        "node-sass": "^8.0.0",
         "resolve-url-loader": "^4.0.0",
         "sass": "^1.32.13",
         "sass-loader": "^10.1.1",
