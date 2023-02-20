@@ -37,7 +37,7 @@
                         <div class="field">
                           <label class="label" for="amount">Beløb</label>
                           <div class="control">
-                            <input type="text" class="input" id="amount" name="amount" placeholder="Name">
+                            <input type="text" class="input" id="amount" name="amount" placeholder="Beløb">
                           </div>
                         </div>
 
