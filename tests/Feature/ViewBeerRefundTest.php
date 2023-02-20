@@ -54,7 +54,7 @@ class ViewBeerRefundTest extends TestCase
 
         // Check refund button is there
         $response->assertSee('<button type="button" class="button is-danger"'
-            .' onclick="refund('.$beer->id.')">Refunder</button>');
+            .' onclick="refund('.$beer->id.')">Refunder</button>', $escaped = false);
     }
 
     public function testDontShowOldPurchase()

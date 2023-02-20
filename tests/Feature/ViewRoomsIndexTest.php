@@ -73,14 +73,14 @@ class ViewRoomsIndexTest extends TestCase
         $response->assertStatus(200);
 
         // Colspan must be right
-        $response->assertSee('colspan="'.count($product->quantities()).'"');
+        $response->assertSee('colspan="'.count($product->quantities()).'"', $escaped = false);
 
         // Check buy buttons does show for every price
         foreach ($product->quantities() as $quantity) {
             $response->assertSee('<button type="button" class="button is-success"'
                 .'  style="background-color: #'.$product->color.';border-color:'
                 .' #'.$product->color.';"  onclick="buy('.$room->id.',\''
-                .$product->id.'\','.$quantity.')">+'.$quantity.'</button>');
+                .$product->id.'\','.$quantity.')">+'.$quantity.'</button>', $escaped = false);
         }
     }
 

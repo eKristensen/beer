@@ -83,8 +83,8 @@ class ViewDepositTest extends TestCase
 
         // And that the room data is shown
         $response->assertSee('<option value="'.$room->id.'">'.$room->id
-            .' '.$room->name.' '.$room->sum.'</option>');
-        $response->assertSee('<p>Total difference '.$room->sum.'</p>');
+            .' '.$room->name.' '.$room->sum.'</option>', $escaped = false);
+        $response->assertSee('<p>Total difference '.$room->sum.'</p>', $escaped = false);
     }
 
     // Test room with purchase, total sum must show (more than one purchase)
@@ -137,8 +137,8 @@ class ViewDepositTest extends TestCase
 
         // And that the room data is shown
         $response->assertSee('<option value="'.$room->id.'">'.$room->id
-            .' '.$room->name.' '.$room->sum.'</option>');
-        $response->assertSee('<p>Total difference '.$room->sum.'</p>');
+            .' '.$room->name.' '.$room->sum.'</option>', $escaped = false);
+        $response->assertSee('<p>Total difference '.$room->sum.'</p>', $escaped = false);
     }
 
     // Test total difference with more than one room with serveral purchases
@@ -208,9 +208,9 @@ class ViewDepositTest extends TestCase
 
         // And that the room data is shown
         $response->assertSee('<option value="'.$room_1->id.'">'.$room_1->id
-            .' '.$room_1->name.' '.$room_1->sum.'</option>');
+            .' '.$room_1->name.' '.$room_1->sum.'</option>', $escaped = false);
         $response->assertSee('<option value="'.$room_2->id.'">'.$room_2->id
-            .' '.$room_2->name.' '.$room_2->sum.'</option>');
-        $response->assertSee('<p>Total difference '.($room_1->sum + $room_2->sum).'.00</p>');
+            .' '.$room_2->name.' '.$room_2->sum.'</option>', $escaped = false);
+        $response->assertSee('<p>Total difference '.($room_1->sum + $room_2->sum).'.00</p>', $escaped = false);
     }
 }
