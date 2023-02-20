@@ -19,7 +19,7 @@ System used to keep track of how drunk we get.
 Ubuntu Server 20.04 LTS or Fedora 32+ is recommended, but any server capable of running the following will work:
 
 * Web-server Eg. nginx (see sample config below) or apache
-* PHP 7.4 or later
+* PHP 8.1 or later
 * MySQL or MariaDB server
 
 It is recommended to setup lets encrypt on your webserver. Please look at [Certbot](https://certbot.eff.org/)
@@ -274,4 +274,4 @@ Website: https://www.raspberrypi.org/forums/viewtopic.php?t=132637
 
 # Credits
 
-Converted from [Bootstarp](https://getbootstrap.com/) to [Bulma](https://bulma.io/) with help from https://github.com/laravel-frontend-presets/bulma
+Converted from [Bootstrap](https://getbootstrap.com/) to [Bulma](https://bulma.io/) with help from https://github.com/laravel-frontend-presets/bulma
