@@ -16,7 +16,7 @@
   <tbody>
 
 @foreach ($rooms as $room)
-    <tr>
+    <tr @if ($room->sum < -250) style="background-color: lightcoral;" @endif>
       <th scope="row" style="vertical-align:middle;">{{ $room->name }}</th>
 @foreach ($products as $product)
       @foreach ($product->quantities() as $amount)

@@ -10,6 +10,9 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @yield ('header')
+
+    <!-- Keep page fresh, reload every 24 hours -->
+    <meta http-equiv="refresh" content="86400;URL='/rooms/'" /> 
   </head>
 
   <body>
