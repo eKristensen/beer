@@ -20,7 +20,7 @@
       <th scope="row" style="vertical-align:middle;">{{ $room->name }}</th>
 @foreach ($products as $product)
       @foreach ($product->quantities() as $amount)
-      <td><button type="button" class="button is-success" @if ($product->color != '') style="background-color: #{{ $product->color }};border-color: #{{ $product->color }};" @endif onclick="buy({{ $room->id }},'{{ $product->id }}',{{$amount}})">+{{$amount}}</button></td>
+      <td><button @if ($room->sum < -250) disabled @endif type="button" class="button is-success" @if ($product->color != '') style="background-color: #{{ $product->color }};border-color: #{{ $product->color }};" @endif onclick="buy({{ $room->id }},'{{ $product->id }}',{{$amount}})">+{{$amount}}</button></td>
       @endforeach
 @endforeach
 
