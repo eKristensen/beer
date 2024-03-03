@@ -5,7 +5,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-window.Vue = require('vue');
+import Vue from 'vue'
 
 const Swal = require('sweetalert2')
 const axios = require('axios');
